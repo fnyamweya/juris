@@ -1,0 +1,53 @@
+{
+  "name": "jusris",
+  "private": true,
+  "description": "JUSRIS — Enterprise Legal AI Platform",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "packageManager": "pnpm@9.15.4",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "lint:fix": "turbo run lint:fix",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "test:unit": "turbo run test:unit",
+    "test:integration": "turbo run test:integration",
+    "test:e2e": "turbo run test:e2e",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md,yaml,yml}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md,yaml,yml}\"",
+    "commitlint": "commitlint",
+    "clean": "turbo run clean && rimraf node_modules",
+    "prepare": "husky",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "turbo run build --filter='./packages/*' && changeset publish",
+    "db:migrate:registry": "node infra/scripts/migrate-registry.mjs",
+    "db:migrate:tenant": "node infra/scripts/migrate-tenant.mjs",
+    "preinstall": "npx only-allow pnpm"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.0",
+    "@commitlint/cli": "^19.0.0",
+    "@commitlint/config-conventional": "^19.0.0",
+    "husky": "^9.0.0",
+    "lint-staged": "^15.0.0",
+    "prettier": "^3.4.0",
+    "rimraf": "^6.0.0",
+    "turbo": "^2.3.0",
+    "typescript": "^5.7.0"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,yaml,yml}": [
+      "prettier --write"
+    ]
+  }
+}

@@ -1,0 +1,63 @@
+import type { UserConfig } from '@commitlint/types';
+
+const config: UserConfig = {
+  extends: ['@commitlint/config-conventional'],
+  rules: {
+    'type-enum': [
+      2,
+      'always',
+      [
+        'feat',
+        'fix',
+        'docs',
+        'style',
+        'refactor',
+        'perf',
+        'test',
+        'build',
+        'ci',
+        'chore',
+        'revert',
+        'security',
+        'infra',
+      ],
+    ],
+    'scope-enum': [
+      1,
+      'always',
+      [
+        'dashboard',
+        'web',
+        'dispatch',
+        'provisioning',
+        'tenant-runtime',
+        'ingestion',
+        'webhook',
+        'maintenance',
+        'ui',
+        'config',
+        'schemas',
+        'domain',
+        'auth',
+        'access-control',
+        'crypto',
+        'data',
+        'cloudflare',
+        'observability',
+        'queueing',
+        'rag',
+        'audit',
+        'security',
+        'testing',
+        'infra',
+        'ci',
+        'deps',
+      ],
+    ],
+    'subject-case': [2, 'always', 'lower-case'],
+    'header-max-length': [2, 'always', 100],
+    'body-max-line-length': [1, 'always', 200],
+  },
+};
+
+export default config;

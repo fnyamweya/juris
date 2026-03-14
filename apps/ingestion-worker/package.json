@@ -1,0 +1,32 @@
+{
+  "name": "@jusris/ingestion-worker",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/",
+    "test": "vitest run",
+    "test:unit": "vitest run",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "@jusris/config": "workspace:*",
+    "@jusris/data": "workspace:*",
+    "@jusris/domain": "workspace:*",
+    "@jusris/ingestion": "workspace:*",
+    "@jusris/observability": "workspace:*",
+    "@jusris/queueing": "workspace:*"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241205.0",
+    "@jusris/tsconfig": "workspace:*",
+    "typescript": "^5.7.0",
+    "vitest": "^2.1.0",
+    "wrangler": "^3.99.0",
+    "rimraf": "^6.0.0"
+  }
+}

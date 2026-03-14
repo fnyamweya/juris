@@ -1,0 +1,53 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+.next/
+.turbo/
+out/
+
+# Wrangler
+.wrangler/
+.dev.vars
+
+# Environment
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# IDE
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+coverage/
+test-results/
+playwright-report/
+blob-report/
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Changesets
+.changeset/*.md
+!.changeset/config.json
+!.changeset/README.md
+
+# Secrets — never commit these
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+service-account.json

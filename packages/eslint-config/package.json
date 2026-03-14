@@ -1,0 +1,30 @@
+{
+  "name": "@jusris/eslint-config",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "exports": {
+    "./base": "./base.js",
+    "./nextjs": "./nextjs.js",
+    "./worker": "./worker.js",
+    "./library": "./library.js"
+  },
+  "files": [
+    "base.js",
+    "nextjs.js",
+    "worker.js",
+    "library.js"
+  ],
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-security": "^3.0.0"
+  },
+  "peerDependencies": {
+    "eslint": "^8.57.0 || ^9.0.0",
+    "typescript": "^5.5.0"
+  }
+}

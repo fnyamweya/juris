@@ -1,0 +1,11 @@
+name = "jusris-webhooks"
+main = "src/index.ts"
+compatibility_date = "2024-12-01"
+compatibility_flags = ["nodejs_compat"]
+
+[observability]
+enabled = true
+
+[vars]
+ENVIRONMENT = "development"
+LOG_LEVEL = "info"

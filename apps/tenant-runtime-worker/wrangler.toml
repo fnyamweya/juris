@@ -1,0 +1,27 @@
+name = "jusris-tenant-runtime"
+main = "src/index.ts"
+compatibility_date = "2024-12-01"
+compatibility_flags = ["nodejs_compat"]
+
+[observability]
+enabled = true
+
+[[d1_databases]]
+binding = "TENANT_DB"
+database_name = "jusris-tenant"
+database_id = ""
+
+[[r2_buckets]]
+binding = "TENANT_STORAGE"
+bucket_name = "jusris-tenant-storage"
+
+[[vectorize]]
+binding = "TENANT_VECTOR_INDEX"
+index_name = "jusris-tenant-vectors"
+
+[ai]
+binding = "AI"
+
+[vars]
+ENVIRONMENT = "development"
+LOG_LEVEL = "info"

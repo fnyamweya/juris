@@ -1,0 +1,8 @@
+{
+  "extends": "@jusris/tsconfig/nextjs.json",
+  "compilerOptions": {
+    "paths": { "@/*": ["./src/*"] }
+  },
+  "include": ["src", "next.config.ts", "tailwind.config.ts", "next-env.d.ts", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}

@@ -1,0 +1,10 @@
+{
+  "extends": "@jusris/tsconfig/worker.json",
+  "compilerOptions": {
+    "types": ["@cloudflare/workers-types"],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src"]
+}

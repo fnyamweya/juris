@@ -1,0 +1,19 @@
+name = "jusris-maintenance"
+main = "src/index.ts"
+compatibility_date = "2024-12-01"
+compatibility_flags = ["nodejs_compat"]
+
+[observability]
+enabled = true
+
+[[d1_databases]]
+binding = "MASTER_REGISTRY_DB"
+database_name = "jusris-master-registry"
+database_id = ""
+
+[triggers]
+crons = ["0 */6 * * *", "0 0 * * *"]
+
+[vars]
+ENVIRONMENT = "development"
+LOG_LEVEL = "info"

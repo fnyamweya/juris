@@ -1,0 +1,56 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": ["**/.env.*local"],
+  "globalEnv": ["NODE_ENV", "CI"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [".next/**", "dist/**", "!.next/cache/**"],
+      "env": [
+        "NEXT_PUBLIC_*",
+        "CLOUDFLARE_ACCOUNT_ID",
+        "CLOUDFLARE_API_TOKEN"
+      ]
+    },
+    "dev": {
+      "dependsOn": ["^build"],
+      "cache": false,
+      "persistent": true
+    },
+    "lint": {
+      "dependsOn": ["^build"],
+      "outputs": []
+    },
+    "lint:fix": {
+      "dependsOn": ["^build"],
+      "outputs": []
+    },
+    "typecheck": {
+      "dependsOn": ["^build"],
+      "outputs": []
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "outputs": [],
+      "env": ["CI"]
+    },
+    "test:unit": {
+      "dependsOn": ["^build"],
+      "outputs": [],
+      "env": ["CI"]
+    },
+    "test:integration": {
+      "dependsOn": ["^build"],
+      "outputs": [],
+      "env": ["CI"]
+    },
+    "test:e2e": {
+      "dependsOn": ["build"],
+      "outputs": [],
+      "env": ["CI"]
+    },
+    "clean": {
+      "cache": false
+    }
+  }
+}

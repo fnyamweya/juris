@@ -1,0 +1,25 @@
+{
+  "name": "@jusris/testing",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "exports": { ".": "./src/index.ts" },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "@jusris/domain": "workspace:*",
+    "@jusris/audit": "workspace:*",
+    "@jusris/auth": "workspace:*",
+    "@jusris/access-control": "workspace:*",
+    "@jusris/observability": "workspace:*"
+  },
+  "devDependencies": {
+    "@jusris/tsconfig": "workspace:*",
+    "typescript": "^5.7.0",
+    "rimraf": "^6.0.0"
+  }
+}

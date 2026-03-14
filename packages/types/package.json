@@ -1,0 +1,22 @@
+{
+  "name": "@jusris/types",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "@jusris/domain": "workspace:*"
+  },
+  "devDependencies": {
+    "@jusris/tsconfig": "workspace:*",
+    "typescript": "^5.7.0",
+    "rimraf": "^6.0.0"
+  }
+}
