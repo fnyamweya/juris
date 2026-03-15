@@ -1,18 +1,18 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import {
-  createLogger,
-  sanitize,
-  SENSITIVE_FIELDS,
-} from '../logger.js';
+import { createLogger, sanitize, SENSITIVE_FIELDS } from '../logger.js';
 
 describe('logger', () => {
-  let consoleSpy: { log: ReturnType<typeof vi.spyOn>; warn: ReturnType<typeof vi.spyOn>; error: ReturnType<typeof vi.spyOn> };
+  let consoleSpy: {
+    log: ReturnType<typeof vi.spyOn>;
+    warn: ReturnType<typeof vi.spyOn>;
+    error: ReturnType<typeof vi.spyOn>;
+  };
 
   beforeEach(() => {
     consoleSpy = {
-      log: vi.spyOn(console, 'log').mockImplementation(() => { }),
-      warn: vi.spyOn(console, 'warn').mockImplementation(() => { }),
-      error: vi.spyOn(console, 'error').mockImplementation(() => { }),
+      log: vi.spyOn(console, 'log').mockImplementation(() => {}),
+      warn: vi.spyOn(console, 'warn').mockImplementation(() => {}),
+      error: vi.spyOn(console, 'error').mockImplementation(() => {}),
     };
   });
 

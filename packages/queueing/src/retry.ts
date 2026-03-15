@@ -14,10 +14,7 @@ export const DEFAULT_RETRY_CONFIG: RetryConfig = {
   backoffMultiplier: 2,
 };
 
-export function calculateBackoff(
-  attempt: number,
-  config: RetryConfig
-): number {
+export function calculateBackoff(attempt: number, config: RetryConfig): number {
   const exponential = config.baseDelayMs * Math.pow(config.backoffMultiplier, attempt);
   const capped = Math.min(exponential, config.maxDelayMs);
   const jitter = capped * 0.1 * (Math.random() * 2 - 1);
@@ -35,7 +32,7 @@ function sleep(ms: number): Promise<void> {
 export async function withRetry<T>(
   operation: () => Promise<T>,
   config: RetryConfig,
-  logger: Logger
+  logger: Logger,
 ): Promise<T> {
   let lastError: unknown;
   for (let attempt = 0; attempt <= config.maxRetries; attempt++) {

@@ -15,33 +15,48 @@ export async function handleTenantStatus(
 
   if (!tenantId) {
     return new Response(
-      JSON.stringify({ error: { code: 'INVALID_REQUEST', message: 'Missing tenant ID', requestId: reqCtx.requestId } }),
+      JSON.stringify({
+        error: {
+          code: 'INVALID_REQUEST',
+          message: 'Missing tenant ID',
+          requestId: reqCtx.requestId,
+        },
+      }),
       { status: 400, headers: { 'Content-Type': 'application/json' } },
     );
   }
 
   if (tenantId !== actor.tenantId) {
-    logger.warn('tenant status access denied: cross-tenant', { requestedTenant: tenantId, actorTenant: actor.tenantId });
+    logger.warn('tenant status access denied: cross-tenant', {
+      requestedTenant: tenantId,
+      actorTenant: actor.tenantId,
+    });
     return new Response(
-      JSON.stringify({ error: { code: 'FORBIDDEN', message: 'Access denied', requestId: reqCtx.requestId } }),
+      JSON.stringify({
+        error: { code: 'FORBIDDEN', message: 'Access denied', requestId: reqCtx.requestId },
+      }),
       { status: 403, headers: { 'Content-Type': 'application/json' } },
     );
   }
 
-  const tenant = await env.MASTER_REGISTRY_DB
-    .prepare('SELECT id, slug, display_name, tier, status, custom_domain, created_at, updated_at FROM tenants WHERE id = ?')
+  const tenant = await env.MASTER_REGISTRY_DB.prepare(
+    'SELECT id, slug, display_name, tier, status, custom_domain, created_at, updated_at FROM tenants WHERE id = ?',
+  )
     .bind(tenantId)
     .first();
 
   if (!tenant) {
     return new Response(
-      JSON.stringify({ error: { code: 'NOT_FOUND', message: 'Tenant not found', requestId: reqCtx.requestId } }),
+      JSON.stringify({
+        error: { code: 'NOT_FOUND', message: 'Tenant not found', requestId: reqCtx.requestId },
+      }),
       { status: 404, headers: { 'Content-Type': 'application/json' } },
     );
   }
 
-  const operation = await env.MASTER_REGISTRY_DB
-    .prepare('SELECT current_step, status, updated_at FROM provisioning_operations WHERE tenant_id = ? ORDER BY created_at DESC LIMIT 1')
+  const operation = await env.MASTER_REGISTRY_DB.prepare(
+    'SELECT current_step, status, updated_at FROM provisioning_operations WHERE tenant_id = ? ORDER BY created_at DESC LIMIT 1',
+  )
     .bind(tenantId)
     .first();
 

@@ -16,7 +16,7 @@ export function Navigation() {
       >
         <Link
           href="/"
-          className="text-xl font-semibold tracking-tight text-slate-900 hover:text-brand-600 transition-colors"
+          className="text-xl font-semibold tracking-tight text-slate-900 transition-colors hover:text-brand-600"
         >
           JUSRIS
         </Link>
@@ -26,7 +26,7 @@ export function Navigation() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors"
+              className="text-sm font-medium text-slate-600 transition-colors hover:text-slate-900"
             >
               {link.label}
             </Link>
@@ -36,13 +36,13 @@ export function Navigation() {
         <div className="flex items-center gap-4">
           <Link
             href="/contact"
-            className="hidden text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors sm:inline-block"
+            className="hidden text-sm font-medium text-slate-600 transition-colors hover:text-slate-900 sm:inline-block"
           >
             Sign In
           </Link>
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center rounded-md bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2"
+            className="inline-flex items-center justify-center rounded-md bg-slate-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2"
           >
             Request Access
           </Link>

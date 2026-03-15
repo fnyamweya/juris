@@ -21,13 +21,7 @@ export interface AssembledPrompt {
 }
 
 export function assemblePrompt(params: AssemblePromptParams): AssembledPrompt {
-  const {
-    systemPrompt,
-    retrievedChunks,
-    userQuery,
-    chatHistory = [],
-    maxContextTokens,
-  } = params;
+  const { systemPrompt, retrievedChunks, userQuery, chatHistory = [], maxContextTokens } = params;
 
   const includedChunkIds: string[] = [];
   let usedTokens = estimateTokens(systemPrompt);
@@ -50,9 +44,7 @@ export function assemblePrompt(params: AssemblePromptParams): AssembledPrompt {
   const truncated = includedChunkIds.length < retrievedChunks.length;
 
   const contextBlock =
-    contextParts.length > 0
-      ? `\n\n## Retrieved Context\n\n${contextParts.join('\n\n')}`
-      : '';
+    contextParts.length > 0 ? `\n\n## Retrieved Context\n\n${contextParts.join('\n\n')}` : '';
 
   const systemContent = systemPrompt + contextBlock;
 

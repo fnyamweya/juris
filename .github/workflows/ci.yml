@@ -49,7 +49,7 @@ jobs:
         if: always()
         with:
           name: unit-test-results
-          path: "**/coverage/"
+          path: '**/coverage/'
 
   test-integration:
     name: Integration Tests

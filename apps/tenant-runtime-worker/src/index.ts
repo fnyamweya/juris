@@ -12,7 +12,7 @@ export default {
   async fetch(
     request: Request,
     env: TenantRuntimeWorkerEnv,
-    _ctx: ExecutionContext
+    _ctx: ExecutionContext,
   ): Promise<Response> {
     const url = new URL(request.url);
     const reqCtx = createRequestContext({
@@ -45,32 +45,24 @@ export default {
             {
               status: 401,
               headers: { 'Content-Type': 'application/json' },
-            }
-          )
+            },
+          ),
         );
       }
 
       const path = url.pathname;
 
       if (path.startsWith('/api/v1/matters')) {
-        return applySecurityHeaders(
-          await handleMatters(request, env, actor, reqCtx, logger)
-        );
+        return applySecurityHeaders(await handleMatters(request, env, actor, reqCtx, logger));
       }
       if (path.startsWith('/api/v1/documents')) {
-        return applySecurityHeaders(
-          await handleDocuments(request, env, actor, reqCtx, logger)
-        );
+        return applySecurityHeaders(await handleDocuments(request, env, actor, reqCtx, logger));
       }
       if (path.startsWith('/api/v1/conversations')) {
-        return applySecurityHeaders(
-          await handleConversations(request, env, actor, reqCtx, logger)
-        );
+        return applySecurityHeaders(await handleConversations(request, env, actor, reqCtx, logger));
       }
       if (path.startsWith('/api/v1/search')) {
-        return applySecurityHeaders(
-          await handleSearch(request, env, actor, reqCtx, logger)
-        );
+        return applySecurityHeaders(await handleSearch(request, env, actor, reqCtx, logger));
       }
 
       return applySecurityHeaders(
@@ -78,8 +70,8 @@ export default {
           JSON.stringify({
             error: { code: 'NOT_FOUND', message: 'Not found', requestId: reqCtx.requestId },
           }),
-          { status: 404, headers: { 'Content-Type': 'application/json' } }
-        )
+          { status: 404, headers: { 'Content-Type': 'application/json' } },
+        ),
       );
     } catch (error) {
       logger.error('unhandled tenant runtime error', {
@@ -97,8 +89,8 @@ export default {
           {
             status: 500,
             headers: { 'Content-Type': 'application/json' },
-          }
-        )
+          },
+        ),
       );
     }
   },

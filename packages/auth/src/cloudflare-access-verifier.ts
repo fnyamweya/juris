@@ -1,10 +1,5 @@
 import type { JwksCache } from './jwks.js';
-import {
-  fetchJwks,
-  jwkToCryptoKey,
-  createInMemoryJwksCache,
-  base64UrlDecode,
-} from './jwks.js';
+import { fetchJwks, jwkToCryptoKey, createInMemoryJwksCache, base64UrlDecode } from './jwks.js';
 import type { TokenVerifier, VerifiedToken } from './token-verifier.js';
 import { TokenVerificationError } from './token-verifier.js';
 
@@ -32,11 +27,7 @@ function parseJwtPayload(token: string): {
   const headerB64 = parts[0];
   const payloadB64 = parts[1];
   const sigB64 = parts[2];
-  if (
-    headerB64 === undefined ||
-    payloadB64 === undefined ||
-    sigB64 === undefined
-  ) {
+  if (headerB64 === undefined || payloadB64 === undefined || sigB64 === undefined) {
     throw new TokenVerificationError('Malformed JWT', { code: 'MALFORMED' });
   }
 
@@ -65,7 +56,7 @@ function getKid(header: Record<string, unknown>): string | undefined {
 function validatePayload(
   payload: Record<string, unknown>,
   expectedAud: string,
-  teamDomain: string
+  teamDomain: string,
 ): VerifiedToken {
   const now = Math.floor(Date.now() / 1000);
   const exp = payload['exp'];
@@ -124,13 +115,9 @@ function validatePayload(
 }
 
 export function createCloudflareAccessVerifier(
-  params: CreateCloudflareAccessVerifierParams
+  params: CreateCloudflareAccessVerifierParams,
 ): TokenVerifier {
-  const {
-    teamDomain,
-    aud,
-    jwksCache = createInMemoryJwksCache(5 * 60 * 1000),
-  } = params;
+  const { teamDomain, aud, jwksCache = createInMemoryJwksCache(5 * 60 * 1000) } = params;
 
   const jwksUrl = getJwksUrl(teamDomain);
 
@@ -165,9 +152,7 @@ export function createCloudflareAccessVerifier(
         jwksCache.set(jwksUrl, keys);
       }
 
-      const jwk = kid
-        ? keys.find((k) => k.kid === kid)
-        : keys[0];
+      const jwk = kid ? keys.find((k) => k.kid === kid) : keys[0];
       if (!jwk) {
         throw new TokenVerificationError('No matching key found', {
           code: 'INVALID_SIGNATURE',
@@ -181,7 +166,7 @@ export function createCloudflareAccessVerifier(
         { name: 'RSASSA-PKCS1-v1_5', hash: 'SHA-256' },
         cryptoKey,
         signature,
-        signingInputBytes
+        signingInputBytes,
       );
 
       if (!valid) {

@@ -16,7 +16,12 @@ export interface ChainVerificationResult {
 }
 
 export interface AuditChainVerifierDeps {
-  store: { getEvents(tenantId: string, query: { cursor?: string; limit: number }): Promise<{ events: AuditEvent[]; cursor: string | null }> };
+  store: {
+    getEvents(
+      tenantId: string,
+      query: { cursor?: string; limit: number },
+    ): Promise<{ events: AuditEvent[]; cursor: string | null }>;
+  };
   verificationKey: CryptoKey;
 }
 
@@ -25,10 +30,7 @@ const GENESIS_HASH = 'GENESIS';
 export class AuditChainVerifier {
   constructor(private readonly deps: AuditChainVerifierDeps) {}
 
-  async verifyChain(
-    tenantId: string,
-    _fromEventId?: string
-  ): Promise<ChainVerificationResult> {
+  async verifyChain(tenantId: string, _fromEventId?: string): Promise<ChainVerificationResult> {
     const brokenLinks: BrokenLink[] = [];
     let eventsVerified = 0;
     let cursor: string | null | undefined = undefined;
@@ -37,13 +39,16 @@ export class AuditChainVerifier {
     const pageSize = 100;
 
     while (true) {
-      const { events, cursor: nextCursor } = await this.deps.store.getEvents(
-        tenantId,
-        { cursor: cursor ?? undefined, limit: pageSize }
-      );
+      const { events, cursor: nextCursor } = await this.deps.store.getEvents(tenantId, {
+        cursor: cursor ?? undefined,
+        limit: pageSize,
+      });
 
       for (const event of events) {
-        const { signature, ...metadataWithoutSignature } = (event.metadata ?? {}) as Record<string, unknown> & { signature?: string };
+        const { signature, ...metadataWithoutSignature } = (event.metadata ?? {}) as Record<
+          string,
+          unknown
+        > & { signature?: string };
         const sig = (signature as string) ?? '';
 
         const eventData = JSON.stringify({

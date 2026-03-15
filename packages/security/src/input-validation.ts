@@ -35,10 +35,7 @@ export function validateMimeType(mime: string): boolean {
   return (ALLOWED_MIMES_SET as Set<string>).has(mime);
 }
 
-export function stripUntrustedHeaders(
-  headers: Headers,
-  trustedHeaders: string[]
-): Headers {
+export function stripUntrustedHeaders(headers: Headers, trustedHeaders: string[]): Headers {
   const trustedSet = new Set(trustedHeaders.map((h) => h.toLowerCase()));
   const result = new Headers();
   for (const [name, value] of headers.entries()) {

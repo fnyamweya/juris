@@ -21,9 +21,7 @@ export default function NewMatterPage() {
         </CardHeader>
         <CardContent>
           <div className="flex flex-col items-center justify-center rounded-lg border border-dashed py-12 text-center">
-            <p className="text-sm text-muted-foreground">
-              Matter creation form will appear here
-            </p>
+            <p className="text-sm text-muted-foreground">Matter creation form will appear here</p>
           </div>
         </CardContent>
       </Card>

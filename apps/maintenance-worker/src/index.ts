@@ -6,7 +6,7 @@ export default {
   async scheduled(
     event: ScheduledEvent,
     env: MaintenanceWorkerEnv,
-    _ctx: ExecutionContext
+    _ctx: ExecutionContext,
   ): Promise<void> {
     const reqCtx = createRequestContext({
       worker: 'maintenance',
@@ -40,7 +40,7 @@ export default {
   async fetch(
     request: Request,
     _env: MaintenanceWorkerEnv,
-    _ctx: ExecutionContext
+    _ctx: ExecutionContext,
   ): Promise<Response> {
     const url = new URL(request.url);
     const reqCtx = createRequestContext({
@@ -52,9 +52,9 @@ export default {
       return handleHealthCheck(reqCtx);
     }
 
-    return new Response(
-      JSON.stringify({ error: { code: 'NOT_FOUND', message: 'Not found' } }),
-      { status: 404, headers: { 'Content-Type': 'application/json' } }
-    );
+    return new Response(JSON.stringify({ error: { code: 'NOT_FOUND', message: 'Not found' } }), {
+      status: 404,
+      headers: { 'Content-Type': 'application/json' },
+    });
   },
 };

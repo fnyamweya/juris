@@ -11,9 +11,7 @@ export default function PrivacyPage() {
       <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
         Privacy Policy
       </h1>
-      <p className="mt-4 text-slate-600">
-        Privacy policy placeholder. Content coming soon.
-      </p>
+      <p className="mt-4 text-slate-600">Privacy policy placeholder. Content coming soon.</p>
     </div>
   );
 }

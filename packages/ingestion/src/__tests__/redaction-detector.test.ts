@@ -38,7 +38,8 @@ describe('createDeterministicRedactionDetector', () => {
   });
 
   it('avoids false positives on normal legal text', () => {
-    const text = 'Pursuant to Section 123 of the Code, the court held that the defendant shall pay damages.';
+    const text =
+      'Pursuant to Section 123 of the Code, the court held that the defendant shall pay damages.';
     const results = detector.detect(text);
     const ssnResults = results.filter((r) => r.category === RedactionCategory.PII_SSN);
     const emailResults = results.filter((r) => r.category === RedactionCategory.PII_EMAIL);

@@ -6,11 +6,7 @@
     "build": {
       "dependsOn": ["^build"],
       "outputs": [".next/**", "dist/**", "!.next/cache/**"],
-      "env": [
-        "NEXT_PUBLIC_*",
-        "CLOUDFLARE_ACCOUNT_ID",
-        "CLOUDFLARE_API_TOKEN"
-      ]
+      "env": ["NEXT_PUBLIC_*", "CLOUDFLARE_ACCOUNT_ID", "CLOUDFLARE_API_TOKEN"]
     },
     "dev": {
       "dependsOn": ["^build"],

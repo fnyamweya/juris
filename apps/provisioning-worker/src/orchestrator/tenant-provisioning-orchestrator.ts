@@ -37,13 +37,10 @@ export class TenantProvisioningOrchestrator {
       db: D1Client;
       cfApi: CloudflareApiClient;
       logger: Logger;
-    }
-  ) { }
+    },
+  ) {}
 
-  async provision(
-    tenantId: string,
-    idempotencyKey: string
-  ): Promise<ProvisioningResult> {
+  async provision(tenantId: string, idempotencyKey: string): Promise<ProvisioningResult> {
     const { db, cfApi, logger } = this.deps;
 
     try {
@@ -55,16 +52,14 @@ export class TenantProvisioningOrchestrator {
         `SELECT current_step, retries_remaining, error_message
          FROM provisioning_operations
          WHERE tenant_id = ? AND idempotency_key = ?`,
-        [tenantId, idempotencyKey]
+        [tenantId, idempotencyKey],
       );
 
       let currentStepIndex = PROVISIONING_STEPS.indexOf('REGISTRY_COMMITTED');
       let retriesRemaining = 3;
 
       if (state) {
-        const idx = PROVISIONING_STEPS.indexOf(
-          state.current_step as ProvisioningStep
-        );
+        const idx = PROVISIONING_STEPS.indexOf(state.current_step as ProvisioningStep);
         if (idx >= 0) currentStepIndex = idx;
         retriesRemaining = state.retries_remaining ?? 3;
         if (state.error_message && state.current_step === 'FAILED') {
@@ -84,15 +79,14 @@ export class TenantProvisioningOrchestrator {
           `INSERT OR REPLACE INTO provisioning_operations
            (tenant_id, idempotency_key, current_step, retries_remaining, updated_at)
            VALUES (?, ?, ?, ?, datetime('now'))`,
-          [tenantId, idempotencyKey, step, retriesRemaining]
+          [tenantId, idempotencyKey, step, retriesRemaining],
         );
 
         try {
           logger.info('provisioning step', { tenantId, step });
           await this.executeStep(step, tenantId, cfApi);
         } catch (err) {
-          const errorMessage =
-            err instanceof Error ? err.message : String(err);
+          const errorMessage = err instanceof Error ? err.message : String(err);
           logger.error('provisioning step failed', {
             tenantId,
             step,
@@ -102,7 +96,7 @@ export class TenantProvisioningOrchestrator {
             `UPDATE provisioning_operations
              SET current_step = 'FAILED', error_message = ?, retries_remaining = ?
              WHERE tenant_id = ? AND idempotency_key = ?`,
-            [errorMessage, retriesRemaining - 1, tenantId, idempotencyKey]
+            [errorMessage, retriesRemaining - 1, tenantId, idempotencyKey],
           );
           return {
             success: false,
@@ -133,7 +127,7 @@ export class TenantProvisioningOrchestrator {
   private async executeStep(
     step: ProvisioningStep,
     _tenantId: string,
-    _cfApi: CloudflareApiClient
+    _cfApi: CloudflareApiClient,
   ): Promise<void> {
     switch (step) {
       case 'REGISTRY_COMMITTED':

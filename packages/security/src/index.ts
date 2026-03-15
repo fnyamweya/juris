@@ -16,8 +16,4 @@ export {
   ALLOWED_UPLOAD_MIMES,
 } from './input-validation.js';
 
-export {
-  generateCsrfToken,
-  validateCsrfToken,
-  CSRF_HEADER,
-} from './csrf.js';
+export { generateCsrfToken, validateCsrfToken, CSRF_HEADER } from './csrf.js';

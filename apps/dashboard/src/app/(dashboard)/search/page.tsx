@@ -7,9 +7,7 @@ export default function SearchPage() {
   return (
     <div className="flex h-[calc(100vh-8rem)] flex-col gap-6">
       <div>
-        <h1 className="text-2xl font-semibold tracking-tight">
-          AI Search Workspace
-        </h1>
+        <h1 className="text-2xl font-semibold tracking-tight">AI Search Workspace</h1>
         <p className="text-muted-foreground">
           Search across all matters and documents with AI-powered retrieval
         </p>
@@ -34,9 +32,7 @@ export default function SearchPage() {
           </CardHeader>
           <CardContent>
             <div className="flex flex-col items-center justify-center rounded-lg border border-dashed py-24 text-center">
-              <p className="text-sm text-muted-foreground">
-                Search results will appear here
-              </p>
+              <p className="text-sm text-muted-foreground">Search results will appear here</p>
             </div>
           </CardContent>
         </Card>
@@ -46,9 +42,7 @@ export default function SearchPage() {
           </CardHeader>
           <CardContent>
             <div className="flex flex-col items-center justify-center rounded-lg border border-dashed py-24 text-center">
-              <p className="text-sm text-muted-foreground">
-                Chat panel will appear here
-              </p>
+              <p className="text-sm text-muted-foreground">Chat panel will appear here</p>
             </div>
           </CardContent>
         </Card>
@@ -60,9 +54,7 @@ export default function SearchPage() {
         </CardHeader>
         <CardContent>
           <div className="flex flex-col items-center justify-center rounded-lg border border-dashed py-8 text-center">
-            <p className="text-sm text-muted-foreground">
-              Citation display area will appear here
-            </p>
+            <p className="text-sm text-muted-foreground">Citation display area will appear here</p>
           </div>
         </CardContent>
       </Card>

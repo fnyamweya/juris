@@ -1,6 +1,6 @@
-export const PLATFORM_NAME = "JUSRIS" as const;
+export const PLATFORM_NAME = 'JUSRIS' as const;
 
-export const API_VERSION = "v1" as const;
+export const API_VERSION = 'v1' as const;
 
 export const MAX_UPLOAD_SIZE_BYTES = 100 * 1024 * 1024;
 
@@ -24,14 +24,14 @@ export const PROVISIONING_MAX_RETRIES = 5;
 
 export const INGESTION_MAX_RETRIES = 3;
 
-export const LOG_LEVELS = ["debug", "info", "warn", "error"] as const;
+export const LOG_LEVELS = ['debug', 'info', 'warn', 'error'] as const;
 
 export type LogLevel = (typeof LOG_LEVELS)[number];
 
 export const SENSITIVE_HEADER_NAMES = [
-  "authorization",
-  "cookie",
-  "x-api-key",
-  "cf-access-client-id",
-  "cf-access-client-secret",
+  'authorization',
+  'cookie',
+  'x-api-key',
+  'cf-access-client-id',
+  'cf-access-client-secret',
 ] as const;

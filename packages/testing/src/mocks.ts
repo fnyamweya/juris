@@ -35,9 +35,7 @@ export function createMockLogger(): Logger & { getLogs: () => LogEntry[] } {
   };
 }
 
-export function createMockTokenVerifier(
-  result?: VerifiedToken
-): TokenVerifier {
+export function createMockTokenVerifier(result?: VerifiedToken): TokenVerifier {
   const resolved: VerifiedToken = result ?? {
     sub: 'user-123',
     email: 'test@example.com',
@@ -55,9 +53,7 @@ export function createMockTokenVerifier(
   };
 }
 
-export function createMockPolicyEvaluator(
-  defaultDecision?: AccessDecision
-): PolicyEvaluator {
+export function createMockPolicyEvaluator(defaultDecision?: AccessDecision): PolicyEvaluator {
   const decision: AccessDecision = defaultDecision ?? {
     allowed: true,
     reason: 'Mock allowed',
@@ -91,12 +87,10 @@ export function createMockAuditEventStore(): AuditEventStore & {
 
     async getEvents(
       tenantId: string,
-      query: { cursor?: string; limit: number }
+      query: { cursor?: string; limit: number },
     ): Promise<{ events: AuditEvent[]; cursor: string | null }> {
       const filtered = events.filter((e) => String(e.tenantId) === tenantId);
-      const start = query.cursor
-        ? filtered.findIndex((e) => String(e.id) === query.cursor) + 1
-        : 0;
+      const start = query.cursor ? filtered.findIndex((e) => String(e.id) === query.cursor) + 1 : 0;
       const slice = filtered.slice(start, start + query.limit);
       const lastInSlice = slice[slice.length - 1];
       const nextCursor =

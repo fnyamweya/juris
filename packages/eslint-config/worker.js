@@ -8,10 +8,7 @@ const config = {
         message: 'Avoid long timers in Workers. Use scheduled handlers or Durable Objects.',
       },
     ],
-    '@typescript-eslint/explicit-function-return-type': [
-      'warn',
-      { allowExpressions: true },
-    ],
+    '@typescript-eslint/explicit-function-return-type': ['warn', { allowExpressions: true }],
   },
 };
 

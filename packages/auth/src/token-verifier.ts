@@ -19,10 +19,7 @@ export type TokenVerificationErrorCode =
 export class TokenVerificationError extends Error {
   readonly code: TokenVerificationErrorCode;
 
-  constructor(
-    message: string,
-    options: { cause?: unknown; code: TokenVerificationErrorCode }
-  ) {
+  constructor(message: string, options: { cause?: unknown; code: TokenVerificationErrorCode }) {
     super(message, { cause: options.cause });
     this.name = 'TokenVerificationError';
     this.code = options.code;

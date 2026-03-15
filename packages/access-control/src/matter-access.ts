@@ -8,7 +8,7 @@ const RESOURCE_DOCUMENT = 'document';
 export async function canViewMatter(
   actor: ActorContext,
   matterId: MatterId,
-  evaluator: PolicyEvaluator
+  evaluator: PolicyEvaluator,
 ): Promise<AccessDecision> {
   return evaluator.evaluate({
     actor,
@@ -22,7 +22,7 @@ export async function canViewMatter(
 export async function canEditMatter(
   actor: ActorContext,
   matterId: MatterId,
-  evaluator: PolicyEvaluator
+  evaluator: PolicyEvaluator,
 ): Promise<AccessDecision> {
   return evaluator.evaluate({
     actor,
@@ -37,7 +37,7 @@ export async function canViewDocument(
   actor: ActorContext,
   documentId: string,
   matterId: MatterId,
-  evaluator: PolicyEvaluator
+  evaluator: PolicyEvaluator,
 ): Promise<AccessDecision> {
   return evaluator.evaluate({
     actor,
@@ -51,7 +51,7 @@ export async function canViewDocument(
 export async function canUploadEvidence(
   actor: ActorContext,
   matterId: MatterId,
-  evaluator: PolicyEvaluator
+  evaluator: PolicyEvaluator,
 ): Promise<AccessDecision> {
   return evaluator.evaluate({
     actor,

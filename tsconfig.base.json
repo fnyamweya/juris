@@ -25,11 +25,5 @@
     "noUnusedParameters": true,
     "stripInternal": true
   },
-  "exclude": [
-    "node_modules",
-    "dist",
-    ".next",
-    ".turbo",
-    "coverage"
-  ]
+  "exclude": ["node_modules", "dist", ".next", ".turbo", "coverage"]
 }

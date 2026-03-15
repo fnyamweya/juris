@@ -15,7 +15,13 @@ export interface IngestionDeps {
 export interface IngestionResult {
   text: string;
   chunks: { content: string; chunkIndex: number; pageNumber?: number; anchorRef?: string }[];
-  redactions: { startOffset: number; endOffset: number; category: string; confidence: number; matchedText: string }[];
+  redactions: {
+    startOffset: number;
+    endOffset: number;
+    category: string;
+    confidence: number;
+    matchedText: string;
+  }[];
 }
 
 export interface EvidenceIngestionPipeline {
@@ -26,7 +32,7 @@ export function createEvidenceIngestionPipeline(): EvidenceIngestionPipeline {
   return {
     async process(
       job: IngestionJob,
-      deps: IngestionDeps
+      deps: IngestionDeps,
     ): Promise<Result<IngestionResult, unknown>> {
       const { extractor, chunker, redactionDetector, logger } = deps;
 

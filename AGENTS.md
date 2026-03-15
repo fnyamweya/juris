@@ -27,15 +27,15 @@
 
 ## Key Packages
 
-| Package | Purpose |
-|---------|---------|
-| `@jusris/domain` | Domain models, types, invariants |
-| `@jusris/auth` | Auth primitives |
-| `@jusris/security` | Crypto, envelope encryption |
-| `@jusris/access-control` | RBAC, ReBAC, ABAC |
-| `@jusris/data` | D1/R2/Vectorize abstractions |
-| `@jusris/rag` | Embedding, retrieval, prompts |
-| `@jusris/ui` | Design system, `cn`, components |
+| Package                  | Purpose                          |
+| ------------------------ | -------------------------------- |
+| `@jusris/domain`         | Domain models, types, invariants |
+| `@jusris/auth`           | Auth primitives                  |
+| `@jusris/security`       | Crypto, envelope encryption      |
+| `@jusris/access-control` | RBAC, ReBAC, ABAC                |
+| `@jusris/data`           | D1/R2/Vectorize abstractions     |
+| `@jusris/rag`            | Embedding, retrieval, prompts    |
+| `@jusris/ui`             | Design system, `cn`, components  |
 
 ## Style
 

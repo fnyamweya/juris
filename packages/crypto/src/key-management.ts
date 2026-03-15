@@ -11,11 +11,8 @@ export interface KeyProvider {
 }
 
 export async function importKekFromRaw(rawKey: ArrayBuffer): Promise<CryptoKey> {
-  return crypto.subtle.importKey(
-    'raw',
-    rawKey,
-    { name: 'AES-KW', length: 256 },
-    false,
-    ['wrapKey', 'unwrapKey']
-  );
+  return crypto.subtle.importKey('raw', rawKey, { name: 'AES-KW', length: 256 }, false, [
+    'wrapKey',
+    'unwrapKey',
+  ]);
 }

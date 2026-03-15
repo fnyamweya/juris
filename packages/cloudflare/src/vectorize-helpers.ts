@@ -1,10 +1,12 @@
 import type { Logger } from '@jusris/observability';
 
 export interface VectorizeIndex {
-  upsert(vectors: Array<{ id: string; values: number[]; metadata?: Record<string, string> }>): Promise<void>;
+  upsert(
+    vectors: Array<{ id: string; values: number[]; metadata?: Record<string, string> }>,
+  ): Promise<void>;
   query(
     vector: number[],
-    options: { topK: number; returnMetadata?: boolean; filter?: Record<string, string> }
+    options: { topK: number; returnMetadata?: boolean; filter?: Record<string, string> },
   ): Promise<Array<{ id: string; score: number; metadata?: Record<string, string> }>>;
   deleteByIds(ids: string[]): Promise<void>;
 }
@@ -33,10 +35,7 @@ export interface VectorStoreClient {
   deleteByIds(ids: string[]): Promise<void>;
 }
 
-export function createVectorStoreClient(
-  index: VectorizeIndex,
-  logger: Logger
-): VectorStoreClient {
+export function createVectorStoreClient(index: VectorizeIndex, logger: Logger): VectorStoreClient {
   return {
     async upsert(vectors: VectorRecord[]): Promise<void> {
       const start = performance.now();
@@ -56,10 +55,7 @@ export function createVectorStoreClient(
       }
     },
 
-    async query(
-      vector: number[],
-      options: VectorQueryOptions
-    ): Promise<VectorMatch[]> {
+    async query(vector: number[], options: VectorQueryOptions): Promise<VectorMatch[]> {
       const start = performance.now();
       try {
         const matches = await index.query(vector, {

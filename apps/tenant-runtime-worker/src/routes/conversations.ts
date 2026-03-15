@@ -7,14 +7,17 @@ export async function handleConversations(
   _env: TenantRuntimeWorkerEnv,
   actor: ActorContext,
   reqCtx: RequestContext,
-  logger: Logger
+  logger: Logger,
 ): Promise<Response> {
-  logger.info('conversations route', { tenantId: actor.tenantId, path: new URL(request.url).pathname });
+  logger.info('conversations route', {
+    tenantId: actor.tenantId,
+    path: new URL(request.url).pathname,
+  });
   return new Response(
     JSON.stringify({
       data: { items: [], cursor: null, hasMore: false },
       requestId: reqCtx.requestId,
     }),
-    { status: 200, headers: { 'Content-Type': 'application/json' } }
+    { status: 200, headers: { 'Content-Type': 'application/json' } },
   );
 }

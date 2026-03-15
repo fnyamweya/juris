@@ -39,18 +39,13 @@ export function Breadcrumbs() {
     <nav aria-label="Breadcrumb" className="flex items-center gap-1 text-sm">
       {crumbs.map((crumb, i) => (
         <span key={crumb.href} className="flex items-center gap-1">
-          {i > 0 && (
-            <ChevronRight
-              className="h-4 w-4 shrink-0 text-muted-foreground"
-              aria-hidden
-            />
-          )}
+          {i > 0 && <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden />}
           {i === crumbs.length - 1 ? (
             <span className="font-medium text-foreground">{crumb.label}</span>
           ) : (
             <Link
               href={crumb.href}
-              className="text-muted-foreground hover:text-foreground transition-colors"
+              className="text-muted-foreground transition-colors hover:text-foreground"
             >
               {crumb.label}
             </Link>

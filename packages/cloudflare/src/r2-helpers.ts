@@ -4,7 +4,7 @@ export interface R2Bucket {
   put(
     key: string,
     value: ReadableStream | ArrayBuffer | string,
-    options?: R2PutOptions
+    options?: R2PutOptions,
   ): Promise<R2ObjectMetadata>;
   get(key: string): Promise<R2ObjectBody | null>;
   delete(keys: string | string[]): Promise<void>;
@@ -48,27 +48,22 @@ export interface R2StorageClient {
   put(
     key: string,
     body: ReadableStream | ArrayBuffer | string,
-    options?: R2PutOptions
+    options?: R2PutOptions,
   ): Promise<R2ObjectMetadata>;
-  get(
-    key: string
-  ): Promise<{ body: ReadableStream; metadata: R2ObjectMetadata } | null>;
+  get(key: string): Promise<{ body: ReadableStream; metadata: R2ObjectMetadata } | null>;
   delete(key: string): Promise<void>;
   list(
     prefix: string,
-    options?: { cursor?: string; limit?: number }
+    options?: { cursor?: string; limit?: number },
   ): Promise<{ objects: R2ObjectMetadata[]; cursor?: string }>;
 }
 
-export function createR2StorageClient(
-  bucket: R2Bucket,
-  logger: Logger
-): R2StorageClient {
+export function createR2StorageClient(bucket: R2Bucket, logger: Logger): R2StorageClient {
   return {
     async put(
       key: string,
       body: ReadableStream | ArrayBuffer | string,
-      options?: R2PutOptions
+      options?: R2PutOptions,
     ): Promise<R2ObjectMetadata> {
       const start = performance.now();
       try {
@@ -88,9 +83,7 @@ export function createR2StorageClient(
       }
     },
 
-    async get(
-      key: string
-    ): Promise<{ body: ReadableStream; metadata: R2ObjectMetadata } | null> {
+    async get(key: string): Promise<{ body: ReadableStream; metadata: R2ObjectMetadata } | null> {
       const start = performance.now();
       try {
         const obj = await bucket.get(key);
@@ -143,7 +136,7 @@ export function createR2StorageClient(
 
     async list(
       prefix: string,
-      options?: { cursor?: string; limit?: number }
+      options?: { cursor?: string; limit?: number },
     ): Promise<{ objects: R2ObjectMetadata[]; cursor?: string }> {
       const start = performance.now();
       try {

@@ -9,8 +9,7 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata: Metadata = {
   title: 'JUSRIS Dashboard',
-  description:
-    'Internal authenticated portal for JUSRIS — Enterprise Legal AI Platform.',
+  description: 'Internal authenticated portal for JUSRIS — Enterprise Legal AI Platform.',
 };
 
 export default function RootLayout({
@@ -20,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} font-sans min-h-screen`}>
+      <body className={`${inter.variable} min-h-screen font-sans`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

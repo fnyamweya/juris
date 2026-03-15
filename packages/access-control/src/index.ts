@@ -1,6 +1,4 @@
-export {
-  createPolicyEvaluator,
-} from './policy-evaluator.js';
+export { createPolicyEvaluator } from './policy-evaluator.js';
 export type { PolicyEvaluator, CreatePolicyEvaluatorParams } from './policy-evaluator.js';
 
 export type { RoleBindingLoader, EffectiveBinding, BindingScope } from './role-binding-loader.js';

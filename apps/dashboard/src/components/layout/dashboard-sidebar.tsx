@@ -35,11 +35,7 @@ const NAV_ITEMS: NavItem[] = [
   { href: '/admin', label: 'Admin', icon: Settings, adminOnly: true },
 ];
 
-export function DashboardSidebar({
-  isAdmin = true,
-}: {
-  isAdmin?: boolean;
-}) {
+export function DashboardSidebar({ isAdmin = true }: { isAdmin?: boolean }) {
   const pathname = usePathname();
   const [collapsed, setCollapsed] = React.useState(false);
 
@@ -49,7 +45,7 @@ export function DashboardSidebar({
     <aside
       className={cn(
         'flex flex-col border-r border-sidebar-foreground/10 bg-[hsl(222,47%,8%)] text-[hsl(210,40%,98%)] transition-[width] duration-200',
-        collapsed ? 'w-16' : 'w-56'
+        collapsed ? 'w-16' : 'w-56',
       )}
       aria-label="Dashboard navigation"
     >
@@ -66,20 +62,13 @@ export function DashboardSidebar({
           aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
           className="text-white hover:bg-white/10"
         >
-          {collapsed ? (
-            <PanelLeft className="h-4 w-4" />
-          ) : (
-            <PanelLeftClose className="h-4 w-4" />
-          )}
+          {collapsed ? <PanelLeft className="h-4 w-4" /> : <PanelLeftClose className="h-4 w-4" />}
         </Button>
       </div>
       <nav className="flex-1 space-y-1 p-2" role="navigation">
         {items.map((item) => {
           const Icon = item.icon;
-          const isActive =
-            item.href === '/'
-              ? pathname === '/'
-              : pathname.startsWith(item.href);
+          const isActive = item.href === '/' ? pathname === '/' : pathname.startsWith(item.href);
           return (
             <Link
               key={item.href}
@@ -89,7 +78,7 @@ export function DashboardSidebar({
                 isActive
                   ? 'bg-white/10 text-white'
                   : 'text-white/80 hover:bg-white/5 hover:text-white',
-                collapsed && 'justify-center px-2'
+                collapsed && 'justify-center px-2',
               )}
               title={collapsed ? item.label : undefined}
             >

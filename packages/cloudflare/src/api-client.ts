@@ -4,12 +4,7 @@ export class CloudflareApiError extends Error {
   readonly statusCode: number;
   readonly errorCode?: string;
 
-  constructor(
-    message: string,
-    statusCode: number,
-    errorCode?: string,
-    cause?: unknown
-  ) {
+  constructor(message: string, statusCode: number, errorCode?: string, cause?: unknown) {
     super(message);
     this.name = 'CloudflareApiError';
     this.statusCode = statusCode;
@@ -35,14 +30,11 @@ export interface CloudflareApiClient {
   deleteD1Database(id: string): Promise<void>;
   createR2Bucket(name: string): Promise<{ name: string }>;
   deleteR2Bucket(name: string): Promise<void>;
-  createVectorizeIndex(
-    name: string,
-    config: VectorizeConfig
-  ): Promise<{ name: string }>;
+  createVectorizeIndex(name: string, config: VectorizeConfig): Promise<{ name: string }>;
   deleteVectorizeIndex(name: string): Promise<void>;
   createCustomHostname(
     hostname: string,
-    config: CustomHostnameConfig
+    config: CustomHostnameConfig,
   ): Promise<{ id: string; status: string }>;
   deleteCustomHostname(id: string): Promise<void>;
 }
@@ -56,11 +48,7 @@ export function createCloudflareApiClient(params: {
 }): CloudflareApiClient {
   const { accountId, apiToken, logger } = params;
 
-  async function request<T>(
-    method: string,
-    path: string,
-    body?: unknown
-  ): Promise<T> {
+  async function request<T>(method: string, path: string, body?: unknown): Promise<T> {
     const url = `${BASE_URL}${path}`;
     try {
       const res = await fetch(url, {
@@ -77,8 +65,7 @@ export function createCloudflareApiClient(params: {
         result?: T;
       };
       if (!res.ok) {
-        const errMsg =
-          data.errors?.[0]?.message ?? `HTTP ${res.status}: ${res.statusText}`;
+        const errMsg = data.errors?.[0]?.message ?? `HTTP ${res.status}: ${res.statusText}`;
         const errCode = data.errors?.[0]?.code?.toString();
         logger.error('Cloudflare API error', {
           method,
@@ -94,7 +81,7 @@ export function createCloudflareApiClient(params: {
           throw new CloudflareApiError(
             err.message ?? 'Unknown API error',
             res.status,
-            err.code?.toString()
+            err.code?.toString(),
           );
         }
       }
@@ -110,18 +97,16 @@ export function createCloudflareApiClient(params: {
         err instanceof Error ? err.message : 'Request failed',
         0,
         undefined,
-        err
+        err,
       );
     }
   }
 
   return {
     async createD1Database(name: string): Promise<{ id: string }> {
-      const result = (await request<{ id: string }>(
-        'POST',
-        `/accounts/${accountId}/d1/database`,
-        { name }
-      )) as { id: string };
+      const result = (await request<{ id: string }>('POST', `/accounts/${accountId}/d1/database`, {
+        name,
+      })) as { id: string };
       return { id: result.id };
     },
 
@@ -141,10 +126,7 @@ export function createCloudflareApiClient(params: {
       await request('DELETE', `/accounts/${accountId}/r2/buckets/${name}`);
     },
 
-    async createVectorizeIndex(
-      name: string,
-      config: VectorizeConfig
-    ): Promise<{ name: string }> {
+    async createVectorizeIndex(name: string, config: VectorizeConfig): Promise<{ name: string }> {
       await request('POST', `/accounts/${accountId}/vectorize/indexes`, {
         name,
         config: {
@@ -156,29 +138,23 @@ export function createCloudflareApiClient(params: {
     },
 
     async deleteVectorizeIndex(name: string): Promise<void> {
-      await request(
-        'DELETE',
-        `/accounts/${accountId}/vectorize/indexes/${name}`
-      );
+      await request('DELETE', `/accounts/${accountId}/vectorize/indexes/${name}`);
     },
 
     async createCustomHostname(
       hostname: string,
-      config: CustomHostnameConfig
+      config: CustomHostnameConfig,
     ): Promise<{ id: string; status: string }> {
       const result = (await request<{ id: string; status: string }>(
         'POST',
         `/zones/${accountId}/custom_hostnames`,
-        { hostname, ssl: config.ssl }
+        { hostname, ssl: config.ssl },
       )) as { id: string; status: string };
       return { id: result.id, status: result.status };
     },
 
     async deleteCustomHostname(id: string): Promise<void> {
-      await request(
-        'DELETE',
-        `/zones/${accountId}/custom_hostnames/${id}`
-      );
+      await request('DELETE', `/zones/${accountId}/custom_hostnames/${id}`);
     },
   };
 }

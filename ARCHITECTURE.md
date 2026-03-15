@@ -25,14 +25,14 @@ Tenant Runtime Worker (tenant-scoped API)
 
 ## Worker Topology
 
-| Worker | Responsibility |
-|--------|----------------|
-| **dispatch-worker** | Route by host/path, verify JWT, resolve tenant, forward to tenant-runtime |
-| **tenant-runtime-worker** | Tenant-scoped API: documents, RAG, matters, users |
-| **provisioning-worker** | Tenant lifecycle: create D1/R2/Vectorize, apply schema |
-| **ingestion-worker** | Parse documents, chunk, embed, store |
-| **webhook-worker** | Handle external webhooks |
-| **maintenance-worker** | Scheduled jobs, cleanup, migrations |
+| Worker                    | Responsibility                                                            |
+| ------------------------- | ------------------------------------------------------------------------- |
+| **dispatch-worker**       | Route by host/path, verify JWT, resolve tenant, forward to tenant-runtime |
+| **tenant-runtime-worker** | Tenant-scoped API: documents, RAG, matters, users                         |
+| **provisioning-worker**   | Tenant lifecycle: create D1/R2/Vectorize, apply schema                    |
+| **ingestion-worker**      | Parse documents, chunk, embed, store                                      |
+| **webhook-worker**        | Handle external webhooks                                                  |
+| **maintenance-worker**    | Scheduled jobs, cleanup, migrations                                       |
 
 ## Tenant Isolation Model
 

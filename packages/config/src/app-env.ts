@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 const requiredString = () => z.string().min(1);
 

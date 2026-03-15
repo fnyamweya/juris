@@ -11,6 +11,6 @@ export function handleHealthCheck(reqCtx: RequestContext): Response {
     {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
-    }
+    },
   );
 }

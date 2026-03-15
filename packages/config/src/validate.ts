@@ -1,5 +1,5 @@
-import type { ZodSchema } from "zod";
-import { ok, err, type Result } from "@jusris/domain";
+import type { ZodSchema } from 'zod';
+import { ok, err, type Result } from '@jusris/domain';
 
 export interface ValidationError {
   code: string;
@@ -9,20 +9,16 @@ export interface ValidationError {
 
 function formatValidationFailures(
   configName: string,
-  issues: Array<{ path: (string | number)[]; message: string }>
+  issues: Array<{ path: (string | number)[]; message: string }>,
 ): string {
   const lines = issues.map((issue) => {
-    const path = issue.path.length > 0 ? issue.path.join(".") : "(root)";
+    const path = issue.path.length > 0 ? issue.path.join('.') : '(root)';
     return `  - ${path}: ${issue.message}`;
   });
-  return `[${configName}] Configuration validation failed:\n${lines.join("\n")}`;
+  return `[${configName}] Configuration validation failed:\n${lines.join('\n')}`;
 }
 
-export function validateConfig<T>(
-  schema: ZodSchema<T>,
-  env: unknown,
-  configName = "Config"
-): T {
+export function validateConfig<T>(schema: ZodSchema<T>, env: unknown, configName = 'Config'): T {
   const result = schema.safeParse(env);
 
   if (result.success) {
@@ -43,7 +39,7 @@ export function validateConfig<T>(
 export function safeValidateConfig<T>(
   schema: ZodSchema<T>,
   env: unknown,
-  configName = "Config"
+  configName = 'Config',
 ): Result<T, ValidationError> {
   const result = schema.safeParse(env);
 
@@ -59,7 +55,7 @@ export function safeValidateConfig<T>(
   const message = formatValidationFailures(configName, issues);
 
   return err({
-    code: "CONFIG_VALIDATION_FAILED",
+    code: 'CONFIG_VALIDATION_FAILED',
     message,
     retryable: false,
   });

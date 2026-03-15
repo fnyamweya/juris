@@ -1,9 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import {
-  CSP_DIRECTIVES,
-  buildCspHeader,
-  applySecurityHeaders,
-} from '../headers.js';
+import { CSP_DIRECTIVES, buildCspHeader, applySecurityHeaders } from '../headers.js';
 import { stripUntrustedHeaders } from '../input-validation.js';
 
 describe('Security Headers', () => {
@@ -12,16 +8,14 @@ describe('Security Headers', () => {
     const secured = applySecurityHeaders(response);
 
     expect(secured.headers.get('Strict-Transport-Security')).toBe(
-      'max-age=63072000; includeSubDomains; preload'
+      'max-age=63072000; includeSubDomains; preload',
     );
     expect(secured.headers.get('X-Content-Type-Options')).toBe('nosniff');
     expect(secured.headers.get('X-Frame-Options')).toBe('DENY');
     expect(secured.headers.get('X-XSS-Protection')).toBe('0');
-    expect(secured.headers.get('Referrer-Policy')).toBe(
-      'strict-origin-when-cross-origin'
-    );
+    expect(secured.headers.get('Referrer-Policy')).toBe('strict-origin-when-cross-origin');
     expect(secured.headers.get('Permissions-Policy')).toBe(
-      'camera=(), microphone=(), geolocation=()'
+      'camera=(), microphone=(), geolocation=()',
     );
     expect(secured.headers.get('Content-Security-Policy')).toBeDefined();
   });

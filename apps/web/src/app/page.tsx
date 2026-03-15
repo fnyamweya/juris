@@ -70,20 +70,19 @@ export default function HomePage() {
               Enterprise Legal AI Platform
             </h1>
             <p className="mt-6 text-lg leading-8 text-slate-600">
-              Secure, multi-tenant legal AI for law firms, corporate legal teams,
-              and government agencies. Document intelligence, semantic search,
-              and compliance built in.
+              Secure, multi-tenant legal AI for law firms, corporate legal teams, and government
+              agencies. Document intelligence, semantic search, and compliance built in.
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 href="/contact"
-                className="w-full rounded-md bg-slate-900 px-6 py-3 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 sm:w-auto"
+                className="w-full rounded-md bg-slate-900 px-6 py-3 text-center text-sm font-semibold text-white shadow-sm transition-colors hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 sm:w-auto"
               >
                 Request Access
               </Link>
               <Link
                 href="/features"
-                className="w-full rounded-md border border-slate-300 bg-white px-6 py-3 text-center text-sm font-semibold text-slate-700 hover:bg-slate-50 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 sm:w-auto"
+                className="w-full rounded-md border border-slate-300 bg-white px-6 py-3 text-center text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 sm:w-auto"
               >
                 Learn More
               </Link>
@@ -99,8 +98,8 @@ export default function HomePage() {
               Built for enterprise
             </h2>
             <p className="mt-4 text-lg text-slate-600">
-              Everything you need to deploy legal AI at scale, with security and
-              compliance at the core.
+              Everything you need to deploy legal AI at scale, with security and compliance at the
+              core.
             </p>
           </div>
           <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
@@ -109,9 +108,7 @@ export default function HomePage() {
                 key={feature.title}
                 className="flex flex-col rounded-xl border border-slate-200 bg-white p-8 shadow-sm transition-shadow hover:shadow-md"
               >
-                <h3 className="text-lg font-semibold text-slate-900">
-                  {feature.title}
-                </h3>
+                <h3 className="text-lg font-semibold text-slate-900">{feature.title}</h3>
                 <p className="mt-3 flex-1 text-sm leading-6 text-slate-600">
                   {feature.description}
                 </p>
@@ -128,22 +125,15 @@ export default function HomePage() {
               Trusted across industries
             </h2>
             <p className="mt-4 text-lg text-slate-600">
-              From law firms to government agencies, JUSRIS adapts to your
-              workflows and compliance requirements.
+              From law firms to government agencies, JUSRIS adapts to your workflows and compliance
+              requirements.
             </p>
           </div>
           <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
             {industries.map((industry) => (
-              <div
-                key={industry.name}
-                className="rounded-xl border border-slate-200 bg-white p-8"
-              >
-                <h3 className="text-lg font-semibold text-slate-900">
-                  {industry.name}
-                </h3>
-                <p className="mt-3 text-sm text-slate-600">
-                  {industry.description}
-                </p>
+              <div key={industry.name} className="rounded-xl border border-slate-200 bg-white p-8">
+                <h3 className="text-lg font-semibold text-slate-900">{industry.name}</h3>
+                <p className="mt-3 text-sm text-slate-600">{industry.description}</p>
               </div>
             ))}
           </div>
@@ -158,17 +148,14 @@ export default function HomePage() {
                 Enterprise-Grade Security
               </h2>
               <p className="mt-4 text-lg text-slate-600">
-                Security is not an afterthought. Every layer of JUSRIS is
-                designed for the most sensitive legal workloads.
+                Security is not an afterthought. Every layer of JUSRIS is designed for the most
+                sensitive legal workloads.
               </p>
             </div>
             <div>
               <ul className="space-y-4">
                 {securityPoints.map((point) => (
-                  <li
-                    key={point}
-                    className="flex gap-3 text-slate-700"
-                  >
+                  <li key={point} className="flex gap-3 text-slate-700">
                     <span
                       className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-500"
                       aria-hidden

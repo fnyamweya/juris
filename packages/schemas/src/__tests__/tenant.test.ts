@@ -82,27 +82,21 @@ describe('createTenantRequestSchema', () => {
       tier: 'STARTER' as const,
       adminEmail: 'admin@acme.com',
     };
-    expect(
-      createTenantRequestSchema.safeParse(missingDisplayName).success
-    ).toBe(false);
+    expect(createTenantRequestSchema.safeParse(missingDisplayName).success).toBe(false);
 
     const missingTier = {
       slug: 'acme-corp',
       displayName: 'Acme Corporation',
       adminEmail: 'admin@acme.com',
     };
-    expect(createTenantRequestSchema.safeParse(missingTier).success).toBe(
-      false
-    );
+    expect(createTenantRequestSchema.safeParse(missingTier).success).toBe(false);
 
     const missingEmail = {
       slug: 'acme-corp',
       displayName: 'Acme Corporation',
       tier: 'STARTER' as const,
     };
-    expect(createTenantRequestSchema.safeParse(missingEmail).success).toBe(
-      false
-    );
+    expect(createTenantRequestSchema.safeParse(missingEmail).success).toBe(false);
   });
 
   it('validates tier enum', () => {
@@ -123,9 +117,7 @@ describe('createTenantRequestSchema', () => {
       tier: 'INVALID_TIER',
       adminEmail: 'admin@acme.com',
     };
-    expect(createTenantRequestSchema.safeParse(invalidTier).success).toBe(
-      false
-    );
+    expect(createTenantRequestSchema.safeParse(invalidTier).success).toBe(false);
   });
 
   it('validates email format', () => {

@@ -21,7 +21,7 @@ async function createTestKeyPair(): Promise<{
   keyPair: CryptoKeyPair;
   publicJwk: Jwk;
 }> {
-  const keyPair = await crypto.subtle.generateKey(
+  const keyPair = (await crypto.subtle.generateKey(
     {
       name: 'RSASSA-PKCS1-v1_5',
       modulusLength: 2048,
@@ -29,13 +29,10 @@ async function createTestKeyPair(): Promise<{
       hash: 'SHA-256',
     },
     true,
-    ['sign', 'verify']
-  ) as CryptoKeyPair;
+    ['sign', 'verify'],
+  )) as CryptoKeyPair;
 
-  const publicKey = await crypto.subtle.exportKey(
-    'jwk',
-    keyPair.publicKey
-  ) as JsonWebKey;
+  const publicKey = (await crypto.subtle.exportKey('jwk', keyPair.publicKey)) as JsonWebKey;
 
   const publicJwk: Jwk = {
     kty: publicKey.kty as string,
@@ -52,19 +49,15 @@ async function createTestKeyPair(): Promise<{
 async function signJwt(
   header: Record<string, unknown>,
   payload: Record<string, unknown>,
-  privateKey: CryptoKey
+  privateKey: CryptoKey,
 ): Promise<string> {
-  const headerB64 = base64UrlEncode(
-    new TextEncoder().encode(JSON.stringify(header))
-  );
-  const payloadB64 = base64UrlEncode(
-    new TextEncoder().encode(JSON.stringify(payload))
-  );
+  const headerB64 = base64UrlEncode(new TextEncoder().encode(JSON.stringify(header)));
+  const payloadB64 = base64UrlEncode(new TextEncoder().encode(JSON.stringify(payload)));
   const signingInput = `${headerB64}.${payloadB64}`;
   const signature = await crypto.subtle.sign(
     { name: 'RSASSA-PKCS1-v1_5', hash: 'SHA-256' },
     privateKey,
-    new TextEncoder().encode(signingInput)
+    new TextEncoder().encode(signingInput),
   );
   const sigB64 = base64UrlEncode(new Uint8Array(signature));
   return `${signingInput}.${sigB64}`;
@@ -91,11 +84,7 @@ describe('createCloudflareAccessVerifier', () => {
       exp: now + 3600,
     };
     const header = { alg: 'RS256', kid: 'test-kid' };
-    const token = await signJwt(
-      header,
-      payload,
-      keyPair.privateKey
-    );
+    const token = await signJwt(header, payload, keyPair.privateKey);
 
     const fetchMock = vi.fn().mockResolvedValue({
       ok: true,
@@ -134,11 +123,7 @@ describe('createCloudflareAccessVerifier', () => {
       exp: now - 3600,
     };
     const header = { alg: 'RS256', kid: 'test-kid' };
-    const token = await signJwt(
-      header,
-      payload,
-      keyPair.privateKey
-    );
+    const token = await signJwt(header, payload, keyPair.privateKey);
 
     const fetchMock = vi.fn().mockResolvedValue({
       ok: true,
@@ -170,11 +155,7 @@ describe('createCloudflareAccessVerifier', () => {
       exp: now + 3600,
     };
     const header = { alg: 'RS256', kid: 'test-kid' };
-    const token = await signJwt(
-      header,
-      payload,
-      keyPair.privateKey
-    );
+    const token = await signJwt(header, payload, keyPair.privateKey);
 
     const fetchMock = vi.fn().mockResolvedValue({
       ok: true,
@@ -228,11 +209,7 @@ describe('createCloudflareAccessVerifier', () => {
       exp: now + 3600,
     };
     const header = { alg: 'RS256', kid: 'test-kid' };
-    const token = await signJwt(
-      header,
-      payload,
-      keyPair.privateKey
-    );
+    const token = await signJwt(header, payload, keyPair.privateKey);
 
     const fetchMock = vi.fn().mockResolvedValue({
       ok: true,

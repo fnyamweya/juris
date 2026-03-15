@@ -22,11 +22,7 @@ export interface D1ExecResult {
 }
 
 export interface Queue {
-  send(
-    messages:
-      | { body: unknown }
-      | { body: unknown; contentType?: string }[]
-  ): Promise<void>;
+  send(messages: { body: unknown } | { body: unknown; contentType?: string }[]): Promise<void>;
 }
 
 export interface OutboxMessage {
@@ -45,9 +41,5 @@ export interface OutboxWriter {
 }
 
 export interface OutboxPublisher {
-  publishPending(
-    db: D1Database,
-    queue: Queue,
-    batchSize: number
-  ): Promise<number>;
+  publishPending(db: D1Database, queue: Queue, batchSize: number): Promise<number>;
 }

@@ -19,10 +19,7 @@ export type PrincipalResolutionErrorCode =
 export class PrincipalResolutionError extends Error {
   readonly code: PrincipalResolutionErrorCode;
 
-  constructor(
-    message: string,
-    options: { cause?: unknown; code: PrincipalResolutionErrorCode }
-  ) {
+  constructor(message: string, options: { cause?: unknown; code: PrincipalResolutionErrorCode }) {
     super(message, { cause: options.cause });
     this.name = 'PrincipalResolutionError';
     this.code = options.code;

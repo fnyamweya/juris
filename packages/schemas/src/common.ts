@@ -25,15 +25,13 @@ export const apiErrorResponseSchema = z.object({
         z.object({
           field: z.string().optional(),
           message: z.string(),
-        })
+        }),
       )
       .optional(),
   }),
 });
 
-export function paginatedResponseSchema<T extends z.ZodTypeAny>(
-  itemSchema: T
-): z.ZodTypeAny {
+export function paginatedResponseSchema<T extends z.ZodTypeAny>(itemSchema: T): z.ZodTypeAny {
   return z.object({
     items: z.array(itemSchema),
     cursor: z.string().nullable(),

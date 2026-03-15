@@ -28,10 +28,7 @@ export function base64UrlDecode(input: string): ArrayBuffer {
 }
 
 export function createInMemoryJwksCache(ttlMs = 5 * 60 * 1000): JwksCache {
-  const cache = new Map<
-    string,
-    { keys: Jwk[]; expiresAt: number }
-  >();
+  const cache = new Map<string, { keys: Jwk[]; expiresAt: number }>();
 
   return {
     async get(url: string): Promise<Jwk[] | null> {
@@ -84,6 +81,6 @@ export async function jwkToCryptoKey(jwk: Jwk): Promise<CryptoKey> {
     keyData,
     { name: 'RSASSA-PKCS1-v1_5', hash: 'SHA-256' },
     false,
-    ['verify']
+    ['verify'],
   );
 }

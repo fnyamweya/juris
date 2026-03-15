@@ -45,8 +45,8 @@ export default {
             {
               status: authResult.error.status,
               headers: { 'Content-Type': 'application/json' },
-            }
-          )
+            },
+          ),
         );
       }
 
@@ -58,14 +58,10 @@ export default {
       });
 
       if (url.pathname.startsWith('/api/v1/tenants/') && url.pathname.endsWith('/status')) {
-        return applySecurityHeaders(
-          await handleTenantStatus(request, env, actor, reqCtx, logger)
-        );
+        return applySecurityHeaders(await handleTenantStatus(request, env, actor, reqCtx, logger));
       }
 
-      return applySecurityHeaders(
-        await handleTenantDispatch(request, env, actor, reqCtx, logger)
-      );
+      return applySecurityHeaders(await handleTenantDispatch(request, env, actor, reqCtx, logger));
     } catch (error) {
       logger.error('unhandled dispatch error', {
         error: error instanceof Error ? error.message : 'unknown',
@@ -82,8 +78,8 @@ export default {
           {
             status: 500,
             headers: { 'Content-Type': 'application/json' },
-          }
-        )
+          },
+        ),
       );
     }
   },

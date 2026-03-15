@@ -18,34 +18,20 @@ export default function MattersPage() {
       </div>
 
       <div className="flex flex-wrap gap-4">
-        <div className="relative flex-1 min-w-[200px]">
+        <div className="relative min-w-[200px] flex-1">
           <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-          <Input
-            placeholder="Search matters..."
-            className="pl-9"
-            aria-label="Search matters"
-          />
+          <Input placeholder="Search matters..." className="pl-9" aria-label="Search matters" />
         </div>
         <div className="flex gap-2">
-          <Input
-            placeholder="Status"
-            className="w-32"
-            aria-label="Filter by status"
-          />
-          <Input
-            placeholder="Type"
-            className="w-32"
-            aria-label="Filter by type"
-          />
+          <Input placeholder="Status" className="w-32" aria-label="Filter by status" />
+          <Input placeholder="Type" className="w-32" aria-label="Filter by type" />
         </div>
       </div>
 
       <Card>
         <CardContent className="p-0">
           <div className="flex flex-col items-center justify-center py-16 text-center">
-            <p className="text-sm text-muted-foreground">
-              Matters table will appear here
-            </p>
+            <p className="text-sm text-muted-foreground">Matters table will appear here</p>
           </div>
         </CardContent>
       </Card>

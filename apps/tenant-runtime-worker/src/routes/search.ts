@@ -7,7 +7,7 @@ export async function handleSearch(
   _env: TenantRuntimeWorkerEnv,
   actor: ActorContext,
   reqCtx: RequestContext,
-  logger: Logger
+  logger: Logger,
 ): Promise<Response> {
   logger.info('search route', { tenantId: actor.tenantId, path: new URL(request.url).pathname });
   return new Response(
@@ -15,6 +15,6 @@ export async function handleSearch(
       data: { items: [], cursor: null, hasMore: false },
       requestId: reqCtx.requestId,
     }),
-    { status: 200, headers: { 'Content-Type': 'application/json' } }
+    { status: 200, headers: { 'Content-Type': 'application/json' } },
   );
 }

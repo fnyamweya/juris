@@ -14,18 +14,14 @@ export default function AdminUsersPage() {
         </Button>
         <div>
           <h1 className="text-2xl font-semibold tracking-tight">Users</h1>
-          <p className="text-muted-foreground">
-            Manage user accounts and permissions
-          </p>
+          <p className="text-muted-foreground">Manage user accounts and permissions</p>
         </div>
       </div>
 
       <Card>
         <CardContent className="p-0">
           <div className="flex flex-col items-center justify-center py-16 text-center">
-            <p className="text-sm text-muted-foreground">
-              Users list will appear here
-            </p>
+            <p className="text-sm text-muted-foreground">Users list will appear here</p>
           </div>
         </CardContent>
       </Card>

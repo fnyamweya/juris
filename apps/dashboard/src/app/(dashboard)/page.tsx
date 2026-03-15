@@ -5,9 +5,7 @@ export default function DashboardPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-semibold tracking-tight">
-          Welcome back
-        </h1>
+        <h1 className="text-2xl font-semibold tracking-tight">Welcome back</h1>
         <p className="text-muted-foreground">
           Here&apos;s an overview of your matters and activity.
         </p>
@@ -59,15 +57,11 @@ export default function DashboardPage() {
       <Card>
         <CardHeader>
           <CardTitle>Recent Activity</CardTitle>
-          <p className="text-sm text-muted-foreground">
-            Latest updates across your matters
-          </p>
+          <p className="text-sm text-muted-foreground">Latest updates across your matters</p>
         </CardHeader>
         <CardContent>
           <div className="flex flex-col items-center justify-center rounded-lg border border-dashed py-12 text-center">
-            <p className="text-sm text-muted-foreground">
-              Activity feed will appear here
-            </p>
+            <p className="text-sm text-muted-foreground">Activity feed will appear here</p>
           </div>
         </CardContent>
       </Card>

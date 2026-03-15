@@ -3,11 +3,7 @@ import { handleHealthCheck } from './routes/health.js';
 import type { IngestionWorkerEnv } from './env.js';
 
 export default {
-  async queue(
-    batch: MessageBatch,
-    env: IngestionWorkerEnv,
-    _ctx: ExecutionContext
-  ): Promise<void> {
+  async queue(batch: MessageBatch, env: IngestionWorkerEnv, _ctx: ExecutionContext): Promise<void> {
     const reqCtx = createRequestContext({
       worker: 'ingestion',
       route: 'queue',
@@ -52,7 +48,7 @@ export default {
   async fetch(
     request: Request,
     _env: IngestionWorkerEnv,
-    _ctx: ExecutionContext
+    _ctx: ExecutionContext,
   ): Promise<Response> {
     const url = new URL(request.url);
     const reqCtx = createRequestContext({
@@ -64,9 +60,9 @@ export default {
       return handleHealthCheck(reqCtx);
     }
 
-    return new Response(
-      JSON.stringify({ error: { code: 'NOT_FOUND', message: 'Not found' } }),
-      { status: 404, headers: { 'Content-Type': 'application/json' } }
-    );
+    return new Response(JSON.stringify({ error: { code: 'NOT_FOUND', message: 'Not found' } }), {
+      status: 404,
+      headers: { 'Content-Type': 'application/json' },
+    });
   },
 };

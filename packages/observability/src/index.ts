@@ -1,8 +1,4 @@
-export {
-  createLogger,
-  sanitize,
-  SENSITIVE_FIELDS,
-} from './logger.js';
+export { createLogger, sanitize, SENSITIVE_FIELDS } from './logger.js';
 export type { LogLevel, LogContext, Logger, CreateLoggerOptions } from './logger.js';
 
 export {

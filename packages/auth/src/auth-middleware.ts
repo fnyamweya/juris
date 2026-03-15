@@ -27,10 +27,7 @@ export interface AuthGateError {
 }
 
 export interface TenantResolver {
-  resolve(
-    request: Request,
-    token: VerifiedToken
-  ): Promise<{ tenantId: string } | null>;
+  resolve(request: Request, token: VerifiedToken): Promise<{ tenantId: string } | null>;
 }
 
 export interface AuthGate {
@@ -59,21 +56,12 @@ function extractToken(request: Request): string | null {
   return null;
 }
 
-function toAuthGateError(
-  code: string,
-  message: string,
-  status: number
-): AuthGateError {
+function toAuthGateError(code: string, message: string, status: number): AuthGateError {
   return { code, message, status };
 }
 
 export function createAuthGate(params: CreateAuthGateParams): AuthGate {
-  const {
-    tokenVerifier,
-    tenantResolver,
-    principalResolver,
-    logger,
-  } = params;
+  const { tokenVerifier, tenantResolver, principalResolver, logger } = params;
 
   return {
     async authenticate(request: Request): Promise<AuthGateResultType> {
@@ -127,10 +115,7 @@ export function createAuthGate(params: CreateAuthGateParams): AuthGate {
 
       let resolved: ResolvedPrincipal;
       try {
-        resolved = await principalResolver.resolve(
-          verifiedToken,
-          tenantResult.tenantId
-        );
+        resolved = await principalResolver.resolve(verifiedToken, tenantResult.tenantId);
       } catch (err) {
         if (err instanceof PrincipalResolutionError) {
           if (err.code === 'NOT_FOUND') {

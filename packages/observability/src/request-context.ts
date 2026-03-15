@@ -19,12 +19,7 @@ export interface CreateRequestContextParams {
 }
 
 export function createRequestContext(params: CreateRequestContextParams): RequestContext {
-  const {
-    worker,
-    route,
-    existingRequestId,
-    existingTraceId,
-  } = params;
+  const { worker, route, existingRequestId, existingTraceId } = params;
 
   return {
     requestId: existingRequestId ?? crypto.randomUUID(),

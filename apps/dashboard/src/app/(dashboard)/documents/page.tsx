@@ -16,19 +16,13 @@ export default function DocumentsPage() {
 
       <div className="relative max-w-md">
         <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-        <Input
-          placeholder="Search documents..."
-          className="pl-9"
-          aria-label="Search documents"
-        />
+        <Input placeholder="Search documents..." className="pl-9" aria-label="Search documents" />
       </div>
 
       <Card>
         <CardContent className="p-0">
           <div className="flex flex-col items-center justify-center py-16 text-center">
-            <p className="text-sm text-muted-foreground">
-              Documents list will appear here
-            </p>
+            <p className="text-sm text-muted-foreground">Documents list will appear here</p>
           </div>
         </CardContent>
       </Card>

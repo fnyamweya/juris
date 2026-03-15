@@ -1,8 +1,5 @@
 import { z } from 'zod';
-import {
-  DocumentClassification,
-  DocumentStatus,
-} from '@jusris/domain/document';
+import { DocumentClassification, DocumentStatus } from '@jusris/domain/document';
 import { ulidSchema, cursorPaginationSchema } from './common.js';
 
 const MAX_DOCUMENT_SIZE_BYTES = 100 * 1024 * 1024;

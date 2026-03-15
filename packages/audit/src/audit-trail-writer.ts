@@ -1,9 +1,5 @@
 import type { AuditEvent } from '@jusris/domain';
-import {
-  createAuditEventId,
-  type AuditAction,
-  type PrincipalType,
-} from '@jusris/domain';
+import { createAuditEventId, type AuditAction, type PrincipalType } from '@jusris/domain';
 import type { AuditChainSigner } from '@jusris/crypto';
 import type { Logger } from '@jusris/observability';
 
@@ -15,7 +11,7 @@ export interface AuditEventStore {
   persist(event: AuditEvent): Promise<void>;
   getEvents(
     tenantId: string,
-    query: { cursor?: string; limit: number }
+    query: { cursor?: string; limit: number },
   ): Promise<{ events: AuditEvent[]; cursor: string | null }>;
 }
 

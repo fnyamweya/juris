@@ -1,4 +1,9 @@
-import { createCloudflareAccessVerifier, createAuthGate, type AuthGate, type TenantResolver } from '@jusris/auth';
+import {
+  createCloudflareAccessVerifier,
+  createAuthGate,
+  type AuthGate,
+  type TenantResolver,
+} from '@jusris/auth';
 import { PrincipalType } from '@jusris/domain';
 import type { Logger } from '@jusris/observability';
 import type { DispatchWorkerEnv } from '../env.js';
@@ -7,8 +12,9 @@ function createDispatchTenantResolver(env: DispatchWorkerEnv): TenantResolver {
   return {
     async resolve(request, token) {
       const hostname = new URL(request.url).hostname;
-      const route = await env.MASTER_REGISTRY_DB
-        .prepare('SELECT tenant_id FROM hostname_routes WHERE hostname = ? AND is_active = 1')
+      const route = await env.MASTER_REGISTRY_DB.prepare(
+        'SELECT tenant_id FROM hostname_routes WHERE hostname = ? AND is_active = 1',
+      )
         .bind(hostname)
         .first<{ tenant_id: string }>();
       if (route) return { tenantId: route.tenant_id };
@@ -16,8 +22,9 @@ function createDispatchTenantResolver(env: DispatchWorkerEnv): TenantResolver {
       const parts = hostname.split('.');
       if (parts.length >= 3) {
         const slug = parts[0];
-        const tenant = await env.MASTER_REGISTRY_DB
-          .prepare('SELECT id FROM tenants WHERE slug = ? AND status = ?')
+        const tenant = await env.MASTER_REGISTRY_DB.prepare(
+          'SELECT id FROM tenants WHERE slug = ? AND status = ?',
+        )
           .bind(slug, 'ACTIVE')
           .first<{ id: string }>();
         if (tenant) return { tenantId: tenant.id };

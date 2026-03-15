@@ -70,7 +70,7 @@ export function createPolicyEvaluator(params: CreatePolicyEvaluatorParams): Poli
 function matchesRule(
   rule: { actorTypes: unknown[]; actions: unknown[]; resourceTypes: string[] },
   request: AccessRequest,
-  actor: AccessRequest['actor']
+  actor: AccessRequest['actor'],
 ): boolean {
   const actorTypeMatch = rule.actorTypes.includes(actor.principal.type);
   const actionMatch = rule.actions.includes(request.action);
@@ -80,7 +80,7 @@ function matchesRule(
 
 function findMatchingBinding(
   bindings: EffectiveBinding[],
-  request: AccessRequest
+  request: AccessRequest,
 ): EffectiveBinding | null {
   const { action } = request;
 
@@ -109,10 +109,7 @@ function findMatchingBinding(
   return bestMatch;
 }
 
-function matchesScope(
-  binding: EffectiveBinding,
-  request: AccessRequest
-): boolean {
+function matchesScope(binding: EffectiveBinding, request: AccessRequest): boolean {
   const { resourceId, matterId } = request;
   const tenantId = request.actor.tenantId as string;
 

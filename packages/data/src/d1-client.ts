@@ -1,11 +1,6 @@
 import type { Logger } from '@jusris/observability';
 import { DataAccessError } from './errors.js';
-import type {
-  D1Database,
-  D1ExecResult,
-  D1PreparedStatement,
-  D1Result,
-} from './migration.js';
+import type { D1Database, D1ExecResult, D1PreparedStatement, D1Result } from './migration.js';
 
 export interface D1Client {
   query<T>(sql: string, params?: unknown[]): Promise<T[]>;
@@ -16,10 +11,7 @@ export interface D1Client {
 }
 
 export function createD1Client(db: D1Database, logger: Logger): D1Client {
-  async function withTiming<T>(
-    operation: string,
-    fn: () => Promise<T>
-  ): Promise<T> {
+  async function withTiming<T>(operation: string, fn: () => Promise<T>): Promise<T> {
     const start = performance.now();
     try {
       const result = await fn();
@@ -36,7 +28,7 @@ export function createD1Client(db: D1Database, logger: Logger): D1Client {
       throw new DataAccessError(
         err instanceof Error ? err.message : 'D1 query failed',
         'QUERY_FAILED',
-        err
+        err,
       );
     }
   }

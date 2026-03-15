@@ -1,18 +1,12 @@
 import { describe, it, expect } from 'vitest';
-import {
-  createAuditChainSigner,
-  verifyAuditChainEntry,
-} from '../audit-signing.js';
+import { createAuditChainSigner, verifyAuditChainEntry } from '../audit-signing.js';
 
 async function createTestSigningKey(): Promise<CryptoKey> {
   const rawKey = crypto.getRandomValues(new Uint8Array(32));
-  return crypto.subtle.importKey(
-    'raw',
-    rawKey,
-    { name: 'HMAC', hash: 'SHA-256' },
-    false,
-    ['sign', 'verify']
-  );
+  return crypto.subtle.importKey('raw', rawKey, { name: 'HMAC', hash: 'SHA-256' }, false, [
+    'sign',
+    'verify',
+  ]);
 }
 
 describe('audit chain signing', () => {
@@ -23,7 +17,7 @@ describe('audit chain signing', () => {
 
     const { eventHash, signature } = await signer.sign(
       '{"action":"create","entity":"document"}',
-      genesisHash
+      genesisHash,
     );
 
     const valid = await verifyAuditChainEntry({
@@ -43,16 +37,10 @@ describe('audit chain signing', () => {
     const genesisHash = '0'.repeat(64);
 
     const event1 = '{"action":"create","id":"doc-1"}';
-    const { eventHash: hash1, signature: sig1 } = await signer.sign(
-      event1,
-      genesisHash
-    );
+    const { eventHash: hash1, signature: sig1 } = await signer.sign(event1, genesisHash);
 
     const event2 = '{"action":"update","id":"doc-1"}';
-    const { eventHash: hash2, signature: sig2 } = await signer.sign(
-      event2,
-      hash1
-    );
+    const { eventHash: hash2, signature: sig2 } = await signer.sign(event2, hash1);
 
     const valid1 = await verifyAuditChainEntry({
       eventData: event1,
@@ -78,10 +66,7 @@ describe('audit chain signing', () => {
     const signer = createAuditChainSigner(key, 'v1');
     const genesisHash = '0'.repeat(64);
 
-    const { eventHash, signature } = await signer.sign(
-      '{"action":"create"}',
-      genesisHash
-    );
+    const { eventHash, signature } = await signer.sign('{"action":"create"}', genesisHash);
 
     const valid = await verifyAuditChainEntry({
       eventData: '{"action":"create","tampered":true}',
@@ -100,10 +85,7 @@ describe('audit chain signing', () => {
     const signer = createAuditChainSigner(key1, 'v1');
     const genesisHash = '0'.repeat(64);
 
-    const { eventHash, signature } = await signer.sign(
-      '{"action":"create"}',
-      genesisHash
-    );
+    const { eventHash, signature } = await signer.sign('{"action":"create"}', genesisHash);
 
     const valid = await verifyAuditChainEntry({
       eventData: '{"action":"create"}',

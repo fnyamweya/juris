@@ -24,11 +24,10 @@ export function buildAadString(aad: AdditionalAuthData): string {
 }
 
 export async function generateDek(): Promise<CryptoKey> {
-  return crypto.subtle.generateKey(
-    { name: 'AES-GCM', length: 256 },
-    true,
-    ['encrypt', 'decrypt']
-  ) as Promise<CryptoKey>;
+  return crypto.subtle.generateKey({ name: 'AES-GCM', length: 256 }, true, [
+    'encrypt',
+    'decrypt',
+  ]) as Promise<CryptoKey>;
 }
 
 export async function encryptPayload(params: {
@@ -52,15 +51,10 @@ export async function encryptPayload(params: {
       tagLength: AES_GCM_TAG_LENGTH,
     },
     dek,
-    plaintext
+    plaintext,
   );
 
-  const wrappedDek = await crypto.subtle.wrapKey(
-    'raw',
-    dek,
-    kek,
-    { name: 'AES-KW' }
-  );
+  const wrappedDek = await crypto.subtle.wrapKey('raw', dek, kek, { name: 'AES-KW' });
 
   return {
     ciphertext,
@@ -86,7 +80,7 @@ export async function decryptPayload(params: {
     { name: 'AES-KW' },
     { name: 'AES-GCM', length: 256 },
     false,
-    ['decrypt']
+    ['decrypt'],
   );
 
   const aadString = buildAadString(aad);
@@ -100,6 +94,6 @@ export async function decryptPayload(params: {
       tagLength: AES_GCM_TAG_LENGTH,
     },
     dek,
-    encrypted.ciphertext
+    encrypted.ciphertext,
   );
 }

@@ -34,7 +34,7 @@ export function Footer() {
                 <li key={link.href + link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm text-slate-600 hover:text-slate-900 transition-colors"
+                    className="text-sm text-slate-600 transition-colors hover:text-slate-900"
                   >
                     {link.label}
                   </Link>
@@ -51,7 +51,7 @@ export function Footer() {
                 <li key={link.href + link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm text-slate-600 hover:text-slate-900 transition-colors"
+                    className="text-sm text-slate-600 transition-colors hover:text-slate-900"
                   >
                     {link.label}
                   </Link>
@@ -60,15 +60,13 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-500">
-              Legal
-            </h3>
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-500">Legal</h3>
             <ul className="mt-4 space-y-3">
               {legalLinks.map((link) => (
                 <li key={link.href + link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm text-slate-600 hover:text-slate-900 transition-colors"
+                    className="text-sm text-slate-600 transition-colors hover:text-slate-900"
                   >
                     {link.label}
                   </Link>
@@ -85,7 +83,7 @@ export function Footer() {
                 <li key={link.href + link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm text-slate-600 hover:text-slate-900 transition-colors"
+                    className="text-sm text-slate-600 transition-colors hover:text-slate-900"
                   >
                     {link.label}
                   </Link>

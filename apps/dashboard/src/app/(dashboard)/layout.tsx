@@ -3,11 +3,7 @@ import { DashboardSidebar } from '@/components/layout/dashboard-sidebar';
 import { DashboardHeader } from '@/components/layout/dashboard-header';
 import { ProtectedRoute } from '@/components/auth/protected-route';
 
-export default function DashboardLayout({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export default function DashboardLayout({ children }: { children: ReactNode }) {
   return (
     <ProtectedRoute>
       <div className="flex min-h-screen bg-background">

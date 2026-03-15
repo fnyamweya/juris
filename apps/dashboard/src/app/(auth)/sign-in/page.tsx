@@ -8,14 +8,10 @@ export default function SignInPage() {
     <Card className="w-full max-w-md">
       <CardHeader className="space-y-1 text-center">
         <div className="mb-4 flex justify-center">
-          <span className="text-2xl font-bold tracking-tight text-primary">
-            JUSRIS
-          </span>
+          <span className="text-2xl font-bold tracking-tight text-primary">JUSRIS</span>
         </div>
         <CardTitle className="text-xl">Sign in</CardTitle>
-        <CardDescription>
-          Enter your organization slug and email to continue
-        </CardDescription>
+        <CardDescription>Enter your organization slug and email to continue</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="space-y-2">
@@ -39,12 +35,7 @@ export default function SignInPage() {
           >
             Email
           </label>
-          <Input
-            id="email"
-            type="email"
-            placeholder="you@example.com"
-            aria-label="Email address"
-          />
+          <Input id="email" type="email" placeholder="you@example.com" aria-label="Email address" />
         </div>
         <Button className="w-full">Continue with SSO</Button>
         <p className="text-center text-xs text-muted-foreground">

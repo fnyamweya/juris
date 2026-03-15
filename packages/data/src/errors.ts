@@ -8,11 +8,7 @@ export type DataAccessErrorCode =
 export class DataAccessError extends Error {
   readonly code: DataAccessErrorCode;
 
-  constructor(
-    message: string,
-    code: DataAccessErrorCode = 'QUERY_FAILED',
-    cause?: unknown
-  ) {
+  constructor(message: string, code: DataAccessErrorCode = 'QUERY_FAILED', cause?: unknown) {
     super(message);
     this.name = 'DataAccessError';
     this.code = code;

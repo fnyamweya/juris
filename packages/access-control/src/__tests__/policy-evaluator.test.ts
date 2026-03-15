@@ -18,7 +18,9 @@ const mockLogger = {
   error: vi.fn(),
 };
 
-function createActor(principalType: PrincipalType = PrincipalType.INTERNAL_USER): AccessRequest['actor'] {
+function createActor(
+  principalType: PrincipalType = PrincipalType.INTERNAL_USER,
+): AccessRequest['actor'] {
   return {
     principal: {
       id: createPrincipalId('user-1'),
@@ -176,7 +178,7 @@ describe('PolicyEvaluator', () => {
         actor: createActor(PrincipalType.EXTERNAL_CLIENT),
         resourceType: 'document',
         resourceId: 'doc-1',
-      })
+      }),
     );
 
     expect(decision.allowed).toBe(false);
@@ -206,11 +208,7 @@ describe('PolicyEvaluator', () => {
       scopeId: 'doc-1',
     };
     const roleBindingLoader: RoleBindingLoader = {
-      loadBindings: vi.fn().mockResolvedValue([
-        tenantBinding,
-        matterBinding,
-        documentBinding,
-      ]),
+      loadBindings: vi.fn().mockResolvedValue([tenantBinding, matterBinding, documentBinding]),
     };
     const policyLoader: PolicyLoader = {
       loadPolicies: vi.fn().mockResolvedValue([]),
@@ -226,7 +224,7 @@ describe('PolicyEvaluator', () => {
         resourceType: 'document',
         resourceId: 'doc-1',
         matterId: createMatterId('matter-1'),
-      })
+      }),
     );
     expect(docDecision.allowed).toBe(true);
     expect(docDecision.reason).toContain('DocumentOwner');
@@ -237,7 +235,7 @@ describe('PolicyEvaluator', () => {
         resourceType: 'matter',
         resourceId: 'matter-1',
         matterId: createMatterId('matter-1'),
-      })
+      }),
     );
     expect(matterDecision.allowed).toBe(true);
     expect(matterDecision.reason).toContain('MatterLead');

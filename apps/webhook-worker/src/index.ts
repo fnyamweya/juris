@@ -3,11 +3,7 @@ import { handleHealthCheck } from './routes/health.js';
 import type { WebhookWorkerEnv } from './env.js';
 
 export default {
-  async fetch(
-    request: Request,
-    env: WebhookWorkerEnv,
-    _ctx: ExecutionContext
-  ): Promise<Response> {
+  async fetch(request: Request, env: WebhookWorkerEnv, _ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
     const reqCtx = createRequestContext({
       worker: 'webhooks',
@@ -31,16 +27,16 @@ export default {
           contentType: request.headers.get('content-type'),
         });
 
-        return new Response(
-          JSON.stringify({ received: true, requestId: reqCtx.requestId }),
-          { status: 202, headers: { 'Content-Type': 'application/json' } }
-        );
+        return new Response(JSON.stringify({ received: true, requestId: reqCtx.requestId }), {
+          status: 202,
+          headers: { 'Content-Type': 'application/json' },
+        });
       }
 
-      return new Response(
-        JSON.stringify({ error: { code: 'NOT_FOUND', message: 'Not found' } }),
-        { status: 404, headers: { 'Content-Type': 'application/json' } }
-      );
+      return new Response(JSON.stringify({ error: { code: 'NOT_FOUND', message: 'Not found' } }), {
+        status: 404,
+        headers: { 'Content-Type': 'application/json' },
+      });
     } catch (error) {
       logger.error('webhook error', {
         error: error instanceof Error ? error.message : 'unknown',
@@ -56,7 +52,7 @@ export default {
         {
           status: 500,
           headers: { 'Content-Type': 'application/json' },
-        }
+        },
       );
     }
   },

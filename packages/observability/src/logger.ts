@@ -10,9 +10,7 @@ export const SENSITIVE_FIELDS = [
   'privateKey',
 ] as const;
 
-const SENSITIVE_FIELDS_SET = new Set(
-  SENSITIVE_FIELDS.map((f) => f.toLowerCase())
-);
+const SENSITIVE_FIELDS_SET = new Set(SENSITIVE_FIELDS.map((f) => f.toLowerCase()));
 
 export type LogLevel = 'debug' | 'info' | 'warn' | 'error';
 

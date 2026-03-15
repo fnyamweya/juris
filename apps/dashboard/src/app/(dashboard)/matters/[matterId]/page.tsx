@@ -22,9 +22,7 @@ export default async function MatterPage({ params }: MatterPageProps) {
           </Link>
         </Button>
         <div className="flex-1">
-          <h1 className="text-2xl font-semibold tracking-tight">
-            Matter {matterId}
-          </h1>
+          <h1 className="text-2xl font-semibold tracking-tight">Matter {matterId}</h1>
           <div className="mt-1 flex items-center gap-2">
             <MatterStatusBadge status={MatterStatus.ACTIVE} />
           </div>
@@ -46,9 +44,7 @@ export default async function MatterPage({ params }: MatterPageProps) {
             </CardHeader>
             <CardContent>
               <div className="flex flex-col items-center justify-center rounded-lg border border-dashed py-12 text-center">
-                <p className="text-sm text-muted-foreground">
-                  Matter details will appear here
-                </p>
+                <p className="text-sm text-muted-foreground">Matter details will appear here</p>
               </div>
             </CardContent>
           </Card>
@@ -60,9 +56,7 @@ export default async function MatterPage({ params }: MatterPageProps) {
             </CardHeader>
             <CardContent>
               <div className="flex flex-col items-center justify-center rounded-lg border border-dashed py-12 text-center">
-                <p className="text-sm text-muted-foreground">
-                  Documents list will appear here
-                </p>
+                <p className="text-sm text-muted-foreground">Documents list will appear here</p>
               </div>
             </CardContent>
           </Card>
@@ -74,9 +68,7 @@ export default async function MatterPage({ params }: MatterPageProps) {
             </CardHeader>
             <CardContent>
               <div className="flex flex-col items-center justify-center rounded-lg border border-dashed py-12 text-center">
-                <p className="text-sm text-muted-foreground">
-                  Evidence items will appear here
-                </p>
+                <p className="text-sm text-muted-foreground">Evidence items will appear here</p>
               </div>
             </CardContent>
           </Card>
@@ -88,9 +80,7 @@ export default async function MatterPage({ params }: MatterPageProps) {
             </CardHeader>
             <CardContent>
               <div className="flex flex-col items-center justify-center rounded-lg border border-dashed py-12 text-center">
-                <p className="text-sm text-muted-foreground">
-                  Team members will appear here
-                </p>
+                <p className="text-sm text-muted-foreground">Team members will appear here</p>
               </div>
             </CardContent>
           </Card>
@@ -102,9 +92,7 @@ export default async function MatterPage({ params }: MatterPageProps) {
             </CardHeader>
             <CardContent>
               <div className="flex flex-col items-center justify-center rounded-lg border border-dashed py-12 text-center">
-                <p className="text-sm text-muted-foreground">
-                  Activity timeline will appear here
-                </p>
+                <p className="text-sm text-muted-foreground">Activity timeline will appear here</p>
               </div>
             </CardContent>
           </Card>

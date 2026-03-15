@@ -25,7 +25,7 @@ export function DashboardHeader() {
         .join('')
         .toUpperCase()
         .slice(0, 2)
-    : user?.email?.[0]?.toUpperCase() ?? 'U';
+    : (user?.email?.[0]?.toUpperCase() ?? 'U');
 
   return (
     <header className="flex h-14 items-center gap-4 border-b bg-background px-6">
@@ -33,18 +33,9 @@ export function DashboardHeader() {
       <div className="ml-auto flex items-center gap-2">
         <div className="relative hidden w-64 md:block">
           <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-          <Input
-            placeholder="Quick search..."
-            className="pl-9"
-            aria-label="Global quick search"
-          />
+          <Input placeholder="Quick search..." className="pl-9" aria-label="Global quick search" />
         </div>
-        <Button
-          variant="ghost"
-          size="icon"
-          aria-label="Notifications"
-          className="relative"
-        >
+        <Button variant="ghost" size="icon" aria-label="Notifications" className="relative">
           <Bell className="h-4 w-4" />
         </Button>
         <DropdownMenu>

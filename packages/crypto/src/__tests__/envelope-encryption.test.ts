@@ -58,7 +58,7 @@ describe('envelope encryption', () => {
         encrypted,
         kek: kek2,
         aad,
-      })
+      }),
     ).rejects.toThrow();
   });
 
@@ -83,7 +83,7 @@ describe('envelope encryption', () => {
         encrypted,
         kek,
         aad: tamperedAad,
-      })
+      }),
     ).rejects.toThrow();
   });
 
@@ -111,7 +111,7 @@ describe('envelope encryption', () => {
         encrypted: tamperedEncrypted,
         kek,
         aad,
-      })
+      }),
     ).rejects.toThrow();
   });
 

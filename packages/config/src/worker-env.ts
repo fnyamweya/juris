@@ -1,23 +1,23 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 const d1Binding = z.custom<unknown>((val) => val != null, {
-  message: "D1 binding must be present",
+  message: 'D1 binding must be present',
 });
 
 const queueBinding = z.custom<unknown>((val) => val != null, {
-  message: "Queue binding must be present",
+  message: 'Queue binding must be present',
 });
 
 const r2Binding = z.custom<unknown>((val) => val != null, {
-  message: "R2 binding must be present",
+  message: 'R2 binding must be present',
 });
 
 const vectorizeBinding = z.custom<unknown>((val) => val != null, {
-  message: "Vectorize binding must be present",
+  message: 'Vectorize binding must be present',
 });
 
 const serviceBinding = z.custom<unknown>((val) => val != null, {
-  message: "Service binding must be present",
+  message: 'Service binding must be present',
 });
 
 const requiredString = () => z.string().min(1);

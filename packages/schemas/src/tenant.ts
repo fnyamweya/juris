@@ -8,7 +8,7 @@ const tenantSlugSchema = z
   .max(63, 'Slug must be at most 63 characters')
   .regex(
     /^[a-z0-9][a-z0-9-]*[a-z0-9]$/,
-    'Slug must start and end with alphanumeric, contain only lowercase letters, numbers, and hyphens'
+    'Slug must start and end with alphanumeric, contain only lowercase letters, numbers, and hyphens',
   );
 
 export const createTenantRequestSchema = z.object({

@@ -11,9 +11,7 @@ export default function TermsPage() {
       <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
         Terms of Service
       </h1>
-      <p className="mt-4 text-slate-600">
-        Terms of service placeholder. Content coming soon.
-      </p>
+      <p className="mt-4 text-slate-600">Terms of service placeholder. Content coming soon.</p>
     </div>
   );
 }
