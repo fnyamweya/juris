@@ -10,13 +10,12 @@ export interface AuditChainSigner {
 
 export function createAuditChainSigner(
   signingKey: CryptoKey,
-  signatureVersion: string
+  _signatureVersion: string
 ): AuditChainSigner {
   return {
     async sign(eventData: string, previousHash: string) {
       const eventHash = await sha256(previousHash + eventData);
 
-      const keyBytes = await crypto.subtle.exportKey('raw', signingKey);
       const dataToSign = utf8Encode(eventHash);
       const signature = await crypto.subtle.sign(
         'HMAC',

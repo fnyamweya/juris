@@ -4,9 +4,15 @@ const config: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   output: 'standalone',
-  experimental: {
-    typedRoutes: true,
+  transpilePackages: ['@jusris/ui', '@jusris/domain', '@jusris/schemas'],
+  webpack: (config) => {
+    config.resolve = config.resolve ?? {};
+    config.resolve.extensionAlias = {
+      '.js': ['.ts', '.tsx', '.js'],
+    };
+    return config;
   },
+  experimental: {},
   headers: async () => [
     {
       source: '/(.*)',

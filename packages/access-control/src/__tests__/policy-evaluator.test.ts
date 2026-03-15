@@ -8,6 +8,7 @@ import {
   PrincipalType,
   createPrincipalId,
   createTenantId,
+  createMatterId,
 } from '@jusris/domain';
 
 const mockLogger = {
@@ -36,7 +37,7 @@ function createRequest(overrides: Partial<AccessRequest> = {}): AccessRequest {
     action: Permission.VIEW,
     resourceType: 'matter',
     resourceId: 'matter-1',
-    matterId: 'matter-1',
+    matterId: createMatterId('matter-1'),
     ...overrides,
   };
 }
@@ -224,7 +225,7 @@ describe('PolicyEvaluator', () => {
       createRequest({
         resourceType: 'document',
         resourceId: 'doc-1',
-        matterId: 'matter-1',
+        matterId: createMatterId('matter-1'),
       })
     );
     expect(docDecision.allowed).toBe(true);
@@ -235,7 +236,7 @@ describe('PolicyEvaluator', () => {
       createRequest({
         resourceType: 'matter',
         resourceId: 'matter-1',
-        matterId: 'matter-1',
+        matterId: createMatterId('matter-1'),
       })
     );
     expect(matterDecision.allowed).toBe(true);

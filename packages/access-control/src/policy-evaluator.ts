@@ -20,7 +20,7 @@ export function createPolicyEvaluator(params: CreatePolicyEvaluatorParams): Poli
 
   return {
     async evaluate(request: AccessRequest): Promise<AccessDecision> {
-      const { actor, action, resourceType, resourceId, matterId } = request;
+      const { actor, action, resourceType, resourceId } = request;
       const principalId = actor.principal.id as string;
       const tenantId = actor.tenantId as string;
 
@@ -82,7 +82,7 @@ function findMatchingBinding(
   bindings: EffectiveBinding[],
   request: AccessRequest
 ): EffectiveBinding | null {
-  const { action, resourceType, resourceId, matterId } = request;
+  const { action } = request;
 
   const scopeOrder: Record<string, number> = {
     DOCUMENT: 3,

@@ -1,5 +1,4 @@
 import { createRequestContext, createLogger } from '@jusris/observability';
-import { createD1Client } from '@jusris/data';
 import { handleHealthCheck } from './routes/health.js';
 import type { MaintenanceWorkerEnv } from './env.js';
 
@@ -20,7 +19,6 @@ export default {
     });
 
     const cron = event.cron;
-    const _db = createD1Client(env.MASTER_REGISTRY_DB, logger);
 
     try {
       if (cron === '0 */6 * * *') {
@@ -41,7 +39,7 @@ export default {
 
   async fetch(
     request: Request,
-    env: MaintenanceWorkerEnv,
+    _env: MaintenanceWorkerEnv,
     _ctx: ExecutionContext
   ): Promise<Response> {
     const url = new URL(request.url);

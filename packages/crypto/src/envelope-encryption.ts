@@ -28,7 +28,7 @@ export async function generateDek(): Promise<CryptoKey> {
     { name: 'AES-GCM', length: 256 },
     true,
     ['encrypt', 'decrypt']
-  );
+  ) as Promise<CryptoKey>;
 }
 
 export async function encryptPayload(params: {

@@ -25,7 +25,7 @@ export default {
       }
 
       if (url.pathname.startsWith('/webhooks/')) {
-        const body = await request.text();
+        await request.text();
         logger.info('webhook received', {
           path: url.pathname,
           contentType: request.headers.get('content-type'),

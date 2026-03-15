@@ -1,6 +1,5 @@
 import { describe, it, expect } from 'vitest';
 import {
-  SECURITY_HEADERS,
   CSP_DIRECTIVES,
   buildCspHeader,
   applySecurityHeaders,

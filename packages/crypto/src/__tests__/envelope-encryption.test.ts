@@ -10,7 +10,7 @@ import { utf8Encode, utf8Decode } from '../encoding.js';
 
 async function createTestKek(): Promise<CryptoKey> {
   const rawKey = crypto.getRandomValues(new Uint8Array(32));
-  return importKekFromRaw(rawKey.buffer);
+  return importKekFromRaw(rawKey.buffer as ArrayBuffer);
 }
 
 describe('envelope encryption', () => {
@@ -26,7 +26,7 @@ describe('envelope encryption', () => {
     const plaintext = utf8Encode('sensitive document content');
 
     const encrypted = await encryptPayload({
-      plaintext: plaintext.buffer,
+      plaintext: plaintext.buffer as ArrayBuffer,
       kek,
       kekVersion: 'kek-v1',
       aad,
@@ -47,7 +47,7 @@ describe('envelope encryption', () => {
     const plaintext = utf8Encode('secret data');
 
     const encrypted = await encryptPayload({
-      plaintext: plaintext.buffer,
+      plaintext: plaintext.buffer as ArrayBuffer,
       kek: kek1,
       kekVersion: 'kek-v1',
       aad,
@@ -67,7 +67,7 @@ describe('envelope encryption', () => {
     const plaintext = utf8Encode('secret data');
 
     const encrypted = await encryptPayload({
-      plaintext: plaintext.buffer,
+      plaintext: plaintext.buffer as ArrayBuffer,
       kek,
       kekVersion: 'kek-v1',
       aad,
@@ -92,18 +92,18 @@ describe('envelope encryption', () => {
     const plaintext = utf8Encode('secret data');
 
     const encrypted = await encryptPayload({
-      plaintext: plaintext.buffer,
+      plaintext: plaintext.buffer as ArrayBuffer,
       kek,
       kekVersion: 'kek-v1',
       aad,
     });
 
     const tamperedCiphertext = new Uint8Array(encrypted.ciphertext.slice(0));
-    tamperedCiphertext[0] ^= 0xff;
+    tamperedCiphertext[0]! ^= 0xff;
 
     const tamperedEncrypted = {
       ...encrypted,
-      ciphertext: tamperedCiphertext.buffer,
+      ciphertext: tamperedCiphertext.buffer as ArrayBuffer,
     };
 
     await expect(
@@ -120,14 +120,14 @@ describe('envelope encryption', () => {
     const plaintext = utf8Encode('same content');
 
     const enc1 = await encryptPayload({
-      plaintext: plaintext.buffer,
+      plaintext: plaintext.buffer as ArrayBuffer,
       kek,
       kekVersion: 'kek-v1',
       aad,
     });
 
     const enc2 = await encryptPayload({
-      plaintext: plaintext.buffer,
+      plaintext: plaintext.buffer as ArrayBuffer,
       kek,
       kekVersion: 'kek-v1',
       aad,

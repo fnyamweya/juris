@@ -4,6 +4,13 @@ const config: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   transpilePackages: ['@jusris/ui', '@jusris/domain', '@jusris/schemas'],
+  webpack: (config) => {
+    config.resolve = config.resolve ?? {};
+    config.resolve.extensionAlias = {
+      '.js': ['.ts', '.tsx', '.js'],
+    };
+    return config;
+  },
   headers: async () => [
     {
       source: '/(.*)',

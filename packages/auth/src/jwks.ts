@@ -77,7 +77,7 @@ export async function jwkToCryptoKey(jwk: Jwk): Promise<CryptoKey> {
     alg: jwk.alg ?? 'RS256',
     use: jwk.use ?? 'sig',
   };
-  if (jwk.kid) keyData.kid = jwk.kid;
+  if (jwk.kid) (keyData as unknown as Record<string, unknown>)['kid'] = jwk.kid;
 
   return crypto.subtle.importKey(
     'jwk',

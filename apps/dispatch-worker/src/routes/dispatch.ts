@@ -11,7 +11,7 @@ const INTERNAL_TRACE_ID_HEADER = 'x-jusris-trace-id';
 
 export async function handleTenantDispatch(
   request: Request,
-  env: DispatchWorkerEnv,
+  _env: DispatchWorkerEnv,
   actor: ActorContext,
   reqCtx: RequestContext,
   logger: Logger,

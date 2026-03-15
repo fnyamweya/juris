@@ -51,7 +51,7 @@ export default {
 
   async fetch(
     request: Request,
-    env: IngestionWorkerEnv,
+    _env: IngestionWorkerEnv,
     _ctx: ExecutionContext
   ): Promise<Response> {
     const url = new URL(request.url);

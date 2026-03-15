@@ -55,7 +55,6 @@ export function assemblePrompt(params: AssemblePromptParams): AssembledPrompt {
       : '';
 
   const systemContent = systemPrompt + contextBlock;
-  const systemTokens = estimateTokens(systemContent);
 
   const maxHistoryTokens = Math.floor(maxContextTokens * 0.2);
   const historyMessages: { role: string; content: string }[] = [];

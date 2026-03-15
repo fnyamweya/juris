@@ -22,7 +22,7 @@ export interface TextExtractor {
 export function createTextExtractor(): TextExtractor {
   return {
     async extract(input: ExtractionInput): Promise<ExtractionResult> {
-      const decoder = new TextDecoder('utf-8', { fatal: false });
+      const decoder = new TextDecoder('utf-8');
       const text = decoder.decode(input.content);
       return {
         text: text.trim() || '(no text extracted)',

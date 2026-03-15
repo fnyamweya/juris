@@ -4,22 +4,25 @@
   "private": true,
   "license": "UNLICENSED",
   "type": "module",
-  "exports": { ".": "./src/index.ts" },
+  "exports": {
+    ".": "./src/index.ts"
+  },
   "scripts": {
     "typecheck": "tsc --noEmit",
     "lint": "eslint src/",
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@jusris/domain": "workspace:*",
+    "@jusris/access-control": "workspace:*",
     "@jusris/audit": "workspace:*",
     "@jusris/auth": "workspace:*",
-    "@jusris/access-control": "workspace:*",
+    "@jusris/domain": "workspace:*",
     "@jusris/observability": "workspace:*"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241205.0",
     "@jusris/tsconfig": "workspace:*",
-    "typescript": "^5.7.0",
-    "rimraf": "^6.0.0"
+    "rimraf": "^6.0.0",
+    "typescript": "^5.7.0"
   }
 }

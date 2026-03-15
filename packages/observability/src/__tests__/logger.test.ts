@@ -10,9 +10,9 @@ describe('logger', () => {
 
   beforeEach(() => {
     consoleSpy = {
-      log: vi.spyOn(console, 'log').mockImplementation(() => {}),
-      warn: vi.spyOn(console, 'warn').mockImplementation(() => {}),
-      error: vi.spyOn(console, 'error').mockImplementation(() => {}),
+      log: vi.spyOn(console, 'log').mockImplementation(() => { }),
+      warn: vi.spyOn(console, 'warn').mockImplementation(() => { }),
+      error: vi.spyOn(console, 'error').mockImplementation(() => { }),
     };
   });
 
@@ -26,7 +26,7 @@ describe('logger', () => {
       logger.info('hello');
 
       expect(consoleSpy.log).toHaveBeenCalledTimes(1);
-      const output = consoleSpy.log.mock.calls[0]![0];
+      const output = consoleSpy.log.mock.calls[0]![0] as string;
       expect(() => JSON.parse(output)).not.toThrow();
       const parsed = JSON.parse(output);
       expect(parsed.message).toBe('hello');
@@ -41,7 +41,7 @@ describe('logger', () => {
       const logger = createLogger({ level: 'info', worker: 'w' });
       logger.info('msg', { password: 'secret123', userId: 'u1' });
 
-      const parsed = JSON.parse(consoleSpy.log.mock.calls[0]![0]);
+      const parsed = JSON.parse(consoleSpy.log.mock.calls[0]![0] as string);
       expect(parsed.password).toBeUndefined();
       expect(parsed.userId).toBe('u1');
     });
@@ -52,15 +52,15 @@ describe('logger', () => {
       for (const field of SENSITIVE_FIELDS) {
         ctx[field] = 'should-not-appear';
       }
-      ctx.safeField = 'visible';
+      ctx['safeField'] = 'visible';
 
       logger.info('msg', ctx);
 
-      const parsed = JSON.parse(consoleSpy.log.mock.calls[0]![0]);
+      const parsed = JSON.parse(consoleSpy.log.mock.calls[0]![0] as string);
       for (const field of SENSITIVE_FIELDS) {
         expect(parsed[field]).toBeUndefined();
       }
-      expect(parsed.safeField).toBe('visible');
+      expect(parsed['safeField']).toBe('visible');
     });
 
     it('strips sensitive fields in nested objects', () => {
@@ -69,7 +69,7 @@ describe('logger', () => {
         user: { name: 'Alice', password: 'pwd', token: 't' },
       });
 
-      const parsed = JSON.parse(consoleSpy.log.mock.calls[0]![0]);
+      const parsed = JSON.parse(consoleSpy.log.mock.calls[0]![0] as string);
       expect(parsed.user.name).toBe('Alice');
       expect(parsed.user.password).toBeUndefined();
       expect(parsed.user.token).toBeUndefined();
@@ -78,10 +78,10 @@ describe('logger', () => {
     it('sanitize function strips sensitive fields', () => {
       const obj = { a: 1, password: 'x', nested: { secret: 'y', ok: true } };
       const result = sanitize(obj) as Record<string, unknown>;
-      expect(result.a).toBe(1);
-      expect(result.password).toBeUndefined();
-      expect((result.nested as Record<string, unknown>).secret).toBeUndefined();
-      expect((result.nested as Record<string, unknown>).ok).toBe(true);
+      expect(result['a']).toBe(1);
+      expect(result['password']).toBeUndefined();
+      expect((result['nested'] as Record<string, unknown>)['secret']).toBeUndefined();
+      expect((result['nested'] as Record<string, unknown>)['ok']).toBe(true);
     });
   });
 
@@ -92,7 +92,7 @@ describe('logger', () => {
       logger.info('info-msg');
 
       expect(consoleSpy.log).toHaveBeenCalledTimes(1);
-      expect(JSON.parse(consoleSpy.log.mock.calls[0]![0]).message).toBe('info-msg');
+      expect(JSON.parse(consoleSpy.log.mock.calls[0]![0] as string).message).toBe('info-msg');
     });
 
     it('filters out info when level is warn', () => {
@@ -102,7 +102,7 @@ describe('logger', () => {
 
       expect(consoleSpy.log).not.toHaveBeenCalled();
       expect(consoleSpy.warn).toHaveBeenCalledTimes(1);
-      expect(JSON.parse(consoleSpy.warn.mock.calls[0]![0]).message).toBe('warn-msg');
+      expect(JSON.parse(consoleSpy.warn.mock.calls[0]![0] as string).message).toBe('warn-msg');
     });
 
     it('allows all levels when level is debug', () => {
@@ -128,7 +128,7 @@ describe('logger', () => {
 
       logger.info('msg', { matterId: 'm1' });
 
-      const parsed = JSON.parse(consoleSpy.log.mock.calls[0]![0]);
+      const parsed = JSON.parse(consoleSpy.log.mock.calls[0]![0] as string);
       expect(parsed.tenantId).toBe('t1');
       expect(parsed.requestId).toBe('r1');
       expect(parsed.matterId).toBe('m1');
@@ -144,7 +144,7 @@ describe('logger', () => {
 
       logger.info('msg', { requestId: 'call-r' });
 
-      const parsed = JSON.parse(consoleSpy.log.mock.calls[0]![0]);
+      const parsed = JSON.parse(consoleSpy.log.mock.calls[0]![0] as string);
       expect(parsed.requestId).toBe('call-r');
     });
   });
@@ -159,7 +159,7 @@ describe('logger', () => {
 
       logger.info('msg');
 
-      const parsed = JSON.parse(consoleSpy.log.mock.calls[0]![0]);
+      const parsed = JSON.parse(consoleSpy.log.mock.calls[0]![0] as string);
       expect(parsed.requestId).toBe('req-123');
       expect(parsed.traceId).toBe('trace-456');
     });
@@ -168,7 +168,7 @@ describe('logger', () => {
       const logger = createLogger({ level: 'info', worker: 'w' });
       logger.info('msg', { requestId: 'r1', traceId: 't1' });
 
-      const parsed = JSON.parse(consoleSpy.log.mock.calls[0]![0]);
+      const parsed = JSON.parse(consoleSpy.log.mock.calls[0]![0] as string);
       expect(parsed.requestId).toBe('r1');
       expect(parsed.traceId).toBe('t1');
     });

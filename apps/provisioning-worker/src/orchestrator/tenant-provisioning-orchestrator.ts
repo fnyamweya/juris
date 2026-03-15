@@ -38,7 +38,7 @@ export class TenantProvisioningOrchestrator {
       cfApi: CloudflareApiClient;
       logger: Logger;
     }
-  ) {}
+  ) { }
 
   async provision(
     tenantId: string,
@@ -78,7 +78,7 @@ export class TenantProvisioningOrchestrator {
       }
 
       for (let i = currentStepIndex; i < PROVISIONING_STEPS.length; i++) {
-        const step = PROVISIONING_STEPS[i];
+        const step = PROVISIONING_STEPS[i]!;
 
         await db.execute(
           `INSERT OR REPLACE INTO provisioning_operations
@@ -132,7 +132,7 @@ export class TenantProvisioningOrchestrator {
 
   private async executeStep(
     step: ProvisioningStep,
-    tenantId: string,
+    _tenantId: string,
     _cfApi: CloudflareApiClient
   ): Promise<void> {
     switch (step) {

@@ -1,5 +1,6 @@
 import { createRequestContext, createLogger } from '@jusris/observability';
 import { createD1Client } from '@jusris/data';
+import type { D1Database } from '@jusris/data';
 import { createCloudflareApiClient } from '@jusris/cloudflare';
 import { TenantProvisioningOrchestrator } from './orchestrator/tenant-provisioning-orchestrator.js';
 import { handleHealthCheck } from './routes/health.js';
@@ -21,7 +22,7 @@ export default {
       baseContext: { requestId: reqCtx.requestId, traceId: reqCtx.traceId },
     });
 
-    const db = createD1Client(env.MASTER_REGISTRY_DB, logger);
+    const db = createD1Client(env.MASTER_REGISTRY_DB as unknown as D1Database, logger);
     const cfApi = createCloudflareApiClient({
       accountId: env.CLOUDFLARE_ACCOUNT_ID,
       apiToken: env.CLOUDFLARE_API_TOKEN,
@@ -62,7 +63,7 @@ export default {
 
   async fetch(
     request: Request,
-    env: ProvisioningWorkerEnv,
+    _env: ProvisioningWorkerEnv,
     _ctx: ExecutionContext
   ): Promise<Response> {
     const url = new URL(request.url);

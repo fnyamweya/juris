@@ -37,11 +37,11 @@ export function createEvidenceIngestionPipeline(): EvidenceIngestionPipeline {
           tenantId: job.tenantId,
         });
 
-        const rawContent = job.stepDetails?.content;
+        const rawContent = job.stepDetails?.['content'];
         const content = rawContent instanceof ArrayBuffer ? rawContent : new ArrayBuffer(0);
-        const rawMime = job.stepDetails?.mimeType;
+        const rawMime = job.stepDetails?.['mimeType'];
         const mimeType = typeof rawMime === 'string' ? rawMime : 'application/octet-stream';
-        const rawFilename = job.stepDetails?.filename;
+        const rawFilename = job.stepDetails?.['filename'];
         const filename = typeof rawFilename === 'string' ? rawFilename : 'document';
 
         const extraction = await extractor.extract({

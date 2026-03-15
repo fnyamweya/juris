@@ -1,4 +1,4 @@
-import type { ActorContext, AccessDecision } from '@jusris/domain';
+import type { ActorContext, AccessDecision, MatterId } from '@jusris/domain';
 import { Permission } from '@jusris/domain';
 import type { PolicyEvaluator } from './policy-evaluator.js';
 
@@ -7,7 +7,7 @@ const RESOURCE_DOCUMENT = 'document';
 
 export async function canViewMatter(
   actor: ActorContext,
-  matterId: string,
+  matterId: MatterId,
   evaluator: PolicyEvaluator
 ): Promise<AccessDecision> {
   return evaluator.evaluate({
@@ -21,7 +21,7 @@ export async function canViewMatter(
 
 export async function canEditMatter(
   actor: ActorContext,
-  matterId: string,
+  matterId: MatterId,
   evaluator: PolicyEvaluator
 ): Promise<AccessDecision> {
   return evaluator.evaluate({
@@ -36,7 +36,7 @@ export async function canEditMatter(
 export async function canViewDocument(
   actor: ActorContext,
   documentId: string,
-  matterId: string,
+  matterId: MatterId,
   evaluator: PolicyEvaluator
 ): Promise<AccessDecision> {
   return evaluator.evaluate({
@@ -50,7 +50,7 @@ export async function canViewDocument(
 
 export async function canUploadEvidence(
   actor: ActorContext,
-  matterId: string,
+  matterId: MatterId,
   evaluator: PolicyEvaluator
 ): Promise<AccessDecision> {
   return evaluator.evaluate({

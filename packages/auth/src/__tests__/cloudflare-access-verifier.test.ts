@@ -8,11 +8,11 @@ const AUD = 'test-audience';
 const JWKS_URL = `https://${TEAM_DOMAIN}.cloudflareaccess.com/cdn-cgi/access/certs`;
 const EXPECTED_ISS = `https://${TEAM_DOMAIN}.cloudflareaccess.com/cdn-cgi/access`;
 
-function base64UrlEncode(buffer: ArrayBuffer): string {
-  const bytes = new Uint8Array(buffer);
+function base64UrlEncode(buffer: ArrayBuffer | Uint8Array): string {
+  const bytes = buffer instanceof Uint8Array ? buffer : new Uint8Array(buffer);
   let binary = '';
   for (let i = 0; i < bytes.length; i++) {
-    binary += String.fromCharCode(bytes[i]);
+    binary += String.fromCharCode(bytes[i]!);
   }
   return btoa(binary).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 }
@@ -30,12 +30,12 @@ async function createTestKeyPair(): Promise<{
     },
     true,
     ['sign', 'verify']
-  );
+  ) as CryptoKeyPair;
 
   const publicKey = await crypto.subtle.exportKey(
     'jwk',
     keyPair.publicKey
-  );
+  ) as JsonWebKey;
 
   const publicJwk: Jwk = {
     kty: publicKey.kty as string,
@@ -66,7 +66,7 @@ async function signJwt(
     privateKey,
     new TextEncoder().encode(signingInput)
   );
-  const sigB64 = base64UrlEncode(signature);
+  const sigB64 = base64UrlEncode(new Uint8Array(signature));
   return `${signingInput}.${sigB64}`;
 }
 

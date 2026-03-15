@@ -58,7 +58,7 @@ function parseJwtPayload(token: string): {
 }
 
 function getKid(header: Record<string, unknown>): string | undefined {
-  const kid = header.kid;
+  const kid = header['kid'];
   return typeof kid === 'string' ? kid : undefined;
 }
 
@@ -68,12 +68,12 @@ function validatePayload(
   teamDomain: string
 ): VerifiedToken {
   const now = Math.floor(Date.now() / 1000);
-  const exp = payload.exp;
-  const iat = payload.iat;
-  const sub = payload.sub;
-  const email = payload.email;
-  const iss = payload.iss;
-  const aud = payload.aud;
+  const exp = payload['exp'];
+  const iat = payload['iat'];
+  const sub = payload['sub'];
+  const email = payload['email'];
+  const iss = payload['iss'];
+  const aud = payload['aud'];
 
   if (typeof exp !== 'number') {
     throw new TokenVerificationError('Missing exp claim', { code: 'MALFORMED' });
@@ -116,7 +116,7 @@ function validatePayload(
     sub,
     email,
     iss,
-    aud: payload.aud as string | string[],
+    aud: payload['aud'] as string | string[],
     iat,
     exp,
     claims,
