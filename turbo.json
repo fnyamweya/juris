@@ -5,8 +5,19 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "dist/**", "!.next/cache/**"],
-      "env": ["NEXT_PUBLIC_*", "CLOUDFLARE_ACCOUNT_ID", "CLOUDFLARE_API_TOKEN"]
+      "outputs": [".next/**", ".open-next/**", "dist/**", "!.next/cache/**"],
+      "env": [
+        "NEXT_PUBLIC_*",
+        "NEXT_PUBLIC_APP_VERSION",
+        "NEXT_PUBLIC_COMMIT_SHA",
+        "NEXT_PUBLIC_DEPLOY_ENV",
+        "CLOUDFLARE_ACCOUNT_ID",
+        "CLOUDFLARE_API_TOKEN"
+      ]
+    },
+    "deploy": {
+      "dependsOn": ["build"],
+      "cache": false
     },
     "dev": {
       "dependsOn": ["^build"],

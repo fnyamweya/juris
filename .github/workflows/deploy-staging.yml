@@ -6,15 +6,151 @@ on:
 
 jobs:
   ci:
-    name: CI Checks
+    name: CI
     uses: ./.github/workflows/ci.yml
     secrets: inherit
 
-  deploy-staging:
-    name: Deploy to Staging
-    needs: [ci]
+  detect-changes:
+    name: Detect Changes
+    runs-on: ubuntu-latest
+    outputs:
+      deploy_workers: ${{ steps.check.outputs.deploy_workers }}
+      deploy_web: ${{ steps.check.outputs.deploy_web }}
+      deploy_dashboard: ${{ steps.check.outputs.deploy_dashboard }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Determine changed components
+        id: check
+        run: |
+          BEFORE="${{ github.event.before }}"
+
+          # First push or force-push → deploy everything
+          if [[ "$BEFORE" == "0000000000000000000000000000000000000000" ]]; then
+            echo "deploy_workers=true" >> "$GITHUB_OUTPUT"
+            echo "deploy_web=true" >> "$GITHUB_OUTPUT"
+            echo "deploy_dashboard=true" >> "$GITHUB_OUTPUT"
+            echo "First push — deploying all components"
+            exit 0
+          fi
+
+          CHANGED=$(git diff --name-only "$BEFORE"..HEAD 2>/dev/null || echo "")
+
+          if [[ -z "$CHANGED" ]]; then
+            echo "deploy_workers=true" >> "$GITHUB_OUTPUT"
+            echo "deploy_web=true" >> "$GITHUB_OUTPUT"
+            echo "deploy_dashboard=true" >> "$GITHUB_OUTPUT"
+            echo "Unable to determine changes — deploying all"
+            exit 0
+          fi
+
+          DEPLOY_WORKERS=false
+          DEPLOY_WEB=false
+          DEPLOY_DASHBOARD=false
+
+          # Root config changes → deploy everything
+          if echo "$CHANGED" | grep -qE '^(turbo\.json|pnpm-lock\.yaml|pnpm-workspace\.yaml|package\.json)$'; then
+            DEPLOY_WORKERS=true; DEPLOY_WEB=true; DEPLOY_DASHBOARD=true
+          fi
+
+          # Workflow changes → deploy everything
+          if echo "$CHANGED" | grep -qE '^\.github/workflows/'; then
+            DEPLOY_WORKERS=true; DEPLOY_WEB=true; DEPLOY_DASHBOARD=true
+          fi
+
+          # Shared packages (web apps + workers)
+          if echo "$CHANGED" | grep -qE '^packages/(domain|schemas|ui|types|config)/'; then
+            DEPLOY_WORKERS=true; DEPLOY_WEB=true; DEPLOY_DASHBOARD=true
+          fi
+
+          # Worker-only packages
+          if echo "$CHANGED" | grep -qE '^packages/(auth|security|crypto|data|observability|rag|ingestion|queueing|access-control|audit|cloudflare|testing)/'; then
+            DEPLOY_WORKERS=true
+          fi
+
+          # Direct app changes
+          if echo "$CHANGED" | grep -qE '^apps/(dispatch|provisioning|maintenance|ingestion|tenant-runtime|webhook)-worker/'; then
+            DEPLOY_WORKERS=true
+          fi
+          if echo "$CHANGED" | grep -qE '^apps/web/'; then
+            DEPLOY_WEB=true
+          fi
+          if echo "$CHANGED" | grep -qE '^apps/dashboard/'; then
+            DEPLOY_DASHBOARD=true
+          fi
+
+          echo "deploy_workers=$DEPLOY_WORKERS" >> "$GITHUB_OUTPUT"
+          echo "deploy_web=$DEPLOY_WEB" >> "$GITHUB_OUTPUT"
+          echo "deploy_dashboard=$DEPLOY_DASHBOARD" >> "$GITHUB_OUTPUT"
+
+          echo "## Change Detection (staging)" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Component | Deploy? |" >> "$GITHUB_STEP_SUMMARY"
+          echo "|-----------|---------|" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Workers | \`$DEPLOY_WORKERS\` |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Web | \`$DEPLOY_WEB\` |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Dashboard | \`$DEPLOY_DASHBOARD\` |" >> "$GITHUB_STEP_SUMMARY"
+
+  deploy-workers:
+    name: Deploy Workers
+    needs: [ci, detect-changes]
+    if: needs.detect-changes.outputs.deploy_workers == 'true'
     uses: ./.github/workflows/deploy-workers.yml
     with:
       environment: staging
       ref: ${{ github.sha }}
     secrets: inherit
+
+  deploy-web:
+    name: Deploy Web
+    needs: [ci, detect-changes]
+    if: needs.detect-changes.outputs.deploy_web == 'true'
+    uses: ./.github/workflows/deploy-apps.yml
+    with:
+      environment: staging
+      app: web
+      ref: ${{ github.sha }}
+    secrets: inherit
+
+  deploy-dashboard:
+    name: Deploy Dashboard
+    needs: [ci, detect-changes]
+    if: needs.detect-changes.outputs.deploy_dashboard == 'true'
+    uses: ./.github/workflows/deploy-apps.yml
+    with:
+      environment: staging
+      app: dashboard
+      ref: ${{ github.sha }}
+    secrets: inherit
+
+  deploy-summary:
+    name: Deployment Manifest
+    runs-on: ubuntu-latest
+    if: always()
+    needs: [detect-changes, deploy-workers, deploy-web, deploy-dashboard]
+    steps:
+      - name: Generate deployment manifest
+        run: |
+          SHORT_SHA=$(echo '${{ github.sha }}' | cut -c1-7)
+          DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
+          WORKERS="${{ needs.deploy-workers.result }}"
+          WEB="${{ needs.deploy-web.result }}"
+          DASH="${{ needs.deploy-dashboard.result }}"
+
+          echo "## Staging Deployment Manifest" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Component | Status |" >> "$GITHUB_STEP_SUMMARY"
+          echo "|-----------|--------|" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Workers (6) | \`${WORKERS}\` |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Web | \`${WEB}\` |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Dashboard | \`${DASH}\` |" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Detail | Value |" >> "$GITHUB_STEP_SUMMARY"
+          echo "|--------|-------|" >> "$GITHUB_STEP_SUMMARY"
+          echo "| **Environment** | \`staging\` |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| **Commit** | \`${SHORT_SHA}\` |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| **Timestamp** | \`${DATE}\` |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| **Actor** | ${{ github.actor }} |" >> "$GITHUB_STEP_SUMMARY"

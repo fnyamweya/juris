@@ -4,6 +4,11 @@ const config: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   transpilePackages: ['@juris/ui', '@juris/domain', '@juris/schemas'],
+  env: {
+    NEXT_PUBLIC_APP_VERSION: process.env['NEXT_PUBLIC_APP_VERSION'] ?? '0.0.0-dev',
+    NEXT_PUBLIC_COMMIT_SHA: process.env['NEXT_PUBLIC_COMMIT_SHA'] ?? 'local',
+    NEXT_PUBLIC_DEPLOY_ENV: process.env['NEXT_PUBLIC_DEPLOY_ENV'] ?? 'development',
+  },
   webpack: (config) => {
     config.resolve = config.resolve ?? {};
     config.resolve.extensionAlias = {
