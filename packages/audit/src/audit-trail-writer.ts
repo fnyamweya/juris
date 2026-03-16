@@ -37,7 +37,7 @@ export interface WriteAuditParams {
 }
 
 export class AuditTrailWriter {
-  constructor(private readonly deps: AuditTrailWriterDeps) { }
+  constructor(private readonly deps: AuditTrailWriterDeps) {}
 
   async write(params: WriteAuditParams): Promise<AuditEvent> {
     const {

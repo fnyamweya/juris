@@ -1,17 +1,12 @@
 {
-  "extends": [
-    "@jusris/eslint-config/library"
-  ],
+  "extends": ["@jusris/eslint-config/library"],
   "root": true,
   "parserOptions": {
     "project": "./tsconfig.json"
   },
   "overrides": [
     {
-      "files": [
-        "**/__tests__/**",
-        "**/*.test.ts"
-      ],
+      "files": ["**/__tests__/**", "**/*.test.ts"],
       "rules": {
         "@typescript-eslint/no-unsafe-assignment": "off",
         "@typescript-eslint/no-unsafe-member-access": "off",
