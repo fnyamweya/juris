@@ -21,6 +21,9 @@ jobs:
     name: Version & Release
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    outputs:
+      published: ${{ steps.changesets.outputs.published }}
+      version: ${{ steps.version.outputs.version }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -46,23 +49,52 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Tag release
+      - name: Read version
+        id: version
         if: steps.changesets.outputs.published == 'true'
         run: |
-          # Create a combined release tag from the root package version
           VERSION=$(node -p "require('./package.json').version")
-          git tag "v${VERSION}"
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+
+      - name: Create platform release tag
+        if: steps.changesets.outputs.published == 'true'
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git tag -a "v${VERSION}" -m "Release v${VERSION}
+
+          Timestamp: ${TIMESTAMP}
+          Commit: ${GITHUB_SHA}
+          Actor: ${{ github.actor }}"
           git push origin "v${VERSION}"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create GitHub Release
         if: steps.changesets.outputs.published == 'true'
         run: |
-          VERSION=$(node -p "require('./package.json').version")
+          VERSION="${{ steps.version.outputs.version }}"
           gh release create "v${VERSION}" \
             --title "v${VERSION}" \
             --generate-notes \
-            --target main
+            --target main \
+            --verify-tag
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Release summary
+        if: steps.changesets.outputs.published == 'true'
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          echo "## Release v${VERSION}" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Detail | Value |" >> "$GITHUB_STEP_SUMMARY"
+          echo "|--------|-------|" >> "$GITHUB_STEP_SUMMARY"
+          echo "| **Version** | \`v${VERSION}\` |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| **Commit** | \`${GITHUB_SHA:0:7}\` |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| **Tag** | \`v${VERSION}\` |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| **Actor** | ${{ github.actor }} |" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "To promote to production: Run **Promote to Production** workflow with tag \`v${VERSION}\`" >> "$GITHUB_STEP_SUMMARY"

@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: 'Release tag to promote (e.g. v1.2.0). Leave empty for latest main.'
+        description: 'Release tag to promote (e.g. v1.2.0). Leave empty for latest release.'
         required: false
         type: string
 
@@ -13,8 +13,59 @@ permissions:
   pull-requests: write
 
 jobs:
+  validate:
+    name: Validate Release
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      ref: ${{ steps.resolve.outputs.ref }}
+      version: ${{ steps.resolve.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Resolve release ref
+        id: resolve
+        run: |
+          if [[ -n "${{ inputs.tag }}" ]]; then
+            TAG="${{ inputs.tag }}"
+            if ! git rev-parse "refs/tags/${TAG}" >/dev/null 2>&1; then
+              echo "::error::Tag '${TAG}' does not exist"
+              exit 1
+            fi
+            if [[ ! "${TAG}" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(-[a-zA-Z0-9.]+)?$ ]]; then
+              echo "::error::Tag '${TAG}' is not a valid semver release tag (expected vX.Y.Z)"
+              exit 1
+            fi
+            echo "ref=${TAG}" >> "$GITHUB_OUTPUT"
+            echo "version=${TAG}" >> "$GITHUB_OUTPUT"
+            echo "Promoting release: ${TAG}"
+          else
+            LATEST=$(git tag -l 'v[0-9]*.[0-9]*.[0-9]*' --sort=-version:refname | head -1)
+            if [[ -z "$LATEST" ]]; then
+              echo "::error::No release tags found. Create a release first."
+              exit 1
+            fi
+            echo "ref=${LATEST}" >> "$GITHUB_OUTPUT"
+            echo "version=${LATEST}" >> "$GITHUB_OUTPUT"
+            echo "Promoting latest release: ${LATEST}"
+          fi
+
+      - name: Verify staging deployment
+        run: |
+          REF="${{ steps.resolve.outputs.ref }}"
+          STAGING_TAGS=$(git tag -l "deploy/staging/*" --contains "${REF}" 2>/dev/null || true)
+          if [[ -z "$STAGING_TAGS" ]]; then
+            echo "::warning::No staging deploy tag found containing ${REF}. Proceeding anyway."
+          else
+            echo "Verified staging deployment: ${STAGING_TAGS}"
+          fi
+
   promote:
     name: Promote to Production
+    needs: [validate]
     runs-on: ubuntu-latest
     timeout-minutes: 10
     environment: production
@@ -24,49 +75,36 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Determine ref to promote
-        id: ref
-        run: |
-          if [[ -n "${{ inputs.tag }}" ]]; then
-            REF="${{ inputs.tag }}"
-            echo "Promoting tag: $REF"
-          else
-            REF="main"
-            echo "Promoting latest main"
-          fi
-          echo "ref=$REF" >> "$GITHUB_OUTPUT"
-
       - name: Configure git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Create or update production branch
+      - name: Fast-forward production branch
         run: |
-          REF="${{ steps.ref.outputs.ref }}"
+          REF="${{ needs.validate.outputs.ref }}"
 
-          # Ensure production branch exists
           if ! git rev-parse --verify origin/production >/dev/null 2>&1; then
-            echo "Creating production branch from $REF"
-            git checkout -b production "$REF"
+            echo "Creating production branch from ${REF}"
+            git checkout -b production "${REF}"
             git push origin production
           else
-            echo "Fast-forwarding production to $REF"
+            echo "Fast-forwarding production to ${REF}"
+            git fetch origin production
             git checkout production
-            git merge --ff-only "$REF"
+            git merge --ff-only "${REF}"
             git push origin production
           fi
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Promotion summary
         run: |
+          VERSION="${{ needs.validate.outputs.version }}"
           echo "## Production Promotion" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "| Detail | Value |" >> "$GITHUB_STEP_SUMMARY"
           echo "|--------|-------|" >> "$GITHUB_STEP_SUMMARY"
-          echo "| **Source** | \`${{ steps.ref.outputs.ref }}\` |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| **Release** | \`${VERSION}\` |" >> "$GITHUB_STEP_SUMMARY"
           echo "| **Target** | \`production\` |" >> "$GITHUB_STEP_SUMMARY"
           echo "| **Triggered by** | ${{ github.actor }} |" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
-          echo "The **Deploy Production** workflow will run automatically." >> "$GITHUB_STEP_SUMMARY"
+          echo "The **Deploy Production** workflow will trigger automatically." >> "$GITHUB_STEP_SUMMARY"

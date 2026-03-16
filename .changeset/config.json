@@ -1,20 +1,37 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@3.0.0/schema.json",
-  "changelog": "@changesets/cli/changelog",
+  "changelog": ["@changesets/changelog-github", { "repo": "fnyamweya/juris" }],
   "commit": false,
-  "fixed": [],
-  "linked": [
+  "fixed": [
     [
       "@jusris/domain",
+      "@jusris/types",
       "@jusris/auth",
       "@jusris/security",
       "@jusris/access-control",
       "@jusris/data",
       "@jusris/rag",
       "@jusris/crypto",
-      "@jusris/schemas"
+      "@jusris/schemas",
+      "@jusris/config",
+      "@jusris/observability",
+      "@jusris/cloudflare",
+      "@jusris/audit",
+      "@jusris/ingestion",
+      "@jusris/queueing",
+      "@jusris/ui",
+      "@jusris/testing",
+      "@jusris/dispatch-worker",
+      "@jusris/provisioning-worker",
+      "@jusris/maintenance-worker",
+      "@jusris/tenant-runtime-worker",
+      "@jusris/ingestion-worker",
+      "@jusris/webhook-worker",
+      "@jusris/web",
+      "@jusris/dashboard"
     ]
   ],
+  "linked": [],
   "access": "restricted",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
