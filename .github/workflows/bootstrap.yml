@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       dry_run:
-        description: "Dry run (show what would be created without creating)"
+        description: 'Dry run (show what would be created without creating)'
         required: false
-        default: "false"
+        default: 'false'
         type: boolean
 
 jobs:

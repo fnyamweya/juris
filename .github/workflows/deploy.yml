@@ -46,6 +46,20 @@ jobs:
           MASTER_REGISTRY_D1_ID: ${{ secrets.MASTER_REGISTRY_D1_ID }}
           TENANT_D1_ID: ${{ secrets.TENANT_D1_ID }}
 
+      - name: Ensure queues exist
+        run: |
+          for queue in jusris-provisioning jusris-ingestion; do
+            if ! npx wrangler queues list 2>/dev/null | grep -q "\"queue_name\":\"${queue}\""; then
+              echo "Creating queue: $queue"
+              npx wrangler queues create "$queue"
+            else
+              echo "Queue exists: $queue"
+            fi
+          done
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
       - name: Deploy Dispatch Worker
         run: pnpm --filter @jusris/dispatch-worker run deploy
         env:
