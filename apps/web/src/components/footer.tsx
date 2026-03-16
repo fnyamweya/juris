@@ -94,7 +94,7 @@ export function Footer() {
         </div>
         <div className="mt-12 border-t border-slate-200 pt-8">
           <p className="text-center text-sm text-slate-500">
-            © {currentYear} JUSRIS. All rights reserved.
+            © {currentYear} Juris. All rights reserved.
           </p>
         </div>
       </div>

@@ -9,8 +9,8 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata: Metadata = {
-  title: 'JUSRIS Dashboard',
-  description: 'Internal authenticated portal for JUSRIS — Enterprise Legal AI Platform.',
+  title: 'Juris Dashboard',
+  description: 'Internal authenticated portal for Juris — Enterprise Legal AI Platform.',
 };
 
 export default function RootLayout({

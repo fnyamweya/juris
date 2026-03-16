@@ -125,7 +125,7 @@ export default function HomePage() {
               Trusted across industries
             </h2>
             <p className="mt-4 text-lg text-slate-600">
-              From law firms to government agencies, JUSRIS adapts to your workflows and compliance
+              From law firms to government agencies, Juris adapts to your workflows and compliance
               requirements.
             </p>
           </div>
@@ -148,7 +148,7 @@ export default function HomePage() {
                 Enterprise-Grade Security
               </h2>
               <p className="mt-4 text-lg text-slate-600">
-                Security is not an afterthought. Every layer of JUSRIS is designed for the most
+                Security is not an afterthought. Every layer of Juris is designed for the most
                 sensitive legal workloads.
               </p>
             </div>

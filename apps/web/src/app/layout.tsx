@@ -10,11 +10,11 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata: Metadata = {
-  title: 'JUSRIS — Enterprise Legal AI Platform',
+  title: 'Juris — Enterprise Legal AI Platform',
   description:
     'Secure, multi-tenant legal AI platform for law firms, corporate legal teams, and government agencies. Document intelligence, AI-powered search, and enterprise-grade compliance.',
   openGraph: {
-    title: 'JUSRIS — Enterprise Legal AI Platform',
+    title: 'Juris — Enterprise Legal AI Platform',
     description:
       'Secure, multi-tenant legal AI platform for law firms, corporate legal teams, and government agencies.',
   },

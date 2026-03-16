@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Contact — JUSRIS',
-  description: 'Get in touch with JUSRIS. Request access or reach our team.',
+  title: 'Contact — Juris',
+  description: 'Get in touch with Juris. Request access or reach our team.',
 };
 
 export default function ContactPage() {

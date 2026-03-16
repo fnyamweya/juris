@@ -187,7 +187,7 @@ set_secret() {
 # =============================================
 
 echo "============================================="
-echo " JUSRIS Platform — Resource Bootstrap"
+echo " Juris Platform — Resource Bootstrap"
 echo "============================================="
 echo " Account: $CLOUDFLARE_ACCOUNT_ID"
 [[ -n "$REPO" ]] && echo " Repo:    $REPO"

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Security — JUSRIS',
+  title: 'Security — Juris',
   description:
     'Enterprise-grade security posture: encryption, tenant isolation, audit trails, and compliance.',
 };

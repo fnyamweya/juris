@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Features — JUSRIS',
+  title: 'Features — Juris',
   description:
-    'Explore JUSRIS features: tenant isolation, document intelligence, AI-powered search, audit trails, and more.',
+    'Explore Juris features: tenant isolation, document intelligence, AI-powered search, audit trails, and more.',
 };
 
 export default function FeaturesPage() {

@@ -9,7 +9,7 @@ export default function SignInPage() {
     <Card className="w-full max-w-md">
       <CardHeader className="space-y-1 text-center">
         <div className="mb-4 flex justify-center">
-          <span className="text-2xl font-bold tracking-tight text-primary">JUSRIS</span>
+          <span className="text-2xl font-bold tracking-tight text-primary">Juris</span>
         </div>
         <CardTitle className="text-xl">Sign in</CardTitle>
         <CardDescription>Enter your organization slug and email to continue</CardDescription>

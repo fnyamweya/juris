@@ -1,7 +1,7 @@
 {
   "name": "jusris",
   "private": true,
-  "description": "JUSRIS — Enterprise Legal AI Platform",
+  "description": "Juris — Enterprise Legal AI Platform",
   "license": "UNLICENSED",
   "engines": {
     "node": ">=20.0.0",
@@ -42,6 +42,11 @@
     "rimraf": "^6.0.0",
     "turbo": "^2.3.0",
     "typescript": "^5.7.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "eslint": "^8.57.0"
+    }
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": [

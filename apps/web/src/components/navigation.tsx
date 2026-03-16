@@ -18,7 +18,7 @@ export function Navigation() {
           href="/"
           className="text-xl font-semibold tracking-tight text-slate-900 transition-colors hover:text-brand-600"
         >
-          JUSRIS
+          Juris
         </Link>
 
         <div className="hidden md:flex md:items-center md:gap-8">

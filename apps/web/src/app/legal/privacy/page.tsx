@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy — JUSRIS',
-  description: 'JUSRIS privacy policy and data handling practices.',
+  title: 'Privacy Policy — Juris',
+  description: 'Juris privacy policy and data handling practices.',
 };
 
 export default function PrivacyPage() {

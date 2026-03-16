@@ -2,7 +2,7 @@
 
 ## Project
 
-**JUSRIS** — Cloudflare-native multi-tenant legal AI platform.
+**Juris** — Cloudflare-native multi-tenant legal AI platform.
 
 ## Architecture
 

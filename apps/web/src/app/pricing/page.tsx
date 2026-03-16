@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Pricing — JUSRIS',
-  description: 'JUSRIS pricing plans and enterprise options.',
+  title: 'Pricing — Juris',
+  description: 'Juris pricing plans and enterprise options.',
 };
 
 export default function PricingPage() {

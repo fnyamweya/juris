@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Terms of Service — JUSRIS',
-  description: 'JUSRIS terms of service and usage agreement.',
+  title: 'Terms of Service — Juris',
+  description: 'Juris terms of service and usage agreement.',
 };
 
 export default function TermsPage() {

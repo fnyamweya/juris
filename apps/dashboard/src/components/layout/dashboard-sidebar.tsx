@@ -53,7 +53,7 @@ export function DashboardSidebar({ isAdmin = true }: { isAdmin?: boolean }) {
       <div className="flex h-14 items-center justify-between border-b px-4">
         {!collapsed && (
           <Link href="/" className="font-semibold tracking-tight">
-            JUSRIS
+            Juris
           </Link>
         )}
         <Button

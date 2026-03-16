@@ -2,7 +2,7 @@
 
 ## Security Posture
 
-JUSRIS follows **zero trust** and **defense in depth**. All access is authenticated and authorized at the boundary. No implicit trust between services.
+Juris follows **zero trust** and **defense in depth**. All access is authenticated and authorized at the boundary. No implicit trust between services.
 
 ## Reporting Vulnerabilities
 

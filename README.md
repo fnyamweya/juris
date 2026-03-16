@@ -1,6 +1,6 @@
-# JUSRIS — Enterprise Legal AI Platform
+# Juris — Enterprise Legal AI Platform
 
-JUSRIS is a Cloudflare-native, multi-tenant legal AI platform for enterprise document management, retrieval-augmented generation (RAG), and intelligent workflows.
+Juris is a Cloudflare-native, multi-tenant legal AI platform for enterprise document management, retrieval-augmented generation (RAG), and intelligent workflows.
 
 ## Architecture Overview
 

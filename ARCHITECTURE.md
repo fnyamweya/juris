@@ -1,8 +1,8 @@
-# JUSRIS Architecture
+# Juris Architecture
 
 ## Platform Overview
 
-JUSRIS is a Cloudflare-native, multi-tenant legal AI platform. All runtime logic runs on Cloudflare Workers. Tenants are physically isolated via dedicated D1, R2, and Vectorize resources.
+Juris is a Cloudflare-native, multi-tenant legal AI platform. All runtime logic runs on Cloudflare Workers. Tenants are physically isolated via dedicated D1, R2, and Vectorize resources.
 
 ## System Diagram
 
