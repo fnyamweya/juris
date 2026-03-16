@@ -135,7 +135,7 @@ describe('envelope encryption', () => {
     });
 
     expect(enc1.iv).not.toEqual(enc2.iv);
-    expect(enc1.ciphertext).not.toEqual(enc2.ciphertext);
+    expect(new Uint8Array(enc1.ciphertext)).not.toEqual(new Uint8Array(enc2.ciphertext));
   });
 });
 

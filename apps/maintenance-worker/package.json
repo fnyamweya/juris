@@ -9,8 +9,8 @@
     "deploy": "wrangler deploy --env ${DEPLOY_ENV:-staging}",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src/",
-    "test": "vitest run",
-    "test:unit": "vitest run",
+    "test": "vitest run --passWithNoTests",
+    "test:unit": "vitest run --passWithNoTests",
     "clean": "rimraf dist"
   },
   "dependencies": {

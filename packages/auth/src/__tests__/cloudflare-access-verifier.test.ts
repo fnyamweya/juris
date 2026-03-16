@@ -87,8 +87,10 @@ describe('createCloudflareAccessVerifier', () => {
     const header = { alg: 'RS256', kid: 'test-kid' };
     const token = await signJwt(header, payload, keyPair.privateKey);
 
+    const jwksBody = JSON.stringify({ keys: [publicJwk] });
     const fetchMock = vi.fn().mockResolvedValue({
       ok: true,
+      text: async () => jwksBody,
       json: async () => ({ keys: [publicJwk] }),
     });
     vi.stubGlobal('fetch', fetchMock);
@@ -126,8 +128,10 @@ describe('createCloudflareAccessVerifier', () => {
     const header = { alg: 'RS256', kid: 'test-kid' };
     const token = await signJwt(header, payload, keyPair.privateKey);
 
+    const jwksBody = JSON.stringify({ keys: [publicJwk] });
     const fetchMock = vi.fn().mockResolvedValue({
       ok: true,
+      text: async () => jwksBody,
       json: async () => ({ keys: [publicJwk] }),
     });
     vi.stubGlobal('fetch', fetchMock);
@@ -158,8 +162,10 @@ describe('createCloudflareAccessVerifier', () => {
     const header = { alg: 'RS256', kid: 'test-kid' };
     const token = await signJwt(header, payload, keyPair.privateKey);
 
+    const jwksBody = JSON.stringify({ keys: [publicJwk] });
     const fetchMock = vi.fn().mockResolvedValue({
       ok: true,
+      text: async () => jwksBody,
       json: async () => ({ keys: [publicJwk] }),
     });
     vi.stubGlobal('fetch', fetchMock);
@@ -212,8 +218,10 @@ describe('createCloudflareAccessVerifier', () => {
     const header = { alg: 'RS256', kid: 'test-kid' };
     const token = await signJwt(header, payload, keyPair.privateKey);
 
+    const jwksBody = JSON.stringify({ keys: [publicJwk] });
     const fetchMock = vi.fn().mockResolvedValue({
       ok: true,
+      text: async () => jwksBody,
       json: async () => ({ keys: [publicJwk] }),
     });
     vi.stubGlobal('fetch', fetchMock);

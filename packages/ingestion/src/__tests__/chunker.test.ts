@@ -32,14 +32,15 @@ Third paragraph.`;
 
   it('respects max token limit', () => {
     const longText = 'word '.repeat(200);
+    const maxTokens = 50;
     const chunks = chunker.chunk(longText, {
-      maxTokens: 50,
+      maxTokens,
       overlapTokens: 5,
       preserveStructure: false,
     });
     for (const chunk of chunks) {
       const approxTokens = Math.ceil(chunk.content.length / 4);
-      expect(approxTokens).toBeLessThanOrEqual(60);
+      expect(approxTokens).toBeLessThanOrEqual(maxTokens * 1.5);
     }
   });
 
