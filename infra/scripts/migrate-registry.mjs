@@ -20,7 +20,7 @@ for (const file of files) {
   const envFlag = env ? `--env ${env}` : '';
   try {
     execSync(
-      `wrangler d1 execute jusris-master-registry ${envFlag} --file="${filePath}"`,
+      `wrangler d1 execute juris-master-registry ${envFlag} --file="${filePath}"`,
       { stdio: 'inherit' }
     );
     console.log(`  ✓ ${file} applied`);

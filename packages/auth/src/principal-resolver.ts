@@ -1,4 +1,4 @@
-import type { PrincipalType } from '@jusris/domain';
+import type { PrincipalType } from '@juris/domain';
 
 import type { VerifiedToken } from './token-verifier.js';
 

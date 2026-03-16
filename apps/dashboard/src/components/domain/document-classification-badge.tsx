@@ -1,4 +1,4 @@
-import { DocumentClassification } from '@jusris/domain';
+import { DocumentClassification } from '@juris/domain';
 
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';

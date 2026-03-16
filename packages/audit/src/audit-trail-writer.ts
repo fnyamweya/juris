@@ -1,11 +1,11 @@
-import type { AuditChainSigner } from '@jusris/crypto';
+import type { AuditChainSigner } from '@juris/crypto';
 import {
   createAuditEventId,
   type AuditEvent,
   type AuditAction,
   type PrincipalType,
-} from '@jusris/domain';
-import type { Logger } from '@jusris/observability';
+} from '@juris/domain';
+import type { Logger } from '@juris/observability';
 
 const GENESIS_HASH = 'GENESIS';
 const SIGNATURE_VERSION = '1';

@@ -11,7 +11,7 @@ if (slugIndex === -1 || !process.argv[slugIndex + 1]) {
   process.exit(1);
 }
 const slug = process.argv[slugIndex + 1];
-const dbName = `jusris-tenant-${slug}`;
+const dbName = `juris-tenant-${slug}`;
 
 console.log(`Creating D1 database: ${dbName}`);
 try {

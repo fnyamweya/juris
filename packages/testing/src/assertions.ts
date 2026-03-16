@@ -1,4 +1,4 @@
-import type { AccessDecision, Result } from '@jusris/domain';
+import type { AccessDecision, Result } from '@juris/domain';
 
 export function expectAccessDenied(decision: AccessDecision): void {
   if (decision.allowed) {

@@ -1,5 +1,5 @@
-import type { AccessRequest, AccessDecision } from '@jusris/domain';
-import type { Logger } from '@jusris/observability';
+import type { AccessRequest, AccessDecision } from '@juris/domain';
+import type { Logger } from '@juris/observability';
 
 import type { PolicyLoader } from './policy-loader.js';
 import type { RoleBindingLoader, EffectiveBinding } from './role-binding-loader.js';

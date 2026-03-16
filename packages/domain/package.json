@@ -1,5 +1,5 @@
 {
-  "name": "@jusris/domain",
+  "name": "@juris/domain",
   "version": "0.1.0",
   "private": true,
   "license": "UNLICENSED",
@@ -16,8 +16,8 @@
     "clean": "rimraf dist"
   },
   "devDependencies": {
-    "@jusris/eslint-config": "workspace:^",
-    "@jusris/tsconfig": "workspace:*",
+    "@juris/eslint-config": "workspace:^",
+    "@juris/tsconfig": "workspace:*",
     "eslint": "^8.57.0",
     "rimraf": "^6.0.0",
     "typescript": "^5.7.0",

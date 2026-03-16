@@ -1,4 +1,4 @@
-import type { DocumentClassification } from '@jusris/domain';
+import type { DocumentClassification } from '@juris/domain';
 
 export interface RetrievedChunk {
   chunkId: string;

@@ -1,5 +1,5 @@
-import { createRequestContext, createLogger } from '@jusris/observability';
-import { applySecurityHeaders } from '@jusris/security';
+import { createRequestContext, createLogger } from '@juris/observability';
+import { applySecurityHeaders } from '@juris/security';
 
 import type { TenantRuntimeWorkerEnv } from './env.js';
 import { extractInternalContext } from './middleware/internal-auth.js';

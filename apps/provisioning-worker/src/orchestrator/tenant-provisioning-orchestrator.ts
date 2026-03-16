@@ -1,6 +1,6 @@
-import type { CloudflareApiClient } from '@jusris/cloudflare';
-import type { D1Client } from '@jusris/data';
-import type { Logger } from '@jusris/observability';
+import type { CloudflareApiClient } from '@juris/cloudflare';
+import type { D1Client } from '@juris/data';
+import type { Logger } from '@juris/observability';
 
 export type ProvisioningStep =
   | 'REGISTRY_COMMITTED'

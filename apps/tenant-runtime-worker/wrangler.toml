@@ -1,4 +1,4 @@
-name = "jusris-tenant-runtime"
+name = "juris-tenant-runtime"
 main = "src/index.ts"
 compatibility_date = "2024-12-01"
 compatibility_flags = ["nodejs_compat"]
@@ -8,16 +8,16 @@ enabled = true
 
 [[d1_databases]]
 binding = "TENANT_DB"
-database_name = "jusris-tenant"
+database_name = "juris-tenant"
 database_id = ""
 
 [[r2_buckets]]
 binding = "TENANT_STORAGE"
-bucket_name = "jusris-tenant-storage"
+bucket_name = "juris-tenant-storage"
 
 [[vectorize]]
 binding = "TENANT_VECTOR_INDEX"
-index_name = "jusris-tenant-vectors"
+index_name = "juris-tenant-vectors"
 
 [ai]
 binding = "AI"
@@ -28,30 +28,30 @@ LOG_LEVEL = "debug"
 
 # ── UAT ──
 [env.uat]
-name = "jusris-tenant-runtime-uat"
+name = "juris-tenant-runtime-uat"
 [[env.uat.r2_buckets]]
 binding = "TENANT_STORAGE"
-bucket_name = "jusris-tenant-storage-uat"
+bucket_name = "juris-tenant-storage-uat"
 [env.uat.vars]
 ENVIRONMENT = "uat"
 LOG_LEVEL = "debug"
 
 # ── Staging ──
 [env.staging]
-name = "jusris-tenant-runtime-staging"
+name = "juris-tenant-runtime-staging"
 [[env.staging.r2_buckets]]
 binding = "TENANT_STORAGE"
-bucket_name = "jusris-tenant-storage-staging"
+bucket_name = "juris-tenant-storage-staging"
 [env.staging.vars]
 ENVIRONMENT = "staging"
 LOG_LEVEL = "info"
 
 # ── Production ──
 [env.production]
-name = "jusris-tenant-runtime"
+name = "juris-tenant-runtime"
 [[env.production.r2_buckets]]
 binding = "TENANT_STORAGE"
-bucket_name = "jusris-tenant-storage"
+bucket_name = "juris-tenant-storage"
 [env.production.vars]
 ENVIRONMENT = "production"
 LOG_LEVEL = "warn"

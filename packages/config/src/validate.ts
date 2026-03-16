@@ -1,4 +1,4 @@
-import { ok, err, type Result } from '@jusris/domain';
+import { ok, err, type Result } from '@juris/domain';
 import type { ZodSchema } from 'zod';
 
 export interface ValidationError {

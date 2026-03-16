@@ -1,4 +1,4 @@
-import type { Logger } from '@jusris/observability';
+import type { Logger } from '@juris/observability';
 
 export class CloudflareApiError extends Error {
   readonly statusCode: number;

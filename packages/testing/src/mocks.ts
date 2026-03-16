@@ -1,8 +1,8 @@
-import type { PolicyEvaluator } from '@jusris/access-control';
-import type { AuditEventStore } from '@jusris/audit';
-import type { TokenVerifier, VerifiedToken } from '@jusris/auth';
-import type { AuditEvent, AccessDecision } from '@jusris/domain';
-import type { Logger } from '@jusris/observability';
+import type { PolicyEvaluator } from '@juris/access-control';
+import type { AuditEventStore } from '@juris/audit';
+import type { TokenVerifier, VerifiedToken } from '@juris/auth';
+import type { AuditEvent, AccessDecision } from '@juris/domain';
+import type { Logger } from '@juris/observability';
 
 export interface LogEntry {
   level: string;
@@ -39,7 +39,7 @@ export function createMockTokenVerifier(result?: VerifiedToken): TokenVerifier {
     sub: 'user-123',
     email: 'test@example.com',
     iss: 'https://auth.example.com',
-    aud: 'jusris',
+    aud: 'juris',
     iat: Math.floor(Date.now() / 1000),
     exp: Math.floor(Date.now() / 1000) + 3600,
     claims: {},

@@ -1,4 +1,4 @@
-import { TenantStatus, TenantTier } from '@jusris/domain/tenant';
+import { TenantStatus, TenantTier } from '@juris/domain/tenant';
 import { z } from 'zod';
 
 import { ulidSchema } from './common.js';

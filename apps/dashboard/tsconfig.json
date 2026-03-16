@@ -1,5 +1,5 @@
 {
-  "extends": "@jusris/tsconfig/nextjs.json",
+  "extends": "@juris/tsconfig/nextjs.json",
   "compilerOptions": {
     "paths": { "@/*": ["./src/*"] }
   },

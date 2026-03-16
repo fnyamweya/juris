@@ -48,7 +48,7 @@ No cross-tenant data access. Dispatch enforces tenant context before forwarding.
 1. Client → Cloudflare edge
 2. CF Access validates JWT (if protected route)
 3. Dispatch Worker: parse host/path → resolve tenant from registry
-4. Dispatch verifies JWT claims, builds internal headers (`x-jusris-tenant-id`, `x-jusris-actor-id`)
+4. Dispatch verifies JWT claims, builds internal headers (`x-juris-tenant-id`, `x-juris-actor-id`)
 5. Forward to Tenant Runtime Worker with tenant context
 6. Tenant Runtime: load tenant D1/R2/Vectorize bindings, execute request
 7. Response → Client
@@ -122,26 +122,26 @@ Query → Embed query → Vectorize search → Retrieve chunks
 ## Package Dependency Graph (text)
 
 ```
-@jusris/domain (core, no deps)
-@jusris/types
-@jusris/tsconfig
+@juris/domain (core, no deps)
+@juris/types
+@juris/tsconfig
 
-@jusris/schemas → domain
-@jusris/config
-@jusris/observability
+@juris/schemas → domain
+@juris/config
+@juris/observability
 
-@jusris/auth → domain, config
-@jusris/crypto → config
-@jusris/security → auth, crypto, domain
-@jusris/access-control → domain
-@jusris/audit → domain, observability
+@juris/auth → domain, config
+@juris/crypto → config
+@juris/security → auth, crypto, domain
+@juris/access-control → domain
+@juris/audit → domain, observability
 
-@jusris/cloudflare → types
-@jusris/data → domain, cloudflare
-@jusris/queueing
+@juris/cloudflare → types
+@juris/data → domain, cloudflare
+@juris/queueing
 
-@jusris/ingestion → domain, observability
-@jusris/rag → domain
+@juris/ingestion → domain, observability
+@juris/rag → domain
 
 dispatch-worker → auth, config, domain, observability, security
 tenant-runtime-worker → auth, data, domain, rag, ...

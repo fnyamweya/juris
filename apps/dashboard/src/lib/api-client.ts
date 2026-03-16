@@ -1,4 +1,4 @@
-import type { Matter, MatterId, DocumentId } from '@jusris/domain';
+import type { Matter, MatterId, DocumentId } from '@juris/domain';
 
 function generateRequestId(): string {
   return `req_${Date.now()}_${Math.random().toString(36).slice(2, 11)}`;

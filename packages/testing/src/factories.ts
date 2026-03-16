@@ -6,7 +6,7 @@ import type {
   Document,
   AuditEvent,
   IngestionJob,
-} from '@jusris/domain';
+} from '@juris/domain';
 import {
   createTenantId,
   createPrincipalId,
@@ -23,7 +23,7 @@ import {
   DocumentClassification,
   AuditAction,
   IngestionStatus,
-} from '@jusris/domain';
+} from '@juris/domain';
 
 function ulidLike(): string {
   const t = Date.now().toString(36).toUpperCase();

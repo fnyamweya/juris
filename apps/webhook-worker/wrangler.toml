@@ -1,4 +1,4 @@
-name = "jusris-webhooks"
+name = "juris-webhooks"
 main = "src/index.ts"
 compatibility_date = "2024-12-01"
 compatibility_flags = ["nodejs_compat"]
@@ -12,21 +12,21 @@ LOG_LEVEL = "debug"
 
 # ── UAT ──
 [env.uat]
-name = "jusris-webhooks-uat"
+name = "juris-webhooks-uat"
 [env.uat.vars]
 ENVIRONMENT = "uat"
 LOG_LEVEL = "debug"
 
 # ── Staging ──
 [env.staging]
-name = "jusris-webhooks-staging"
+name = "juris-webhooks-staging"
 [env.staging.vars]
 ENVIRONMENT = "staging"
 LOG_LEVEL = "info"
 
 # ── Production ──
 [env.production]
-name = "jusris-webhooks"
+name = "juris-webhooks"
 [env.production.vars]
 ENVIRONMENT = "production"
 LOG_LEVEL = "warn"

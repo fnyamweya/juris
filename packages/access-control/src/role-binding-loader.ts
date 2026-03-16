@@ -1,4 +1,4 @@
-import type { Permission } from '@jusris/domain';
+import type { Permission } from '@juris/domain';
 
 export type BindingScope = 'TENANT' | 'MATTER' | 'DOCUMENT';
 

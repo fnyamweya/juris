@@ -1,5 +1,5 @@
-import type { IngestionJob, Result } from '@jusris/domain';
-import type { Logger } from '@jusris/observability';
+import type { IngestionJob, Result } from '@juris/domain';
+import type { Logger } from '@juris/observability';
 
 import type { ChunkingStrategy } from './chunker.js';
 import type { RedactionDetector } from './redaction-detector.js';

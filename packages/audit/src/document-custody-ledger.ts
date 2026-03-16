@@ -1,5 +1,5 @@
-import { AuditAction } from '@jusris/domain';
-import type { AuditEvent, PrincipalType } from '@jusris/domain';
+import { AuditAction } from '@juris/domain';
+import type { AuditEvent, PrincipalType } from '@juris/domain';
 
 import { type AuditTrailWriter } from './audit-trail-writer.js';
 

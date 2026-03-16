@@ -1,14 +1,14 @@
-import type { ActorContext } from '@jusris/domain';
-import type { RequestContext, Logger } from '@jusris/observability';
+import type { ActorContext } from '@juris/domain';
+import type { RequestContext, Logger } from '@juris/observability';
 
 import type { DispatchWorkerEnv } from '../env.js';
 import { stripUntrustedHeaders } from '../headers.js';
 
-const INTERNAL_TENANT_HEADER = 'x-jusris-tenant-id';
-const INTERNAL_ACTOR_HEADER = 'x-jusris-actor-id';
-const INTERNAL_ACTOR_TYPE_HEADER = 'x-jusris-actor-type';
-const INTERNAL_REQUEST_ID_HEADER = 'x-jusris-request-id';
-const INTERNAL_TRACE_ID_HEADER = 'x-jusris-trace-id';
+const INTERNAL_TENANT_HEADER = 'x-juris-tenant-id';
+const INTERNAL_ACTOR_HEADER = 'x-juris-actor-id';
+const INTERNAL_ACTOR_TYPE_HEADER = 'x-juris-actor-type';
+const INTERNAL_REQUEST_ID_HEADER = 'x-juris-request-id';
+const INTERNAL_TRACE_ID_HEADER = 'x-juris-trace-id';
 
 export async function handleTenantDispatch(
   request: Request,

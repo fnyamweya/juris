@@ -1,5 +1,5 @@
 {
-  "name": "@jusris/web",
+  "name": "@juris/web",
   "version": "0.1.0",
   "private": true,
   "license": "UNLICENSED",
@@ -13,14 +13,14 @@
     "clean": "rimraf .next"
   },
   "dependencies": {
-    "@jusris/ui": "workspace:*",
+    "@juris/ui": "workspace:*",
     "next": "^15.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@jusris/eslint-config": "workspace:^",
-    "@jusris/tsconfig": "workspace:*",
+    "@juris/eslint-config": "workspace:^",
+    "@juris/tsconfig": "workspace:*",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "autoprefixer": "^10.4.0",

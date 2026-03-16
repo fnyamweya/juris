@@ -1,5 +1,5 @@
-import type { Citation } from '@jusris/domain';
-import { createChunkId, createDocumentId } from '@jusris/domain';
+import type { Citation } from '@juris/domain';
+import { createChunkId, createDocumentId } from '@juris/domain';
 
 import type { RetrievedChunk } from './retrieval-orchestrator.js';
 

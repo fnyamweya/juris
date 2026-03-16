@@ -12,7 +12,7 @@ export const CSP_DIRECTIVES: Record<string, string[]> = {
   'script-src': ["'self'"],
   'style-src': ["'self'", "'unsafe-inline'"],
   'img-src': ["'self'", 'data:', 'https:'],
-  'connect-src': ["'self'", 'https://api.jusris.io', 'wss://api.jusris.io'],
+  'connect-src': ["'self'", 'https://api.juris.io', 'wss://api.juris.io'],
   'font-src': ["'self'"],
   'frame-ancestors': ["'none'"],
   'base-uri': ["'self'"],

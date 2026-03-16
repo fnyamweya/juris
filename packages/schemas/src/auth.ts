@@ -1,4 +1,4 @@
-import { PrincipalType } from '@jusris/domain/identity';
+import { PrincipalType } from '@juris/domain/identity';
 import { z } from 'zod';
 
 export const loginRequestSchema = z.object({

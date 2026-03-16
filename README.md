@@ -26,27 +26,27 @@ Juris is a Cloudflare-native, multi-tenant legal AI platform for enterprise docu
 
 ### Packages
 
-| Package                  | Description                                    |
-| ------------------------ | ---------------------------------------------- |
-| `@jusris/ui`             | Design system, `cn` utility, shared components |
-| `@jusris/domain`         | Domain models, types, invariants               |
-| `@jusris/types`          | Shared API/Cloudflare type definitions         |
-| `@jusris/schemas`        | Validation schemas (Zod)                       |
-| `@jusris/auth`           | Auth primitives, JWT handling                  |
-| `@jusris/security`       | Crypto, envelope encryption                    |
-| `@jusris/access-control` | RBAC, ReBAC, ABAC                              |
-| `@jusris/audit`          | Audit logging, custody ledger                  |
-| `@jusris/crypto`         | Key management, encryption helpers             |
-| `@jusris/config`         | Environment, feature flags                     |
-| `@jusris/cloudflare`     | CF API client, D1/R2/Vectorize wrappers        |
-| `@jusris/data`           | Data access abstractions                       |
-| `@jusris/ingestion`      | Document parsing, chunking                     |
-| `@jusris/rag`            | Embedding, retrieval, prompt assembly          |
-| `@jusris/observability`  | Logging, tracing, metrics                      |
-| `@jusris/queueing`       | Queue abstractions                             |
-| `@jusris/tsconfig`       | Shared TypeScript configs                      |
-| `@jusris/testing`        | Test utilities                                 |
-| `@jusris/eslint-config`  | Shared ESLint config                           |
+| Package                 | Description                                    |
+| ----------------------- | ---------------------------------------------- |
+| `@juris/ui`             | Design system, `cn` utility, shared components |
+| `@juris/domain`         | Domain models, types, invariants               |
+| `@juris/types`          | Shared API/Cloudflare type definitions         |
+| `@juris/schemas`        | Validation schemas (Zod)                       |
+| `@juris/auth`           | Auth primitives, JWT handling                  |
+| `@juris/security`       | Crypto, envelope encryption                    |
+| `@juris/access-control` | RBAC, ReBAC, ABAC                              |
+| `@juris/audit`          | Audit logging, custody ledger                  |
+| `@juris/crypto`         | Key management, encryption helpers             |
+| `@juris/config`         | Environment, feature flags                     |
+| `@juris/cloudflare`     | CF API client, D1/R2/Vectorize wrappers        |
+| `@juris/data`           | Data access abstractions                       |
+| `@juris/ingestion`      | Document parsing, chunking                     |
+| `@juris/rag`            | Embedding, retrieval, prompt assembly          |
+| `@juris/observability`  | Logging, tracing, metrics                      |
+| `@juris/queueing`       | Queue abstractions                             |
+| `@juris/tsconfig`       | Shared TypeScript configs                      |
+| `@juris/testing`        | Test utilities                                 |
+| `@juris/eslint-config`  | Shared ESLint config                           |
 
 ## Prerequisites
 

@@ -6,7 +6,7 @@ Juris follows **zero trust** and **defense in depth**. All access is authenticat
 
 ## Reporting Vulnerabilities
 
-Report security issues to **security@jusris.com**. Do not open public issues for vulnerabilities.
+Report security issues to **security@juris.com**. Do not open public issues for vulnerabilities.
 
 ## Encryption
 
@@ -24,7 +24,7 @@ Report security issues to **security@jusris.com**. Do not open public issues for
 
 - **Cloudflare Access JWT** at edge
 - **Enterprise SSO** (SAML/OIDC) for internal users
-- Service-to-service: internal auth headers (`x-jusris-tenant-id`, `x-jusris-actor-id`)
+- Service-to-service: internal auth headers (`x-juris-tenant-id`, `x-juris-actor-id`)
 
 ## Authorization
 

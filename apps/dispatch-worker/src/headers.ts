@@ -1,17 +1,17 @@
-const JUSRIS_INTERNAL_HEADERS = [
-  'x-jusris-tenant-id',
-  'x-jusris-actor-id',
-  'x-jusris-actor-type',
-  'x-jusris-request-id',
-  'x-jusris-trace-id',
+const JURIS_INTERNAL_HEADERS = [
+  'x-juris-tenant-id',
+  'x-juris-actor-id',
+  'x-juris-actor-type',
+  'x-juris-request-id',
+  'x-juris-trace-id',
 ];
 
-export const TRUSTED_INTERNAL_HEADERS = JUSRIS_INTERNAL_HEADERS;
+export const TRUSTED_INTERNAL_HEADERS = JURIS_INTERNAL_HEADERS;
 
 export function stripUntrustedHeaders(incomingHeaders: Headers): Headers {
   const clean = new Headers();
   for (const [key, value] of incomingHeaders.entries()) {
-    if (!key.toLowerCase().startsWith('x-jusris-')) {
+    if (!key.toLowerCase().startsWith('x-juris-')) {
       clean.set(key, value);
     }
   }

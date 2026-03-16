@@ -1,5 +1,5 @@
-import type { ActorContext } from '@jusris/domain';
-import type { RequestContext, Logger } from '@jusris/observability';
+import type { ActorContext } from '@juris/domain';
+import type { RequestContext, Logger } from '@juris/observability';
 
 import type { DispatchWorkerEnv } from '../env.js';
 

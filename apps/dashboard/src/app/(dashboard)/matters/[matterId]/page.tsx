@@ -1,4 +1,4 @@
-import { MatterStatus } from '@jusris/domain';
+import { MatterStatus } from '@juris/domain';
 import { ChevronLeft } from 'lucide-react';
 import Link from 'next/link';
 

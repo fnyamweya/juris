@@ -1,5 +1,5 @@
 {
-  "extends": "@jusris/tsconfig/library.json",
+  "extends": "@juris/tsconfig/library.json",
   "compilerOptions": {
     "outDir": "dist",
     "rootDir": "src",

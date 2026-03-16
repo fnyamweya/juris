@@ -1,5 +1,5 @@
 {
-  "extends": ["@jusris/eslint-config/nextjs"],
+  "extends": ["@juris/eslint-config/nextjs"],
   "root": true,
   "parserOptions": { "project": "./tsconfig.json" }
 }

@@ -16,7 +16,7 @@
 1. **No mutable global state** — workers are stateless; state in D1/R2/KV
 2. **Tenant isolation mandatory** — never cross tenant boundaries in data access
 3. **Auth at boundary** — verify before any tenant-scoped work
-4. **Domain naming** — use `@jusris/domain` types; avoid ad-hoc shapes
+4. **Domain naming** — use `@juris/domain` types; avoid ad-hoc shapes
 5. **Fail at the gate** — invalid tenant/auth → reject immediately, no partial work
 
 ## Test Requirements
@@ -27,15 +27,15 @@
 
 ## Key Packages
 
-| Package                  | Purpose                          |
-| ------------------------ | -------------------------------- |
-| `@jusris/domain`         | Domain models, types, invariants |
-| `@jusris/auth`           | Auth primitives                  |
-| `@jusris/security`       | Crypto, envelope encryption      |
-| `@jusris/access-control` | RBAC, ReBAC, ABAC                |
-| `@jusris/data`           | D1/R2/Vectorize abstractions     |
-| `@jusris/rag`            | Embedding, retrieval, prompts    |
-| `@jusris/ui`             | Design system, `cn`, components  |
+| Package                 | Purpose                          |
+| ----------------------- | -------------------------------- |
+| `@juris/domain`         | Domain models, types, invariants |
+| `@juris/auth`           | Auth primitives                  |
+| `@juris/security`       | Crypto, envelope encryption      |
+| `@juris/access-control` | RBAC, ReBAC, ABAC                |
+| `@juris/data`           | D1/R2/Vectorize abstractions     |
+| `@juris/rag`            | Embedding, retrieval, prompts    |
+| `@juris/ui`             | Design system, `cn`, components  |
 
 ## Style
 

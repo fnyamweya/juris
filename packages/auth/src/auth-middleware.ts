@@ -1,7 +1,7 @@
-import type { ActorContext } from '@jusris/domain';
-import { createPrincipalId, createTenantId } from '@jusris/domain';
-import type { Logger } from '@jusris/observability';
-import { REQUEST_ID_HEADER, TRACE_ID_HEADER } from '@jusris/observability';
+import type { ActorContext } from '@juris/domain';
+import { createPrincipalId, createTenantId } from '@juris/domain';
+import type { Logger } from '@juris/observability';
+import { REQUEST_ID_HEADER, TRACE_ID_HEADER } from '@juris/observability';
 
 import { AUTH_ERRORS } from './auth-errors.js';
 import { PrincipalResolutionError } from './principal-resolver.js';

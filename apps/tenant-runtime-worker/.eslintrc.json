@@ -1,5 +1,5 @@
 {
-  "extends": ["@jusris/eslint-config/worker"],
+  "extends": ["@juris/eslint-config/worker"],
   "root": true,
   "parserOptions": { "project": "./tsconfig.json" }
 }

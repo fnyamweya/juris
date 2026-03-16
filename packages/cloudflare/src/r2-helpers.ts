@@ -1,4 +1,4 @@
-import type { Logger } from '@jusris/observability';
+import type { Logger } from '@juris/observability';
 
 export interface R2Bucket {
   put(

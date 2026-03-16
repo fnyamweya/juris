@@ -1,5 +1,5 @@
-import type { ActorContext, AccessDecision, MatterId } from '@jusris/domain';
-import { Permission } from '@jusris/domain';
+import type { ActorContext, AccessDecision, MatterId } from '@juris/domain';
+import { Permission } from '@juris/domain';
 
 import type { PolicyEvaluator } from './policy-evaluator.js';
 

@@ -1,4 +1,4 @@
-import type { Logger } from '@jusris/observability';
+import type { Logger } from '@juris/observability';
 
 export interface IdempotencyStore {
   exists(key: string): Promise<boolean>;

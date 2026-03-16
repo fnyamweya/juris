@@ -1,4 +1,4 @@
-import { RedactionCategory } from '@jusris/domain';
+import { RedactionCategory } from '@juris/domain';
 
 export interface DetectedRedaction {
   startOffset: number;

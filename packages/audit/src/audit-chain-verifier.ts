@@ -1,5 +1,5 @@
-import { verifyAuditChainEntry } from '@jusris/crypto';
-import type { AuditEvent } from '@jusris/domain';
+import { verifyAuditChainEntry } from '@juris/crypto';
+import type { AuditEvent } from '@juris/domain';
 
 export interface BrokenLink {
   eventId: string;

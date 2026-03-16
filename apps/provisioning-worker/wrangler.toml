@@ -1,4 +1,4 @@
-name = "jusris-provisioning"
+name = "juris-provisioning"
 main = "src/index.ts"
 compatibility_date = "2024-12-01"
 compatibility_flags = ["nodejs_compat"]
@@ -8,15 +8,15 @@ enabled = true
 
 [[d1_databases]]
 binding = "MASTER_REGISTRY_DB"
-database_name = "jusris-master-registry"
+database_name = "juris-master-registry"
 database_id = ""
 
 [[queues.producers]]
-queue = "jusris-provisioning"
+queue = "juris-provisioning"
 binding = "PROVISIONING_QUEUE"
 
 [[queues.consumers]]
-queue = "jusris-provisioning"
+queue = "juris-provisioning"
 max_batch_size = 10
 max_batch_timeout = 30
 max_retries = 10
@@ -28,12 +28,12 @@ CLOUDFLARE_ACCOUNT_ID = ""
 
 # ── UAT ──
 [env.uat]
-name = "jusris-provisioning-uat"
+name = "juris-provisioning-uat"
 [[env.uat.queues.producers]]
-queue = "jusris-provisioning-uat"
+queue = "juris-provisioning-uat"
 binding = "PROVISIONING_QUEUE"
 [[env.uat.queues.consumers]]
-queue = "jusris-provisioning-uat"
+queue = "juris-provisioning-uat"
 max_batch_size = 10
 max_batch_timeout = 30
 max_retries = 10
@@ -43,12 +43,12 @@ LOG_LEVEL = "debug"
 
 # ── Staging ──
 [env.staging]
-name = "jusris-provisioning-staging"
+name = "juris-provisioning-staging"
 [[env.staging.queues.producers]]
-queue = "jusris-provisioning-staging"
+queue = "juris-provisioning-staging"
 binding = "PROVISIONING_QUEUE"
 [[env.staging.queues.consumers]]
-queue = "jusris-provisioning-staging"
+queue = "juris-provisioning-staging"
 max_batch_size = 10
 max_batch_timeout = 30
 max_retries = 10
@@ -58,12 +58,12 @@ LOG_LEVEL = "info"
 
 # ── Production ──
 [env.production]
-name = "jusris-provisioning"
+name = "juris-provisioning"
 [[env.production.queues.producers]]
-queue = "jusris-provisioning"
+queue = "juris-provisioning"
 binding = "PROVISIONING_QUEUE"
 [[env.production.queues.consumers]]
-queue = "jusris-provisioning"
+queue = "juris-provisioning"
 max_batch_size = 10
 max_batch_timeout = 30
 max_retries = 3

@@ -195,18 +195,18 @@ echo " Account: $CLOUDFLARE_ACCOUNT_ID"
 echo "============================================="
 
 # --- D1 Databases ---
-MASTER_REGISTRY_D1_ID=$(ensure_d1 "jusris-master-registry")
-TENANT_D1_ID=$(ensure_d1 "jusris-tenant")
+MASTER_REGISTRY_D1_ID=$(ensure_d1 "juris-master-registry")
+TENANT_D1_ID=$(ensure_d1 "juris-tenant")
 
 # --- R2 Buckets ---
-ensure_r2 "jusris-tenant-storage"
+ensure_r2 "juris-tenant-storage"
 
 # --- Vectorize Indexes ---
-ensure_vectorize "jusris-tenant-vectors" 768 cosine
+ensure_vectorize "juris-tenant-vectors" 768 cosine
 
 # --- Queues ---
-ensure_queue "jusris-provisioning"
-ensure_queue "jusris-ingestion"
+ensure_queue "juris-provisioning"
+ensure_queue "juris-ingestion"
 
 # =============================================
 # Run Migrations

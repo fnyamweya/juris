@@ -1,5 +1,5 @@
-import { createRequestContext, createLogger } from '@jusris/observability';
-import { applySecurityHeaders } from '@jusris/security';
+import { createRequestContext, createLogger } from '@juris/observability';
+import { applySecurityHeaders } from '@juris/security';
 
 import { createAuthGateForDispatch } from './auth/gate.js';
 import type { DispatchWorkerEnv } from './env.js';

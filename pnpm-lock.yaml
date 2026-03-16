@@ -50,13 +50,13 @@ importers:
 
   apps/dashboard:
     dependencies:
-      '@jusris/domain':
+      '@juris/domain':
         specifier: workspace:*
         version: link:../../packages/domain
-      '@jusris/schemas':
+      '@juris/schemas':
         specifier: workspace:*
         version: link:../../packages/schemas
-      '@jusris/ui':
+      '@juris/ui':
         specifier: workspace:*
         version: link:../../packages/ui
       '@radix-ui/react-avatar':
@@ -102,10 +102,10 @@ importers:
         specifier: ^3.0.2
         version: 3.5.0
     devDependencies:
-      '@jusris/eslint-config':
+      '@juris/eslint-config':
         specifier: workspace:^
         version: link:../../packages/eslint-config
-      '@jusris/tsconfig':
+      '@juris/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
       '@types/react':
@@ -141,29 +141,29 @@ importers:
 
   apps/dispatch-worker:
     dependencies:
-      '@jusris/auth':
+      '@juris/auth':
         specifier: workspace:*
         version: link:../../packages/auth
-      '@jusris/config':
+      '@juris/config':
         specifier: workspace:*
         version: link:../../packages/config
-      '@jusris/domain':
+      '@juris/domain':
         specifier: workspace:*
         version: link:../../packages/domain
-      '@jusris/observability':
+      '@juris/observability':
         specifier: workspace:*
         version: link:../../packages/observability
-      '@jusris/security':
+      '@juris/security':
         specifier: workspace:*
         version: link:../../packages/security
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^4.20241205.0
         version: 4.20260313.1
-      '@jusris/eslint-config':
+      '@juris/eslint-config':
         specifier: workspace:^
         version: link:../../packages/eslint-config
-      '@jusris/tsconfig':
+      '@juris/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
       eslint:
@@ -184,32 +184,32 @@ importers:
 
   apps/ingestion-worker:
     dependencies:
-      '@jusris/config':
+      '@juris/config':
         specifier: workspace:*
         version: link:../../packages/config
-      '@jusris/data':
+      '@juris/data':
         specifier: workspace:*
         version: link:../../packages/data
-      '@jusris/domain':
+      '@juris/domain':
         specifier: workspace:*
         version: link:../../packages/domain
-      '@jusris/ingestion':
+      '@juris/ingestion':
         specifier: workspace:*
         version: link:../../packages/ingestion
-      '@jusris/observability':
+      '@juris/observability':
         specifier: workspace:*
         version: link:../../packages/observability
-      '@jusris/queueing':
+      '@juris/queueing':
         specifier: workspace:*
         version: link:../../packages/queueing
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^4.20241205.0
         version: 4.20260313.1
-      '@jusris/eslint-config':
+      '@juris/eslint-config':
         specifier: workspace:^
         version: link:../../packages/eslint-config
-      '@jusris/tsconfig':
+      '@juris/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
       eslint:
@@ -230,29 +230,29 @@ importers:
 
   apps/maintenance-worker:
     dependencies:
-      '@jusris/config':
+      '@juris/config':
         specifier: workspace:*
         version: link:../../packages/config
-      '@jusris/data':
+      '@juris/data':
         specifier: workspace:*
         version: link:../../packages/data
-      '@jusris/domain':
+      '@juris/domain':
         specifier: workspace:*
         version: link:../../packages/domain
-      '@jusris/observability':
+      '@juris/observability':
         specifier: workspace:*
         version: link:../../packages/observability
-      '@jusris/queueing':
+      '@juris/queueing':
         specifier: workspace:*
         version: link:../../packages/queueing
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^4.20241205.0
         version: 4.20260313.1
-      '@jusris/eslint-config':
+      '@juris/eslint-config':
         specifier: workspace:^
         version: link:../../packages/eslint-config
-      '@jusris/tsconfig':
+      '@juris/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
       eslint:
@@ -273,32 +273,32 @@ importers:
 
   apps/provisioning-worker:
     dependencies:
-      '@jusris/cloudflare':
+      '@juris/cloudflare':
         specifier: workspace:*
         version: link:../../packages/cloudflare
-      '@jusris/config':
+      '@juris/config':
         specifier: workspace:*
         version: link:../../packages/config
-      '@jusris/data':
+      '@juris/data':
         specifier: workspace:*
         version: link:../../packages/data
-      '@jusris/domain':
+      '@juris/domain':
         specifier: workspace:*
         version: link:../../packages/domain
-      '@jusris/observability':
+      '@juris/observability':
         specifier: workspace:*
         version: link:../../packages/observability
-      '@jusris/queueing':
+      '@juris/queueing':
         specifier: workspace:*
         version: link:../../packages/queueing
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^4.20241205.0
         version: 4.20260313.1
-      '@jusris/eslint-config':
+      '@juris/eslint-config':
         specifier: workspace:^
         version: link:../../packages/eslint-config
-      '@jusris/tsconfig':
+      '@juris/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
       eslint:
@@ -319,44 +319,44 @@ importers:
 
   apps/tenant-runtime-worker:
     dependencies:
-      '@jusris/access-control':
+      '@juris/access-control':
         specifier: workspace:*
         version: link:../../packages/access-control
-      '@jusris/audit':
+      '@juris/audit':
         specifier: workspace:*
         version: link:../../packages/audit
-      '@jusris/auth':
+      '@juris/auth':
         specifier: workspace:*
         version: link:../../packages/auth
-      '@jusris/config':
+      '@juris/config':
         specifier: workspace:*
         version: link:../../packages/config
-      '@jusris/data':
+      '@juris/data':
         specifier: workspace:*
         version: link:../../packages/data
-      '@jusris/domain':
+      '@juris/domain':
         specifier: workspace:*
         version: link:../../packages/domain
-      '@jusris/observability':
+      '@juris/observability':
         specifier: workspace:*
         version: link:../../packages/observability
-      '@jusris/rag':
+      '@juris/rag':
         specifier: workspace:*
         version: link:../../packages/rag
-      '@jusris/schemas':
+      '@juris/schemas':
         specifier: workspace:*
         version: link:../../packages/schemas
-      '@jusris/security':
+      '@juris/security':
         specifier: workspace:*
         version: link:../../packages/security
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^4.20241205.0
         version: 4.20260313.1
-      '@jusris/eslint-config':
+      '@juris/eslint-config':
         specifier: workspace:^
         version: link:../../packages/eslint-config
-      '@jusris/tsconfig':
+      '@juris/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
       eslint:
@@ -377,7 +377,7 @@ importers:
 
   apps/web:
     dependencies:
-      '@jusris/ui':
+      '@juris/ui':
         specifier: workspace:*
         version: link:../../packages/ui
       next:
@@ -390,10 +390,10 @@ importers:
         specifier: ^19.0.0
         version: 19.2.4(react@19.2.4)
     devDependencies:
-      '@jusris/eslint-config':
+      '@juris/eslint-config':
         specifier: workspace:^
         version: link:../../packages/eslint-config
-      '@jusris/tsconfig':
+      '@juris/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
       '@types/react':
@@ -426,29 +426,29 @@ importers:
 
   apps/webhook-worker:
     dependencies:
-      '@jusris/config':
+      '@juris/config':
         specifier: workspace:*
         version: link:../../packages/config
-      '@jusris/domain':
+      '@juris/domain':
         specifier: workspace:*
         version: link:../../packages/domain
-      '@jusris/observability':
+      '@juris/observability':
         specifier: workspace:*
         version: link:../../packages/observability
-      '@jusris/queueing':
+      '@juris/queueing':
         specifier: workspace:*
         version: link:../../packages/queueing
-      '@jusris/security':
+      '@juris/security':
         specifier: workspace:*
         version: link:../../packages/security
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^4.20241205.0
         version: 4.20260313.1
-      '@jusris/eslint-config':
+      '@juris/eslint-config':
         specifier: workspace:^
         version: link:../../packages/eslint-config
-      '@jusris/tsconfig':
+      '@juris/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
       eslint:
@@ -469,20 +469,20 @@ importers:
 
   packages/access-control:
     dependencies:
-      '@jusris/domain':
+      '@juris/domain':
         specifier: workspace:*
         version: link:../domain
-      '@jusris/observability':
+      '@juris/observability':
         specifier: workspace:*
         version: link:../observability
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^4.20241205.0
         version: 4.20260313.1
-      '@jusris/eslint-config':
+      '@juris/eslint-config':
         specifier: workspace:^
         version: link:../eslint-config
-      '@jusris/tsconfig':
+      '@juris/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
       eslint:
@@ -500,23 +500,23 @@ importers:
 
   packages/audit:
     dependencies:
-      '@jusris/crypto':
+      '@juris/crypto':
         specifier: workspace:*
         version: link:../crypto
-      '@jusris/domain':
+      '@juris/domain':
         specifier: workspace:*
         version: link:../domain
-      '@jusris/observability':
+      '@juris/observability':
         specifier: workspace:*
         version: link:../observability
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^4.20241205.0
         version: 4.20260313.1
-      '@jusris/eslint-config':
+      '@juris/eslint-config':
         specifier: workspace:^
         version: link:../eslint-config
-      '@jusris/tsconfig':
+      '@juris/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
       eslint:
@@ -534,20 +534,20 @@ importers:
 
   packages/auth:
     dependencies:
-      '@jusris/domain':
+      '@juris/domain':
         specifier: workspace:*
         version: link:../domain
-      '@jusris/observability':
+      '@juris/observability':
         specifier: workspace:*
         version: link:../observability
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^4.20241205.0
         version: 4.20260313.1
-      '@jusris/eslint-config':
+      '@juris/eslint-config':
         specifier: workspace:^
         version: link:../eslint-config
-      '@jusris/tsconfig':
+      '@juris/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
       eslint:
@@ -565,20 +565,20 @@ importers:
 
   packages/cloudflare:
     dependencies:
-      '@jusris/domain':
+      '@juris/domain':
         specifier: workspace:*
         version: link:../domain
-      '@jusris/observability':
+      '@juris/observability':
         specifier: workspace:*
         version: link:../observability
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^4.20241205.0
         version: 4.20260313.1
-      '@jusris/eslint-config':
+      '@juris/eslint-config':
         specifier: workspace:^
         version: link:../eslint-config
-      '@jusris/tsconfig':
+      '@juris/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
       eslint:
@@ -596,17 +596,17 @@ importers:
 
   packages/config:
     dependencies:
-      '@jusris/domain':
+      '@juris/domain':
         specifier: workspace:*
         version: link:../domain
       zod:
         specifier: ^3.24.0
         version: 3.25.76
     devDependencies:
-      '@jusris/eslint-config':
+      '@juris/eslint-config':
         specifier: workspace:^
         version: link:../eslint-config
-      '@jusris/tsconfig':
+      '@juris/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
       eslint:
@@ -624,17 +624,17 @@ importers:
 
   packages/crypto:
     dependencies:
-      '@jusris/domain':
+      '@juris/domain':
         specifier: workspace:*
         version: link:../domain
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^4.20241205.0
         version: 4.20260313.1
-      '@jusris/eslint-config':
+      '@juris/eslint-config':
         specifier: workspace:^
         version: link:../eslint-config
-      '@jusris/tsconfig':
+      '@juris/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
       eslint:
@@ -652,20 +652,20 @@ importers:
 
   packages/data:
     dependencies:
-      '@jusris/domain':
+      '@juris/domain':
         specifier: workspace:*
         version: link:../domain
-      '@jusris/observability':
+      '@juris/observability':
         specifier: workspace:*
         version: link:../observability
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^4.20241205.0
         version: 4.20260313.1
-      '@jusris/eslint-config':
+      '@juris/eslint-config':
         specifier: workspace:^
         version: link:../eslint-config
-      '@jusris/tsconfig':
+      '@juris/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
       eslint:
@@ -683,10 +683,10 @@ importers:
 
   packages/domain:
     devDependencies:
-      '@jusris/eslint-config':
+      '@juris/eslint-config':
         specifier: workspace:^
         version: link:../eslint-config
-      '@jusris/tsconfig':
+      '@juris/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
       eslint:
@@ -728,20 +728,20 @@ importers:
 
   packages/ingestion:
     dependencies:
-      '@jusris/domain':
+      '@juris/domain':
         specifier: workspace:*
         version: link:../domain
-      '@jusris/observability':
+      '@juris/observability':
         specifier: workspace:*
         version: link:../observability
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^4.20241205.0
         version: 4.20260313.1
-      '@jusris/eslint-config':
+      '@juris/eslint-config':
         specifier: workspace:^
         version: link:../eslint-config
-      '@jusris/tsconfig':
+      '@juris/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
       eslint:
@@ -759,17 +759,17 @@ importers:
 
   packages/observability:
     dependencies:
-      '@jusris/domain':
+      '@juris/domain':
         specifier: workspace:*
         version: link:../domain
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^4.20241205.0
         version: 4.20260313.1
-      '@jusris/eslint-config':
+      '@juris/eslint-config':
         specifier: workspace:^
         version: link:../eslint-config
-      '@jusris/tsconfig':
+      '@juris/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
       eslint:
@@ -787,20 +787,20 @@ importers:
 
   packages/queueing:
     dependencies:
-      '@jusris/domain':
+      '@juris/domain':
         specifier: workspace:*
         version: link:../domain
-      '@jusris/observability':
+      '@juris/observability':
         specifier: workspace:*
         version: link:../observability
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^4.20241205.0
         version: 4.20260313.1
-      '@jusris/eslint-config':
+      '@juris/eslint-config':
         specifier: workspace:^
         version: link:../eslint-config
-      '@jusris/tsconfig':
+      '@juris/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
       eslint:
@@ -818,20 +818,20 @@ importers:
 
   packages/rag:
     dependencies:
-      '@jusris/domain':
+      '@juris/domain':
         specifier: workspace:*
         version: link:../domain
-      '@jusris/observability':
+      '@juris/observability':
         specifier: workspace:*
         version: link:../observability
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^4.20241205.0
         version: 4.20260313.1
-      '@jusris/eslint-config':
+      '@juris/eslint-config':
         specifier: workspace:^
         version: link:../eslint-config
-      '@jusris/tsconfig':
+      '@juris/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
       eslint:
@@ -849,17 +849,17 @@ importers:
 
   packages/schemas:
     dependencies:
-      '@jusris/domain':
+      '@juris/domain':
         specifier: workspace:*
         version: link:../domain
       zod:
         specifier: ^3.24.0
         version: 3.25.76
     devDependencies:
-      '@jusris/eslint-config':
+      '@juris/eslint-config':
         specifier: workspace:^
         version: link:../eslint-config
-      '@jusris/tsconfig':
+      '@juris/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
       eslint:
@@ -880,10 +880,10 @@ importers:
       '@cloudflare/workers-types':
         specifier: ^4.20241205.0
         version: 4.20260313.1
-      '@jusris/eslint-config':
+      '@juris/eslint-config':
         specifier: workspace:^
         version: link:../eslint-config
-      '@jusris/tsconfig':
+      '@juris/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
       eslint:
@@ -901,29 +901,29 @@ importers:
 
   packages/testing:
     dependencies:
-      '@jusris/access-control':
+      '@juris/access-control':
         specifier: workspace:*
         version: link:../access-control
-      '@jusris/audit':
+      '@juris/audit':
         specifier: workspace:*
         version: link:../audit
-      '@jusris/auth':
+      '@juris/auth':
         specifier: workspace:*
         version: link:../auth
-      '@jusris/domain':
+      '@juris/domain':
         specifier: workspace:*
         version: link:../domain
-      '@jusris/observability':
+      '@juris/observability':
         specifier: workspace:*
         version: link:../observability
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^4.20241205.0
         version: 4.20260313.1
-      '@jusris/eslint-config':
+      '@juris/eslint-config':
         specifier: workspace:^
         version: link:../eslint-config
-      '@jusris/tsconfig':
+      '@juris/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
       eslint:
@@ -940,11 +940,11 @@ importers:
 
   packages/types:
     dependencies:
-      '@jusris/domain':
+      '@juris/domain':
         specifier: workspace:*
         version: link:../domain
     devDependencies:
-      '@jusris/tsconfig':
+      '@juris/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
       rimraf:
@@ -972,10 +972,10 @@ importers:
         specifier: ^2.6.0
         version: 2.6.1
     devDependencies:
-      '@jusris/eslint-config':
+      '@juris/eslint-config':
         specifier: workspace:^
         version: link:../eslint-config
-      '@jusris/tsconfig':
+      '@juris/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
       '@types/react':

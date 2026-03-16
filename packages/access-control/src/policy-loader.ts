@@ -1,4 +1,4 @@
-import type { Permission, PrincipalType } from '@jusris/domain';
+import type { Permission, PrincipalType } from '@juris/domain';
 
 export interface PolicyCondition {
   field: string;

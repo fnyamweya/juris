@@ -1,4 +1,4 @@
-import { MatterStatus } from '@jusris/domain';
+import { MatterStatus } from '@juris/domain';
 
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';

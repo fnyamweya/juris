@@ -1,5 +1,5 @@
 {
-  "name": "@jusris/types",
+  "name": "@juris/types",
   "version": "0.1.0",
   "private": true,
   "license": "UNLICENSED",
@@ -12,10 +12,10 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@jusris/domain": "workspace:*"
+    "@juris/domain": "workspace:*"
   },
   "devDependencies": {
-    "@jusris/tsconfig": "workspace:*",
+    "@juris/tsconfig": "workspace:*",
     "typescript": "^5.7.0",
     "rimraf": "^6.0.0"
   }

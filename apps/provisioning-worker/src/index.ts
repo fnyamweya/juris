@@ -1,7 +1,7 @@
-import { createCloudflareApiClient } from '@jusris/cloudflare';
-import { createD1Client } from '@jusris/data';
-import type { D1Database } from '@jusris/data';
-import { createRequestContext, createLogger } from '@jusris/observability';
+import { createCloudflareApiClient } from '@juris/cloudflare';
+import { createD1Client } from '@juris/data';
+import type { D1Database } from '@juris/data';
+import { createRequestContext, createLogger } from '@juris/observability';
 
 import type { ProvisioningWorkerEnv } from './env.js';
 import { TenantProvisioningOrchestrator } from './orchestrator/tenant-provisioning-orchestrator.js';

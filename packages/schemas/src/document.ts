@@ -1,4 +1,4 @@
-import { DocumentClassification, DocumentStatus } from '@jusris/domain/document';
+import { DocumentClassification, DocumentStatus } from '@juris/domain/document';
 import { z } from 'zod';
 
 import { ulidSchema, cursorPaginationSchema } from './common.js';

@@ -74,7 +74,7 @@ jobs:
           if [[ "${{ inputs.environment }}" != "production" ]]; then
             ENV_SUFFIX="-${{ inputs.environment }}"
           fi
-          for base in jusris-provisioning jusris-ingestion; do
+          for base in juris-provisioning juris-ingestion; do
             queue="${base}${ENV_SUFFIX}"
             if ! npx wrangler queues list 2>/dev/null | grep -q "\"queue_name\":\"${queue}\""; then
               echo "Creating queue: $queue"
@@ -88,42 +88,42 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
       - name: Deploy Dispatch Worker
-        run: pnpm --filter @jusris/dispatch-worker run deploy
+        run: pnpm --filter @juris/dispatch-worker run deploy
         env:
           DEPLOY_ENV: ${{ inputs.environment }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
       - name: Deploy Provisioning Worker
-        run: pnpm --filter @jusris/provisioning-worker run deploy
+        run: pnpm --filter @juris/provisioning-worker run deploy
         env:
           DEPLOY_ENV: ${{ inputs.environment }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
       - name: Deploy Maintenance Worker
-        run: pnpm --filter @jusris/maintenance-worker run deploy
+        run: pnpm --filter @juris/maintenance-worker run deploy
         env:
           DEPLOY_ENV: ${{ inputs.environment }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
       - name: Deploy Ingestion Worker
-        run: pnpm --filter @jusris/ingestion-worker run deploy
+        run: pnpm --filter @juris/ingestion-worker run deploy
         env:
           DEPLOY_ENV: ${{ inputs.environment }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
       - name: Deploy Tenant Runtime Worker
-        run: pnpm --filter @jusris/tenant-runtime-worker run deploy
+        run: pnpm --filter @juris/tenant-runtime-worker run deploy
         env:
           DEPLOY_ENV: ${{ inputs.environment }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
       - name: Deploy Webhook Worker
-        run: pnpm --filter @jusris/webhook-worker run deploy
+        run: pnpm --filter @juris/webhook-worker run deploy
         env:
           DEPLOY_ENV: ${{ inputs.environment }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}

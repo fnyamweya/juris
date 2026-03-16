@@ -1,5 +1,5 @@
 {
-  "name": "@jusris/testing",
+  "name": "@juris/testing",
   "version": "0.1.0",
   "private": true,
   "license": "UNLICENSED",
@@ -13,16 +13,16 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@jusris/access-control": "workspace:*",
-    "@jusris/audit": "workspace:*",
-    "@jusris/auth": "workspace:*",
-    "@jusris/domain": "workspace:*",
-    "@jusris/observability": "workspace:*"
+    "@juris/access-control": "workspace:*",
+    "@juris/audit": "workspace:*",
+    "@juris/auth": "workspace:*",
+    "@juris/domain": "workspace:*",
+    "@juris/observability": "workspace:*"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20241205.0",
-    "@jusris/eslint-config": "workspace:^",
-    "@jusris/tsconfig": "workspace:*",
+    "@juris/eslint-config": "workspace:^",
+    "@juris/tsconfig": "workspace:*",
     "eslint": "^8.57.0",
     "rimraf": "^6.0.0",
     "typescript": "^5.7.0"

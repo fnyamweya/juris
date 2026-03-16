@@ -1,4 +1,4 @@
-import { ChatMessageRole } from '@jusris/domain/chat';
+import { ChatMessageRole } from '@juris/domain/chat';
 import { z } from 'zod';
 
 import { ulidSchema, cursorPaginationSchema } from './common.js';

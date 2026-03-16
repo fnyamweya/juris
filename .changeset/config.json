@@ -1,39 +1,44 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@3.0.0/schema.json",
-  "changelog": ["@changesets/changelog-github", { "repo": "fnyamweya/juris" }],
+  "changelog": [
+    "@changesets/changelog-github",
+    {
+      "repo": "fnyamweya/juris"
+    }
+  ],
   "commit": false,
   "fixed": [
     [
-      "@jusris/domain",
-      "@jusris/types",
-      "@jusris/auth",
-      "@jusris/security",
-      "@jusris/access-control",
-      "@jusris/data",
-      "@jusris/rag",
-      "@jusris/crypto",
-      "@jusris/schemas",
-      "@jusris/config",
-      "@jusris/observability",
-      "@jusris/cloudflare",
-      "@jusris/audit",
-      "@jusris/ingestion",
-      "@jusris/queueing",
-      "@jusris/ui",
-      "@jusris/testing",
-      "@jusris/dispatch-worker",
-      "@jusris/provisioning-worker",
-      "@jusris/maintenance-worker",
-      "@jusris/tenant-runtime-worker",
-      "@jusris/ingestion-worker",
-      "@jusris/webhook-worker",
-      "@jusris/web",
-      "@jusris/dashboard"
+      "@juris/domain",
+      "@juris/types",
+      "@juris/auth",
+      "@juris/security",
+      "@juris/access-control",
+      "@juris/data",
+      "@juris/rag",
+      "@juris/crypto",
+      "@juris/schemas",
+      "@juris/config",
+      "@juris/observability",
+      "@juris/cloudflare",
+      "@juris/audit",
+      "@juris/ingestion",
+      "@juris/queueing",
+      "@juris/ui",
+      "@juris/testing",
+      "@juris/dispatch-worker",
+      "@juris/provisioning-worker",
+      "@juris/maintenance-worker",
+      "@juris/tenant-runtime-worker",
+      "@juris/ingestion-worker",
+      "@juris/webhook-worker",
+      "@juris/web",
+      "@juris/dashboard"
     ]
   ],
   "linked": [],
   "access": "restricted",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": ["@jusris/eslint-config", "@jusris/tsconfig"]
+  "ignore": ["@juris/eslint-config", "@juris/tsconfig"]
 }

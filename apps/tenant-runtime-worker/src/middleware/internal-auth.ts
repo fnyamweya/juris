@@ -1,10 +1,10 @@
-import type { ActorContext, TenantId } from '@jusris/domain';
-import { createPrincipalId, PrincipalType } from '@jusris/domain';
+import type { ActorContext, TenantId } from '@juris/domain';
+import { createPrincipalId, PrincipalType } from '@juris/domain';
 
-const HEADER_TENANT_ID = 'x-jusris-tenant-id';
-const HEADER_ACTOR_ID = 'x-jusris-actor-id';
-const HEADER_REQUEST_ID = 'x-jusris-request-id';
-const HEADER_TRACE_ID = 'x-jusris-trace-id';
+const HEADER_TENANT_ID = 'x-juris-tenant-id';
+const HEADER_ACTOR_ID = 'x-juris-actor-id';
+const HEADER_REQUEST_ID = 'x-juris-request-id';
+const HEADER_TRACE_ID = 'x-juris-trace-id';
 
 export function extractInternalContext(request: Request): ActorContext | null {
   const tenantId = request.headers.get(HEADER_TENANT_ID);

@@ -41,7 +41,7 @@ export default function SignInPage() {
         <Button className="w-full">Continue with SSO</Button>
         <p className="text-center text-xs text-muted-foreground">
           <Link
-            href="https://jusris.com"
+            href="https://juris.com"
             target="_blank"
             rel="noopener noreferrer"
             className="underline hover:text-foreground"

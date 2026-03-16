@@ -3,9 +3,9 @@ import {
   createAuthGate,
   type AuthGate,
   type TenantResolver,
-} from '@jusris/auth';
-import { PrincipalType } from '@jusris/domain';
-import type { Logger } from '@jusris/observability';
+} from '@juris/auth';
+import { PrincipalType } from '@juris/domain';
+import type { Logger } from '@juris/observability';
 
 import type { DispatchWorkerEnv } from '../env.js';
 

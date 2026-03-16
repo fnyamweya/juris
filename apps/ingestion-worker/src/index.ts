@@ -1,4 +1,4 @@
-import { createRequestContext, createLogger } from '@jusris/observability';
+import { createRequestContext, createLogger } from '@juris/observability';
 
 import type { IngestionWorkerEnv } from './env.js';
 import { handleHealthCheck } from './routes/health.js';

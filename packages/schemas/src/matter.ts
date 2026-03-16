@@ -1,4 +1,4 @@
-import { MatterStatus, MatterType } from '@jusris/domain/matter';
+import { MatterStatus, MatterType } from '@juris/domain/matter';
 import { z } from 'zod';
 
 import { ulidSchema, cursorPaginationSchema } from './common.js';

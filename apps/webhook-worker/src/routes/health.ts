@@ -1,4 +1,4 @@
-import type { RequestContext } from '@jusris/observability';
+import type { RequestContext } from '@juris/observability';
 
 export function handleHealthCheck(reqCtx: RequestContext): Response {
   return new Response(

@@ -1,4 +1,4 @@
-import { RedactionCategory } from '@jusris/domain';
+import { RedactionCategory } from '@juris/domain';
 import { describe, it, expect } from 'vitest';
 
 import { createDeterministicRedactionDetector } from '../redaction-detector.js';

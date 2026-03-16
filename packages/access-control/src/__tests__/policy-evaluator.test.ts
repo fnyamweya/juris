@@ -1,11 +1,11 @@
-import type { AccessRequest } from '@jusris/domain';
+import type { AccessRequest } from '@juris/domain';
 import {
   Permission,
   PrincipalType,
   createPrincipalId,
   createTenantId,
   createMatterId,
-} from '@jusris/domain';
+} from '@juris/domain';
 import { describe, it, expect, vi } from 'vitest';
 
 import { createPolicyEvaluator } from '../policy-evaluator.js';

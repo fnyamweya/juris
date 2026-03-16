@@ -1,4 +1,4 @@
-import type { Logger } from '@jusris/observability';
+import type { Logger } from '@juris/observability';
 
 import { DataAccessError } from './errors.js';
 import type { D1Database, D1ExecResult, D1PreparedStatement, D1Result } from './migration.js';

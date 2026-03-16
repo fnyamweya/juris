@@ -1,4 +1,4 @@
-name = "jusris-ingestion"
+name = "juris-ingestion"
 main = "src/index.ts"
 compatibility_date = "2024-12-01"
 compatibility_flags = ["nodejs_compat"]
@@ -7,11 +7,11 @@ compatibility_flags = ["nodejs_compat"]
 enabled = true
 
 [[queues.producers]]
-queue = "jusris-ingestion"
+queue = "juris-ingestion"
 binding = "INGESTION_QUEUE"
 
 [[queues.consumers]]
-queue = "jusris-ingestion"
+queue = "juris-ingestion"
 max_batch_size = 10
 max_batch_timeout = 30
 max_retries = 10
@@ -25,12 +25,12 @@ LOG_LEVEL = "debug"
 
 # ── UAT ──
 [env.uat]
-name = "jusris-ingestion-uat"
+name = "juris-ingestion-uat"
 [[env.uat.queues.producers]]
-queue = "jusris-ingestion-uat"
+queue = "juris-ingestion-uat"
 binding = "INGESTION_QUEUE"
 [[env.uat.queues.consumers]]
-queue = "jusris-ingestion-uat"
+queue = "juris-ingestion-uat"
 max_batch_size = 10
 max_batch_timeout = 30
 max_retries = 10
@@ -40,12 +40,12 @@ LOG_LEVEL = "debug"
 
 # ── Staging ──
 [env.staging]
-name = "jusris-ingestion-staging"
+name = "juris-ingestion-staging"
 [[env.staging.queues.producers]]
-queue = "jusris-ingestion-staging"
+queue = "juris-ingestion-staging"
 binding = "INGESTION_QUEUE"
 [[env.staging.queues.consumers]]
-queue = "jusris-ingestion-staging"
+queue = "juris-ingestion-staging"
 max_batch_size = 10
 max_batch_timeout = 30
 max_retries = 10
@@ -55,12 +55,12 @@ LOG_LEVEL = "info"
 
 # ── Production ──
 [env.production]
-name = "jusris-ingestion"
+name = "juris-ingestion"
 [[env.production.queues.producers]]
-queue = "jusris-ingestion"
+queue = "juris-ingestion"
 binding = "INGESTION_QUEUE"
 [[env.production.queues.consumers]]
-queue = "jusris-ingestion"
+queue = "juris-ingestion"
 max_batch_size = 10
 max_batch_timeout = 30
 max_retries = 3

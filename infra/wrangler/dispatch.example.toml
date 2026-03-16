@@ -1,4 +1,4 @@
-name = "jusris-dispatch"
+name = "juris-dispatch"
 main = "../../apps/dispatch-worker/src/index.ts"
 compatibility_date = "2024-12-01"
 compatibility_flags = ["nodejs_compat"]
@@ -9,5 +9,5 @@ LOG_LEVEL = "info"
 
 [[d1_databases]]
 binding = "MASTER_REGISTRY_DB"
-database_name = "jusris-master-registry"
+database_name = "juris-master-registry"
 database_id = "<your-d1-id>"

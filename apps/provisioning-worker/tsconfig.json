@@ -1,5 +1,5 @@
 {
-  "extends": "@jusris/tsconfig/worker.json",
+  "extends": "@juris/tsconfig/worker.json",
   "compilerOptions": {
     "outDir": "dist",
     "rootDir": "src",

@@ -1,4 +1,4 @@
-name = "jusris-maintenance"
+name = "juris-maintenance"
 main = "src/index.ts"
 compatibility_date = "2024-12-01"
 compatibility_flags = ["nodejs_compat"]
@@ -8,7 +8,7 @@ enabled = true
 
 [[d1_databases]]
 binding = "MASTER_REGISTRY_DB"
-database_name = "jusris-master-registry"
+database_name = "juris-master-registry"
 database_id = ""
 
 [triggers]
@@ -20,7 +20,7 @@ LOG_LEVEL = "debug"
 
 # ── UAT ──
 [env.uat]
-name = "jusris-maintenance-uat"
+name = "juris-maintenance-uat"
 [env.uat.triggers]
 crons = []
 [env.uat.vars]
@@ -29,7 +29,7 @@ LOG_LEVEL = "debug"
 
 # ── Staging ──
 [env.staging]
-name = "jusris-maintenance-staging"
+name = "juris-maintenance-staging"
 [env.staging.triggers]
 crons = ["0 */6 * * *", "0 0 * * *"]
 [env.staging.vars]
@@ -38,7 +38,7 @@ LOG_LEVEL = "info"
 
 # ── Production ──
 [env.production]
-name = "jusris-maintenance"
+name = "juris-maintenance"
 [env.production.triggers]
 crons = ["0 */6 * * *", "0 0 * * *"]
 [env.production.vars]

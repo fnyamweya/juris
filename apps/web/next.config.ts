@@ -4,7 +4,7 @@ const config: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   output: 'standalone',
-  transpilePackages: ['@jusris/ui', '@jusris/domain', '@jusris/schemas'],
+  transpilePackages: ['@juris/ui', '@juris/domain', '@juris/schemas'],
   webpack: (config) => {
     config.resolve = config.resolve ?? {};
     config.resolve.extensionAlias = {
