@@ -1,7 +1,7 @@
 import type { AuditChainSigner } from '@jusris/crypto';
-import type {
-  AuditEvent,
+import {
   createAuditEventId,
+  type AuditEvent,
   type AuditAction,
   type PrincipalType,
 } from '@jusris/domain';
@@ -37,7 +37,7 @@ export interface WriteAuditParams {
 }
 
 export class AuditTrailWriter {
-  constructor(private readonly deps: AuditTrailWriterDeps) {}
+  constructor(private readonly deps: AuditTrailWriterDeps) { }
 
   async write(params: WriteAuditParams): Promise<AuditEvent> {
     const {

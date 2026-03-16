@@ -28,7 +28,7 @@ export interface AuditChainVerifierDeps {
 const GENESIS_HASH = 'GENESIS';
 
 export class AuditChainVerifier {
-  constructor(private readonly deps: AuditChainVerifierDeps) {}
+  constructor(private readonly deps: AuditChainVerifierDeps) { }
 
   async verifyChain(tenantId: string, _fromEventId?: string): Promise<ChainVerificationResult> {
     const brokenLinks: BrokenLink[] = [];
