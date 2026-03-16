@@ -33,6 +33,19 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
+
+      - name: Inject D1 database IDs
+        run: |
+          sed -i 's/database_id = ""/database_id = "'"$MASTER_REGISTRY_D1_ID"'"/' \
+            apps/dispatch-worker/wrangler.toml \
+            apps/provisioning-worker/wrangler.toml \
+            apps/maintenance-worker/wrangler.toml
+          sed -i 's/database_id = ""/database_id = "'"$TENANT_D1_ID"'"/' \
+            apps/tenant-runtime-worker/wrangler.toml
+        env:
+          MASTER_REGISTRY_D1_ID: ${{ secrets.MASTER_REGISTRY_D1_ID }}
+          TENANT_D1_ID: ${{ secrets.TENANT_D1_ID }}
+
       - name: Deploy Dispatch Worker
         run: pnpm --filter @jusris/dispatch-worker run deploy
         env:
@@ -40,6 +53,26 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       - name: Deploy Provisioning Worker
         run: pnpm --filter @jusris/provisioning-worker run deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      - name: Deploy Maintenance Worker
+        run: pnpm --filter @jusris/maintenance-worker run deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      - name: Deploy Ingestion Worker
+        run: pnpm --filter @jusris/ingestion-worker run deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      - name: Deploy Tenant Runtime Worker
+        run: pnpm --filter @jusris/tenant-runtime-worker run deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      - name: Deploy Webhook Worker
+        run: pnpm --filter @jusris/webhook-worker run deploy
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
