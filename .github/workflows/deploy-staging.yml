@@ -1,0 +1,20 @@
+name: Deploy Staging
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  ci:
+    name: CI Checks
+    uses: ./.github/workflows/ci.yml
+    secrets: inherit
+
+  deploy-staging:
+    name: Deploy to Staging
+    needs: [ci]
+    uses: ./.github/workflows/deploy-workers.yml
+    with:
+      environment: staging
+      ref: ${{ github.sha }}
+    secrets: inherit

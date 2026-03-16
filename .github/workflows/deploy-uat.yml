@@ -1,0 +1,21 @@
+name: Deploy UAT
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
+
+jobs:
+  ci:
+    name: CI Checks
+    uses: ./.github/workflows/ci.yml
+    secrets: inherit
+
+  deploy-uat:
+    name: Deploy to UAT
+    needs: [ci]
+    uses: ./.github/workflows/deploy-workers.yml
+    with:
+      environment: uat
+      ref: ${{ github.event.pull_request.head.sha }}
+    secrets: inherit

@@ -21,4 +21,49 @@ binding = "AI"
 
 [vars]
 ENVIRONMENT = "development"
+LOG_LEVEL = "debug"
+
+# ── UAT ──
+[env.uat]
+name = "jusris-ingestion-uat"
+[[env.uat.queues.producers]]
+queue = "jusris-ingestion-uat"
+binding = "INGESTION_QUEUE"
+[[env.uat.queues.consumers]]
+queue = "jusris-ingestion-uat"
+max_batch_size = 10
+max_batch_timeout = 30
+max_retries = 10
+[env.uat.vars]
+ENVIRONMENT = "uat"
+LOG_LEVEL = "debug"
+
+# ── Staging ──
+[env.staging]
+name = "jusris-ingestion-staging"
+[[env.staging.queues.producers]]
+queue = "jusris-ingestion-staging"
+binding = "INGESTION_QUEUE"
+[[env.staging.queues.consumers]]
+queue = "jusris-ingestion-staging"
+max_batch_size = 10
+max_batch_timeout = 30
+max_retries = 10
+[env.staging.vars]
+ENVIRONMENT = "staging"
 LOG_LEVEL = "info"
+
+# ── Production ──
+[env.production]
+name = "jusris-ingestion"
+[[env.production.queues.producers]]
+queue = "jusris-ingestion"
+binding = "INGESTION_QUEUE"
+[[env.production.queues.consumers]]
+queue = "jusris-ingestion"
+max_batch_size = 10
+max_batch_timeout = 30
+max_retries = 3
+[env.production.vars]
+ENVIRONMENT = "production"
+LOG_LEVEL = "warn"

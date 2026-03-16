@@ -1,38 +1,58 @@
-name: Deploy
+name: Deploy Workers (reusable)
 
 on:
-  push:
-    branches: [main]
-  workflow_dispatch:
+  workflow_call:
     inputs:
       environment:
-        description: 'Deployment environment'
+        description: 'Target environment (uat | staging | production)'
         required: true
-        default: 'staging'
-        type: choice
-        options:
-          - staging
-          - production
+        type: string
+      ref:
+        description: 'Git ref to deploy'
+        required: true
+        type: string
+    secrets:
+      CLOUDFLARE_API_TOKEN:
+        required: true
+      CLOUDFLARE_ACCOUNT_ID:
+        required: true
+      MASTER_REGISTRY_D1_ID:
+        required: true
+      TENANT_D1_ID:
+        required: true
+      TURBO_TOKEN:
+        required: false
+      TURBO_TEAM:
+        required: false
 
 concurrency:
-  group: deploy-${{ github.ref }}
+  group: deploy-${{ inputs.environment }}
   cancel-in-progress: false
 
 jobs:
-  deploy-workers:
-    name: Deploy Workers
+  deploy:
+    name: Deploy to ${{ inputs.environment }}
     runs-on: ubuntu-latest
     timeout-minutes: 30
-    environment: ${{ github.event.inputs.environment || 'staging' }}
+    environment: ${{ inputs.environment }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
+
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: pnpm
+
       - run: pnpm install --frozen-lockfile
-      - run: pnpm build
+
+      - name: Build
+        run: pnpm build
+        env:
+          TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+          TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
 
       - name: Inject D1 database IDs
         run: |
@@ -48,7 +68,12 @@ jobs:
 
       - name: Ensure queues exist
         run: |
-          for queue in jusris-provisioning jusris-ingestion; do
+          ENV_SUFFIX=""
+          if [[ "${{ inputs.environment }}" != "production" ]]; then
+            ENV_SUFFIX="-${{ inputs.environment }}"
+          fi
+          for base in jusris-provisioning jusris-ingestion; do
+            queue="${base}${ENV_SUFFIX}"
             if ! npx wrangler queues list 2>/dev/null | grep -q "\"queue_name\":\"${queue}\""; then
               echo "Creating queue: $queue"
               npx wrangler queues create "$queue"
@@ -63,30 +88,53 @@ jobs:
       - name: Deploy Dispatch Worker
         run: pnpm --filter @jusris/dispatch-worker run deploy
         env:
+          DEPLOY_ENV: ${{ inputs.environment }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
       - name: Deploy Provisioning Worker
         run: pnpm --filter @jusris/provisioning-worker run deploy
         env:
+          DEPLOY_ENV: ${{ inputs.environment }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
       - name: Deploy Maintenance Worker
         run: pnpm --filter @jusris/maintenance-worker run deploy
         env:
+          DEPLOY_ENV: ${{ inputs.environment }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
       - name: Deploy Ingestion Worker
         run: pnpm --filter @jusris/ingestion-worker run deploy
         env:
+          DEPLOY_ENV: ${{ inputs.environment }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
       - name: Deploy Tenant Runtime Worker
         run: pnpm --filter @jusris/tenant-runtime-worker run deploy
         env:
+          DEPLOY_ENV: ${{ inputs.environment }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
       - name: Deploy Webhook Worker
         run: pnpm --filter @jusris/webhook-worker run deploy
         env:
+          DEPLOY_ENV: ${{ inputs.environment }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      - name: Deployment summary
+        run: |
+          echo "## Deployment Summary" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Detail | Value |" >> "$GITHUB_STEP_SUMMARY"
+          echo "|--------|-------|" >> "$GITHUB_STEP_SUMMARY"
+          echo "| **Environment** | \`${{ inputs.environment }}\` |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| **Ref** | \`${{ inputs.ref }}\` |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| **Commit** | \`${{ github.sha }}\` |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| **Triggered by** | ${{ github.actor }} |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| **Workers** | dispatch, provisioning, maintenance, ingestion, tenant-runtime, webhooks |" >> "$GITHUB_STEP_SUMMARY"

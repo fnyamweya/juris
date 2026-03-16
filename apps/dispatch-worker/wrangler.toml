@@ -13,6 +13,27 @@ database_id = ""
 
 [vars]
 ENVIRONMENT = "development"
-LOG_LEVEL = "info"
+LOG_LEVEL = "debug"
 CF_ACCESS_TEAM_DOMAIN = ""
 CF_ACCESS_AUD = ""
+
+# ── UAT (PR preview) ──
+[env.uat]
+name = "jusris-dispatch-uat"
+[env.uat.vars]
+ENVIRONMENT = "uat"
+LOG_LEVEL = "debug"
+
+# ── Staging (main branch) ──
+[env.staging]
+name = "jusris-dispatch-staging"
+[env.staging.vars]
+ENVIRONMENT = "staging"
+LOG_LEVEL = "info"
+
+# ── Production ──
+[env.production]
+name = "jusris-dispatch"
+[env.production.vars]
+ENVIRONMENT = "production"
+LOG_LEVEL = "warn"

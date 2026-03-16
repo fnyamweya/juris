@@ -24,4 +24,34 @@ binding = "AI"
 
 [vars]
 ENVIRONMENT = "development"
+LOG_LEVEL = "debug"
+
+# ── UAT ──
+[env.uat]
+name = "jusris-tenant-runtime-uat"
+[[env.uat.r2_buckets]]
+binding = "TENANT_STORAGE"
+bucket_name = "jusris-tenant-storage-uat"
+[env.uat.vars]
+ENVIRONMENT = "uat"
+LOG_LEVEL = "debug"
+
+# ── Staging ──
+[env.staging]
+name = "jusris-tenant-runtime-staging"
+[[env.staging.r2_buckets]]
+binding = "TENANT_STORAGE"
+bucket_name = "jusris-tenant-storage-staging"
+[env.staging.vars]
+ENVIRONMENT = "staging"
 LOG_LEVEL = "info"
+
+# ── Production ──
+[env.production]
+name = "jusris-tenant-runtime"
+[[env.production.r2_buckets]]
+binding = "TENANT_STORAGE"
+bucket_name = "jusris-tenant-storage"
+[env.production.vars]
+ENVIRONMENT = "production"
+LOG_LEVEL = "warn"

@@ -3,9 +3,20 @@
   "changelog": "@changesets/cli/changelog",
   "commit": false,
   "fixed": [],
-  "linked": [],
+  "linked": [
+    [
+      "@jusris/domain",
+      "@jusris/auth",
+      "@jusris/security",
+      "@jusris/access-control",
+      "@jusris/data",
+      "@jusris/rag",
+      "@jusris/crypto",
+      "@jusris/schemas"
+    ]
+  ],
   "access": "restricted",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": []
+  "ignore": ["@jusris/eslint-config", "@jusris/tsconfig"]
 }

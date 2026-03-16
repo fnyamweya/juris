@@ -23,5 +23,50 @@ max_retries = 10
 
 [vars]
 ENVIRONMENT = "development"
-LOG_LEVEL = "info"
+LOG_LEVEL = "debug"
 CLOUDFLARE_ACCOUNT_ID = ""
+
+# ── UAT ──
+[env.uat]
+name = "jusris-provisioning-uat"
+[[env.uat.queues.producers]]
+queue = "jusris-provisioning-uat"
+binding = "PROVISIONING_QUEUE"
+[[env.uat.queues.consumers]]
+queue = "jusris-provisioning-uat"
+max_batch_size = 10
+max_batch_timeout = 30
+max_retries = 10
+[env.uat.vars]
+ENVIRONMENT = "uat"
+LOG_LEVEL = "debug"
+
+# ── Staging ──
+[env.staging]
+name = "jusris-provisioning-staging"
+[[env.staging.queues.producers]]
+queue = "jusris-provisioning-staging"
+binding = "PROVISIONING_QUEUE"
+[[env.staging.queues.consumers]]
+queue = "jusris-provisioning-staging"
+max_batch_size = 10
+max_batch_timeout = 30
+max_retries = 10
+[env.staging.vars]
+ENVIRONMENT = "staging"
+LOG_LEVEL = "info"
+
+# ── Production ──
+[env.production]
+name = "jusris-provisioning"
+[[env.production.queues.producers]]
+queue = "jusris-provisioning"
+binding = "PROVISIONING_QUEUE"
+[[env.production.queues.consumers]]
+queue = "jusris-provisioning"
+max_batch_size = 10
+max_batch_timeout = 30
+max_retries = 3
+[env.production.vars]
+ENVIRONMENT = "production"
+LOG_LEVEL = "warn"

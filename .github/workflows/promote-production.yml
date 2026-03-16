@@ -1,0 +1,72 @@
+name: Promote to Production
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag to promote (e.g. v1.2.0). Leave empty for latest main.'
+        required: false
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  promote:
+    name: Promote to Production
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Determine ref to promote
+        id: ref
+        run: |
+          if [[ -n "${{ inputs.tag }}" ]]; then
+            REF="${{ inputs.tag }}"
+            echo "Promoting tag: $REF"
+          else
+            REF="main"
+            echo "Promoting latest main"
+          fi
+          echo "ref=$REF" >> "$GITHUB_OUTPUT"
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Create or update production branch
+        run: |
+          REF="${{ steps.ref.outputs.ref }}"
+
+          # Ensure production branch exists
+          if ! git rev-parse --verify origin/production >/dev/null 2>&1; then
+            echo "Creating production branch from $REF"
+            git checkout -b production "$REF"
+            git push origin production
+          else
+            echo "Fast-forwarding production to $REF"
+            git checkout production
+            git merge --ff-only "$REF"
+            git push origin production
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Promotion summary
+        run: |
+          echo "## Production Promotion" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Detail | Value |" >> "$GITHUB_STEP_SUMMARY"
+          echo "|--------|-------|" >> "$GITHUB_STEP_SUMMARY"
+          echo "| **Source** | \`${{ steps.ref.outputs.ref }}\` |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| **Target** | \`production\` |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| **Triggered by** | ${{ github.actor }} |" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "The **Deploy Production** workflow will run automatically." >> "$GITHUB_STEP_SUMMARY"

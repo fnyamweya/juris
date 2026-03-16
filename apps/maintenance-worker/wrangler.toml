@@ -16,4 +16,31 @@ crons = ["0 */6 * * *", "0 0 * * *"]
 
 [vars]
 ENVIRONMENT = "development"
+LOG_LEVEL = "debug"
+
+# ── UAT ──
+[env.uat]
+name = "jusris-maintenance-uat"
+[env.uat.triggers]
+crons = []
+[env.uat.vars]
+ENVIRONMENT = "uat"
+LOG_LEVEL = "debug"
+
+# ── Staging ──
+[env.staging]
+name = "jusris-maintenance-staging"
+[env.staging.triggers]
+crons = ["0 */6 * * *", "0 0 * * *"]
+[env.staging.vars]
+ENVIRONMENT = "staging"
 LOG_LEVEL = "info"
+
+# ── Production ──
+[env.production]
+name = "jusris-maintenance"
+[env.production.triggers]
+crons = ["0 */6 * * *", "0 0 * * *"]
+[env.production.vars]
+ENVIRONMENT = "production"
+LOG_LEVEL = "warn"

@@ -8,4 +8,25 @@ enabled = true
 
 [vars]
 ENVIRONMENT = "development"
+LOG_LEVEL = "debug"
+
+# ── UAT ──
+[env.uat]
+name = "jusris-webhooks-uat"
+[env.uat.vars]
+ENVIRONMENT = "uat"
+LOG_LEVEL = "debug"
+
+# ── Staging ──
+[env.staging]
+name = "jusris-webhooks-staging"
+[env.staging.vars]
+ENVIRONMENT = "staging"
 LOG_LEVEL = "info"
+
+# ── Production ──
+[env.production]
+name = "jusris-webhooks"
+[env.production.vars]
+ENVIRONMENT = "production"
+LOG_LEVEL = "warn"
