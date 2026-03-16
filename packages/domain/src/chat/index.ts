@@ -1,8 +1,8 @@
-import type { TenantId } from '../tenant/index.js';
-import type { MatterId } from '../matter/index.js';
-import type { PrincipalId } from '../identity/index.js';
 import type { DocumentId } from '../document/index.js';
+import type { PrincipalId } from '../identity/index.js';
 import type { ChunkId } from '../ingestion/index.js';
+import type { MatterId } from '../matter/index.js';
+import type { TenantId } from '../tenant/index.js';
 
 export type ConversationId = string & { readonly __brand: unique symbol };
 

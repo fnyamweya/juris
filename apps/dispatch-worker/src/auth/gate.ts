@@ -6,6 +6,7 @@ import {
 } from '@jusris/auth';
 import { PrincipalType } from '@jusris/domain';
 import type { Logger } from '@jusris/observability';
+
 import type { DispatchWorkerEnv } from '../env.js';
 
 function createDispatchTenantResolver(env: DispatchWorkerEnv): TenantResolver {

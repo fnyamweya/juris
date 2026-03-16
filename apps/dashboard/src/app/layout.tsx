@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
-import type { ReactNode } from 'react';
 import { Inter } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
+import type { ReactNode } from 'react';
+
 import { AuthProvider } from '@/components/auth/auth-provider';
 import './globals.css';
 

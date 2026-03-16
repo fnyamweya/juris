@@ -1,6 +1,7 @@
 import { createRequestContext, createLogger } from '@jusris/observability';
-import { handleHealthCheck } from './routes/health.js';
+
 import type { MaintenanceWorkerEnv } from './env.js';
+import { handleHealthCheck } from './routes/health.js';
 
 export default {
   async scheduled(

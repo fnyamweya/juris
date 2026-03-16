@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest';
+
 import { createTenantRequestSchema } from '../tenant.js';
 
 describe('createTenantRequestSchema', () => {

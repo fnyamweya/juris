@@ -1,8 +1,9 @@
 'use client';
 
+import { usePathname, useRouter } from 'next/navigation';
 import type { ReactNode } from 'react';
 import { useEffect } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
+
 import { useAuth } from './auth-provider';
 
 export function ProtectedRoute({ children }: { children: ReactNode }) {

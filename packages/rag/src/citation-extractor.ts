@@ -1,5 +1,6 @@
 import type { Citation } from '@jusris/domain';
 import { createChunkId, createDocumentId } from '@jusris/domain';
+
 import type { RetrievedChunk } from './retrieval-orchestrator.js';
 
 export interface ExtractCitationsParams {

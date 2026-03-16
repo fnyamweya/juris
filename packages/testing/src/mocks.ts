@@ -1,9 +1,8 @@
-import type { AuditEvent } from '@jusris/domain';
-import type { Logger } from '@jusris/observability';
-import type { TokenVerifier, VerifiedToken } from '@jusris/auth';
 import type { PolicyEvaluator } from '@jusris/access-control';
-import type { AccessDecision } from '@jusris/domain';
 import type { AuditEventStore } from '@jusris/audit';
+import type { TokenVerifier, VerifiedToken } from '@jusris/auth';
+import type { AuditEvent, AccessDecision } from '@jusris/domain';
+import type { Logger } from '@jusris/observability';
 
 export interface LogEntry {
   level: string;
@@ -71,7 +70,7 @@ export function createMockAuditEventStore(): AuditEventStore & {
   events: AuditEvent[];
 } {
   const events: AuditEvent[] = [];
-  let latestByTenant = new Map<string, string>();
+  const latestByTenant = new Map<string, string>();
 
   return {
     events,

@@ -1,10 +1,11 @@
+import { MatterStatus } from '@jusris/domain';
+import { ChevronLeft } from 'lucide-react';
 import Link from 'next/link';
+
 import { MatterStatusBadge } from '@/components/domain/matter-status-badge';
+import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Button } from '@/components/ui/button';
-import { ChevronLeft } from 'lucide-react';
-import { MatterStatus } from '@jusris/domain';
 
 interface MatterPageProps {
   params: Promise<{ matterId: string }>;

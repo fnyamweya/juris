@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest';
+
 import { CSP_DIRECTIVES, buildCspHeader, applySecurityHeaders } from '../headers.js';
 import { stripUntrustedHeaders } from '../input-validation.js';
 

@@ -1,6 +1,7 @@
-import { describe, it, expect } from 'vitest';
-import { createDeterministicRedactionDetector } from '../redaction-detector.js';
 import { RedactionCategory } from '@jusris/domain';
+import { describe, it, expect } from 'vitest';
+
+import { createDeterministicRedactionDetector } from '../redaction-detector.js';
 
 describe('createDeterministicRedactionDetector', () => {
   const detector = createDeterministicRedactionDetector();

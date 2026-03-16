@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest';
+
 import { assemblePrompt } from '../prompt-assembly.js';
 import type { RetrievedChunk } from '../retrieval-orchestrator.js';
 

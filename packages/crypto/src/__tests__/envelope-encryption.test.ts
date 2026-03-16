@@ -1,4 +1,6 @@
 import { describe, it, expect } from 'vitest';
+
+import { utf8Encode, utf8Decode } from '../encoding.js';
 import {
   encryptPayload,
   decryptPayload,
@@ -6,11 +8,10 @@ import {
   generateDek,
 } from '../envelope-encryption.js';
 import { importKekFromRaw } from '../key-management.js';
-import { utf8Encode, utf8Decode } from '../encoding.js';
 
 async function createTestKek(): Promise<CryptoKey> {
   const rawKey = crypto.getRandomValues(new Uint8Array(32));
-  return importKekFromRaw(rawKey.buffer as ArrayBuffer);
+  return importKekFromRaw(rawKey.buffer);
 }
 
 describe('envelope encryption', () => {
@@ -103,7 +104,7 @@ describe('envelope encryption', () => {
 
     const tamperedEncrypted = {
       ...encrypted,
-      ciphertext: tamperedCiphertext.buffer as ArrayBuffer,
+      ciphertext: tamperedCiphertext.buffer,
     };
 
     await expect(

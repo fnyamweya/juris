@@ -1,7 +1,8 @@
 import type { ReactNode } from 'react';
-import { DashboardSidebar } from '@/components/layout/dashboard-sidebar';
-import { DashboardHeader } from '@/components/layout/dashboard-header';
+
 import { ProtectedRoute } from '@/components/auth/protected-route';
+import { DashboardHeader } from '@/components/layout/dashboard-header';
+import { DashboardSidebar } from '@/components/layout/dashboard-sidebar';
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
   return (

@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest';
+
 import { createSemanticChunker } from '../chunker.js';
 
 describe('createSemanticChunker', () => {

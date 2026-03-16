@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest';
+
 import { createAuditChainSigner, verifyAuditChainEntry } from '../audit-signing.js';
 
 async function createTestSigningKey(): Promise<CryptoKey> {

@@ -1,4 +1,5 @@
 import type { PrincipalType } from '@jusris/domain';
+
 import type { VerifiedToken } from './token-verifier.js';
 
 export interface ResolvedPrincipal {

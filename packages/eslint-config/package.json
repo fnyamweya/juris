@@ -5,16 +5,16 @@
   "license": "UNLICENSED",
   "type": "module",
   "exports": {
-    "./base": "./base.js",
-    "./nextjs": "./nextjs.js",
-    "./worker": "./worker.js",
-    "./library": "./library.js"
+    "./base": "./base.cjs",
+    "./nextjs": "./nextjs.cjs",
+    "./worker": "./worker.cjs",
+    "./library": "./library.cjs"
   },
   "files": [
-    "base.js",
-    "nextjs.js",
-    "worker.js",
-    "library.js"
+    "base.cjs",
+    "nextjs.cjs",
+    "worker.cjs",
+    "library.cjs"
   ],
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^8.0.0",

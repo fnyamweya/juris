@@ -48,6 +48,12 @@ export function createCloudflareApiClient(params: {
 }): CloudflareApiClient {
   const { accountId, apiToken, logger } = params;
 
+  interface CfApiResponse<R> {
+    success?: boolean;
+    result?: R;
+    errors?: Array<{ message?: string; code?: number }>;
+  }
+
   async function request<T>(method: string, path: string, body?: unknown): Promise<T> {
     const url = `${BASE_URL}${path}`;
     try {
@@ -59,11 +65,8 @@ export function createCloudflareApiClient(params: {
         },
         body: body ? JSON.stringify(body) : undefined,
       });
-      const data = (await res.json()) as {
-        success?: boolean;
-        errors?: Array<{ code?: number; message?: string }>;
-        result?: T;
-      };
+      const text = await res.text();
+      const data: CfApiResponse<T> = JSON.parse(text) as CfApiResponse<T>;
       if (!res.ok) {
         const errMsg = data.errors?.[0]?.message ?? `HTTP ${res.status}: ${res.statusText}`;
         const errCode = data.errors?.[0]?.code?.toString();

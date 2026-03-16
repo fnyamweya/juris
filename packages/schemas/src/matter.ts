@@ -1,5 +1,6 @@
-import { z } from 'zod';
 import { MatterStatus, MatterType } from '@jusris/domain/matter';
+import { z } from 'zod';
+
 import { ulidSchema, cursorPaginationSchema } from './common.js';
 
 export const createMatterRequestSchema = z.object({

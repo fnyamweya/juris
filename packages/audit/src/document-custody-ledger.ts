@@ -1,7 +1,7 @@
-import type { AuditEvent } from '@jusris/domain';
 import { AuditAction } from '@jusris/domain';
-import { AuditTrailWriter } from './audit-trail-writer.js';
-import type { PrincipalType } from '@jusris/domain';
+import type { AuditEvent, PrincipalType } from '@jusris/domain';
+
+import { type AuditTrailWriter } from './audit-trail-writer.js';
 
 export interface DocumentCustodyParams {
   tenantId: string;

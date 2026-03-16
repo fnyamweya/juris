@@ -1,5 +1,5 @@
-import { sha256 } from './hashing.js';
 import { utf8Encode } from './encoding.js';
+import { sha256 } from './hashing.js';
 
 export interface AuditChainSigner {
   sign(

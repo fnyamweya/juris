@@ -1,7 +1,8 @@
 import type { AccessRequest, AccessDecision } from '@jusris/domain';
 import type { Logger } from '@jusris/observability';
-import type { RoleBindingLoader, EffectiveBinding } from './role-binding-loader.js';
+
 import type { PolicyLoader } from './policy-loader.js';
+import type { RoleBindingLoader, EffectiveBinding } from './role-binding-loader.js';
 
 export interface PolicyEvaluator {
   evaluate(request: AccessRequest): Promise<AccessDecision>;

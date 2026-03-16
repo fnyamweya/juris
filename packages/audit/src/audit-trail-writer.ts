@@ -1,6 +1,10 @@
-import type { AuditEvent } from '@jusris/domain';
-import { createAuditEventId, type AuditAction, type PrincipalType } from '@jusris/domain';
 import type { AuditChainSigner } from '@jusris/crypto';
+import type {
+  AuditEvent,
+  createAuditEventId,
+  type AuditAction,
+  type PrincipalType,
+} from '@jusris/domain';
 import type { Logger } from '@jusris/observability';
 
 const GENESIS_HASH = 'GENESIS';

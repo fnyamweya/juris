@@ -23,7 +23,9 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20241205.0",
+    "@jusris/eslint-config": "workspace:^",
     "@jusris/tsconfig": "workspace:*",
+    "eslint": "^8.57.0",
     "rimraf": "^6.0.0",
     "typescript": "^5.7.0",
     "vitest": "^2.1.0",

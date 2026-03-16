@@ -1,5 +1,6 @@
-import { z } from 'zod';
 import { ChatMessageRole } from '@jusris/domain/chat';
+import { z } from 'zod';
+
 import { ulidSchema, cursorPaginationSchema } from './common.js';
 
 export const createConversationRequestSchema = z.object({

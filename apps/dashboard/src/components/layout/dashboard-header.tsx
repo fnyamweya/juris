@@ -1,10 +1,11 @@
 'use client';
 
 import { Bell, Search } from 'lucide-react';
-import { Breadcrumbs } from './breadcrumbs';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+
+import { useAuth } from '@/components/auth/auth-provider';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,8 +13,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { useAuth } from '@/components/auth/auth-provider';
-import Link from 'next/link';
+import { Input } from '@/components/ui/input';
+
+import { Breadcrumbs } from './breadcrumbs';
 
 export function DashboardHeader() {
   const { user, signOut } = useAuth();
@@ -65,7 +67,7 @@ export function DashboardHeader() {
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem
-              onClick={() => signOut()}
+              onClick={() => void signOut()}
               className="text-destructive focus:text-destructive"
             >
               Sign Out

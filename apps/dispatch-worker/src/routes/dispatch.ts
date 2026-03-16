@@ -1,7 +1,8 @@
 import type { ActorContext } from '@jusris/domain';
 import type { RequestContext, Logger } from '@jusris/observability';
-import { stripUntrustedHeaders } from '../headers.js';
+
 import type { DispatchWorkerEnv } from '../env.js';
+import { stripUntrustedHeaders } from '../headers.js';
 
 const INTERNAL_TENANT_HEADER = 'x-jusris-tenant-id';
 const INTERNAL_ACTOR_HEADER = 'x-jusris-actor-id';

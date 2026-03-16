@@ -1,9 +1,9 @@
-import type { IngestionJob } from '@jusris/domain';
-import type { Result } from '@jusris/domain';
+import type { IngestionJob, Result } from '@jusris/domain';
 import type { Logger } from '@jusris/observability';
-import type { TextExtractor } from './text-extractor.js';
+
 import type { ChunkingStrategy } from './chunker.js';
 import type { RedactionDetector } from './redaction-detector.js';
+import type { TextExtractor } from './text-extractor.js';
 
 export interface IngestionDeps {
   extractor: TextExtractor;

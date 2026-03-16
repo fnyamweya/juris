@@ -1,6 +1,6 @@
-import type { TenantId } from '../tenant/index.js';
-import type { MatterId } from '../matter/index.js';
 import type { ActorContext, PrincipalId } from '../identity/index.js';
+import type { MatterId } from '../matter/index.js';
+import type { TenantId } from '../tenant/index.js';
 
 export enum Permission {
   VIEW = 'VIEW',

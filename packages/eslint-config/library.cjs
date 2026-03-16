@@ -1,5 +1,5 @@
 const config = {
-  extends: [require.resolve('./base')],
+  extends: [require.resolve('./base.cjs')],
   rules: {
     '@typescript-eslint/explicit-function-return-type': [
       'warn',

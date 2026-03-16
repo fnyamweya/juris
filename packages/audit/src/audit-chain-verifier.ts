@@ -1,5 +1,5 @@
-import type { AuditEvent } from '@jusris/domain';
 import { verifyAuditChainEntry } from '@jusris/crypto';
+import type { AuditEvent } from '@jusris/domain';
 
 export interface BrokenLink {
   eventId: string;
@@ -38,6 +38,7 @@ export class AuditChainVerifier {
 
     const pageSize = 100;
 
+    // eslint-disable-next-line no-constant-condition
     while (true) {
       const { events, cursor: nextCursor } = await this.deps.store.getEvents(tenantId, {
         cursor: cursor ?? undefined,

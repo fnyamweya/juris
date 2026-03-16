@@ -1,10 +1,11 @@
 import { createRequestContext, createLogger } from '@jusris/observability';
 import { applySecurityHeaders } from '@jusris/security';
-import { handleHealthCheck } from './routes/health.js';
-import { handleTenantDispatch } from './routes/dispatch.js';
-import { handleTenantStatus } from './routes/tenant-status.js';
+
 import { createAuthGateForDispatch } from './auth/gate.js';
 import type { DispatchWorkerEnv } from './env.js';
+import { handleTenantDispatch } from './routes/dispatch.js';
+import { handleHealthCheck } from './routes/health.js';
+import { handleTenantStatus } from './routes/tenant-status.js';
 
 export default {
   async fetch(request: Request, env: DispatchWorkerEnv, _ctx: ExecutionContext): Promise<Response> {

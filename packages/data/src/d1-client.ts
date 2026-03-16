@@ -1,4 +1,5 @@
 import type { Logger } from '@jusris/observability';
+
 import { DataAccessError } from './errors.js';
 import type { D1Database, D1ExecResult, D1PreparedStatement, D1Result } from './migration.js';
 
@@ -44,7 +45,7 @@ export function createD1Client(db: D1Database, logger: Logger): D1Client {
         if (!result.success && result.error) {
           throw new Error(result.error);
         }
-        return (result.results ?? []) as T[];
+        return result.results ?? [];
       });
     },
 

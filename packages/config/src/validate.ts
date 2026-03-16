@@ -1,5 +1,5 @@
-import type { ZodSchema } from 'zod';
 import { ok, err, type Result } from '@jusris/domain';
+import type { ZodSchema } from 'zod';
 
 export interface ValidationError {
   code: string;

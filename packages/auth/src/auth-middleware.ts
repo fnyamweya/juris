@@ -1,12 +1,13 @@
 import type { ActorContext } from '@jusris/domain';
 import { createPrincipalId, createTenantId } from '@jusris/domain';
 import type { Logger } from '@jusris/observability';
-import type { TokenVerifier, VerifiedToken } from './token-verifier.js';
-import { TokenVerificationError } from './token-verifier.js';
+import { REQUEST_ID_HEADER, TRACE_ID_HEADER } from '@jusris/observability';
+
+import { AUTH_ERRORS } from './auth-errors.js';
 import { PrincipalResolutionError } from './principal-resolver.js';
 import type { PrincipalResolver, ResolvedPrincipal } from './principal-resolver.js';
-import { AUTH_ERRORS } from './auth-errors.js';
-import { REQUEST_ID_HEADER, TRACE_ID_HEADER } from '@jusris/observability';
+import type { TokenVerifier, VerifiedToken } from './token-verifier.js';
+import { TokenVerificationError } from './token-verifier.js';
 
 export interface AuthGateResult {
   authenticated: true;

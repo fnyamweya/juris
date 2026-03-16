@@ -1,5 +1,5 @@
-import type { TenantId } from '../tenant/index.js';
 import type { PrincipalId } from '../identity/index.js';
+import type { TenantId } from '../tenant/index.js';
 
 export type MatterId = string & { readonly __brand: unique symbol };
 

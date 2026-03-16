@@ -1,5 +1,5 @@
 const config = {
-  extends: [require.resolve('./base'), 'next/core-web-vitals'],
+  extends: [require.resolve('./base.cjs'), 'next/core-web-vitals'],
   rules: {
     '@typescript-eslint/explicit-function-return-type': 'off',
     'react/no-unescaped-entities': 'off',

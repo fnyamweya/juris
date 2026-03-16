@@ -1,6 +1,7 @@
 import { createRequestContext, createLogger } from '@jusris/observability';
-import { handleHealthCheck } from './routes/health.js';
+
 import type { IngestionWorkerEnv } from './env.js';
+import { handleHealthCheck } from './routes/health.js';
 
 export default {
   async queue(batch: MessageBatch, env: IngestionWorkerEnv, _ctx: ExecutionContext): Promise<void> {

@@ -1,5 +1,6 @@
 import type { ActorContext, AccessDecision, MatterId } from '@jusris/domain';
 import { Permission } from '@jusris/domain';
+
 import type { PolicyEvaluator } from './policy-evaluator.js';
 
 const RESOURCE_MATTER = 'matter';

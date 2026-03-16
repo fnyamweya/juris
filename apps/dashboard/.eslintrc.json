@@ -1,0 +1,5 @@
+{
+  "extends": ["@jusris/eslint-config/nextjs"],
+  "root": true,
+  "parserOptions": { "project": "./tsconfig.json" }
+}

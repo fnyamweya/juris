@@ -1,5 +1,6 @@
 import type { ActorContext } from '@jusris/domain';
 import type { RequestContext, Logger } from '@jusris/observability';
+
 import type { TenantRuntimeWorkerEnv } from '../env.js';
 
 export async function handleDocuments(

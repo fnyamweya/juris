@@ -1,12 +1,13 @@
 import { createRequestContext, createLogger } from '@jusris/observability';
 import { applySecurityHeaders } from '@jusris/security';
+
+import type { TenantRuntimeWorkerEnv } from './env.js';
 import { extractInternalContext } from './middleware/internal-auth.js';
+import { handleConversations } from './routes/conversations.js';
+import { handleDocuments } from './routes/documents.js';
 import { handleHealthCheck } from './routes/health.js';
 import { handleMatters } from './routes/matters.js';
-import { handleDocuments } from './routes/documents.js';
-import { handleConversations } from './routes/conversations.js';
 import { handleSearch } from './routes/search.js';
-import type { TenantRuntimeWorkerEnv } from './env.js';
 
 export default {
   async fetch(

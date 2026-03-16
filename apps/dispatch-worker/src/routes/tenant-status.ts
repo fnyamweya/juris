@@ -1,5 +1,6 @@
 import type { ActorContext } from '@jusris/domain';
 import type { RequestContext, Logger } from '@jusris/observability';
+
 import type { DispatchWorkerEnv } from '../env.js';
 
 export async function handleTenantStatus(

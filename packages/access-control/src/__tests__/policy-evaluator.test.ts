@@ -1,7 +1,3 @@
-import { describe, it, expect, vi } from 'vitest';
-import { createPolicyEvaluator } from '../policy-evaluator.js';
-import type { RoleBindingLoader, EffectiveBinding } from '../role-binding-loader.js';
-import type { PolicyLoader } from '../policy-loader.js';
 import type { AccessRequest } from '@jusris/domain';
 import {
   Permission,
@@ -10,6 +6,11 @@ import {
   createTenantId,
   createMatterId,
 } from '@jusris/domain';
+import { describe, it, expect, vi } from 'vitest';
+
+import { createPolicyEvaluator } from '../policy-evaluator.js';
+import type { PolicyLoader } from '../policy-loader.js';
+import type { RoleBindingLoader, EffectiveBinding } from '../role-binding-loader.js';
 
 const mockLogger = {
   debug: vi.fn(),

@@ -14,7 +14,7 @@ export function createApiClient(baseUrl: string) {
     async getMatters(): Promise<{ matters: Matter[] }> {
       const res = await fetch(`${baseUrl}/api/matters`, { headers: headers() });
       if (!res.ok) throw new Error(`Failed to fetch matters: ${res.status}`);
-      return res.json();
+      return (await res.json()) as { matters: Matter[] };
     },
 
     async getMatter(matterId: MatterId): Promise<Matter> {
@@ -22,7 +22,7 @@ export function createApiClient(baseUrl: string) {
         headers: headers(),
       });
       if (!res.ok) throw new Error(`Failed to fetch matter: ${res.status}`);
-      return res.json();
+      return (await res.json()) as Matter;
     },
 
     async getDocuments(params?: {
@@ -40,7 +40,7 @@ export function createApiClient(baseUrl: string) {
         headers: headers(),
       });
       if (!res.ok) throw new Error(`Failed to fetch documents: ${res.status}`);
-      return res.json();
+      return (await res.json()) as { documents: unknown[]; total: number };
     },
 
     async getDocument(documentId: DocumentId): Promise<unknown> {
@@ -48,7 +48,7 @@ export function createApiClient(baseUrl: string) {
         headers: headers(),
       });
       if (!res.ok) throw new Error(`Failed to fetch document: ${res.status}`);
-      return res.json();
+      return (await res.json()) as unknown;
     },
 
     async search(query: string): Promise<{ results: unknown[] }> {
@@ -58,7 +58,7 @@ export function createApiClient(baseUrl: string) {
         body: JSON.stringify({ query }),
       });
       if (!res.ok) throw new Error(`Search failed: ${res.status}`);
-      return res.json();
+      return (await res.json()) as { results: unknown[] };
     },
   };
 }

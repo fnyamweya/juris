@@ -1,6 +1,7 @@
 import { createRequestContext, createLogger } from '@jusris/observability';
-import { handleHealthCheck } from './routes/health.js';
+
 import type { WebhookWorkerEnv } from './env.js';
+import { handleHealthCheck } from './routes/health.js';
 
 export default {
   async fetch(request: Request, env: WebhookWorkerEnv, _ctx: ExecutionContext): Promise<Response> {

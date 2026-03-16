@@ -51,7 +51,8 @@ export async function fetchJwks(url: string): Promise<Jwk[]> {
   if (!res.ok) {
     throw new Error(`Failed to fetch JWKS from ${url}: ${res.status}`);
   }
-  const body = (await res.json()) as { keys?: Jwk[] };
+  const text = await res.text();
+  const body: { keys?: Jwk[] } = JSON.parse(text) as { keys?: Jwk[] };
   const keys = body.keys;
   if (!Array.isArray(keys)) {
     throw new Error(`Invalid JWKS response from ${url}: missing keys array`);

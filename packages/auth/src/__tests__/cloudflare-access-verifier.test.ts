@@ -1,4 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
+
 import { createCloudflareAccessVerifier } from '../cloudflare-access-verifier.js';
 import { createInMemoryJwksCache } from '../jwks.js';
 import type { Jwk } from '../jwks.js';
@@ -35,7 +36,7 @@ async function createTestKeyPair(): Promise<{
   const publicKey = (await crypto.subtle.exportKey('jwk', keyPair.publicKey)) as JsonWebKey;
 
   const publicJwk: Jwk = {
-    kty: publicKey.kty as string,
+    kty: publicKey.kty,
     n: publicKey.n as string,
     e: publicKey.e as string,
     kid: 'test-kid',

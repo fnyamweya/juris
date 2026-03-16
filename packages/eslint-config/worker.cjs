@@ -1,5 +1,5 @@
 const config = {
-  extends: [require.resolve('./base')],
+  extends: [require.resolve('./base.cjs')],
   rules: {
     'no-restricted-globals': [
       'error',

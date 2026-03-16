@@ -1,5 +1,6 @@
-import { Badge } from '@/components/ui/badge';
 import { MatterStatus } from '@jusris/domain';
+
+import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 
 const STATUS_VARIANTS: Record<

@@ -1,5 +1,6 @@
-import { z } from 'zod';
 import { TenantStatus, TenantTier } from '@jusris/domain/tenant';
+import { z } from 'zod';
+
 import { ulidSchema } from './common.js';
 
 const tenantSlugSchema = z
