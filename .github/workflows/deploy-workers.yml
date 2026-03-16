@@ -17,9 +17,9 @@ on:
       CLOUDFLARE_ACCOUNT_ID:
         required: true
       MASTER_REGISTRY_D1_ID:
-        required: true
+        required: false
       TENANT_D1_ID:
-        required: true
+        required: false
       TURBO_TOKEN:
         required: false
       TURBO_TEAM:
